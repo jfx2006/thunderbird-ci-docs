@@ -32,3 +32,7 @@ For comm-esr68, the change is at [D37316](https://phabricator.services.mozilla.c
 ## Treeherder
 
 Treeherder needs to be updated so it knows about the new repository. [Github pull request 5134](https://github.com/mozilla/treeherder/pull/5134) holds the changes for comm-esr68. Note that the actual configuration had been added before that, and this pull request was just to activate those changes.
+
+## Treestatus
+
+An entry needs to be made in the Treestatus database. For comm-esr68, @rail took care of this via an IRC request. There's probably a more formal way to do this.
