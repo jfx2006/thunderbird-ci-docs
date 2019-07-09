@@ -40,3 +40,5 @@ An entry needs to be made in the Treestatus database. For comm-esr68, @rail took
 ## Scriptworker
 
 The new repository needs to be added to scriptworker/constants.py.
+[Github Pull Request](https://github.com/mozilla-releng/scriptworker/pull/364)
+
