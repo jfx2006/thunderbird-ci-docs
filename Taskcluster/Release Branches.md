@@ -36,3 +36,7 @@ Treeherder needs to be updated so it knows about the new repository. [Github pul
 ## Treestatus
 
 An entry needs to be made in the Treestatus database. For comm-esr68, @rail took care of this via an IRC request. There's probably a more formal way to do this.
+
+## Scriptworker
+
+The new repository needs to be added to scriptworker/constants.py.
