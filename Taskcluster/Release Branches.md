@@ -5,6 +5,8 @@ What was done to create the comm-esr68 branch, including the related changes in 
 
 The strategy used for creating comm-esr68 was to wait and see what Firefox did, and then adapt for Thunderbird.
 
+For Thunderbird 76, I suggest a meta bug. I don't believe there was an overall one for Thunderbird 68. I think three bugs for the CI work: one for in-tree (C-C), one for the hg.m.o team as they have a number of components to touch, and one for the releng 
+
 ## hg.mozilla.org
 
 comm-esr68 was cloned from comm-beta on 2019-07-02.
@@ -28,6 +30,10 @@ The work for comm-esr68 was done in bug [1552389](http://bugzil.la/1552389). In 
 The Taskcluster server needs to be configured to watch the repository. This is done by updating the "projects.yml" file in the "ci-configuration" repository. It's likely sufficient to copy the block from the previous esr repository and update a couple of fields. Changes should be submitted to Phabricator for review, and then Mozilla releng will deploy.
 
 For comm-esr68, the change is at [D37316](https://phabricator.services.mozilla.com/D37316).
+
+comm-* repositories also have configuration in "grants.yml" that is not mirrored by the configuration for the mozilla-* repositories.
+
+That was an additional change found at [D37674](https://phabricator.services.mozilla.com/D37674).
 
 ## Treeherder
 
