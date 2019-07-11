@@ -5,7 +5,19 @@ What was done to create the comm-esr68 branch, including the related changes in 
 
 The strategy used for creating comm-esr68 was to wait and see what Firefox did, and then adapt for Thunderbird.
 
-For Thunderbird 76, I suggest a meta bug. I don't believe there was an overall one for Thunderbird 68. I think three bugs for the CI work: one for in-tree (C-C), one for the hg.m.o team as they have a number of components to touch, and one for the releng 
+Two bugs tracked the work, and the distribution of what went with which bug is a little weird. There should have been a third bug, see the next section.
+
+* [1552389](http://bugzil.la/1552389) - Port bug 1551738 - Add in-tree support for comm-esr68
+* [1561934](http://bugzil.la/1561934) - Please clone comm-beta to releases/comm-esr68
+
+#### Thinking ahead a little
+
+For Thunderbird 76, I suggest a meta bug that would cover all esr76 issues across Thunderbird. I don't believe there was one for Thunderbird 68.
+
+For the build/CI pieces, I suggest three bugs:
+
+* in-tree (C-C) changes
+* one for the hg.m.o team as they have a number of components to touch, and one for the releng maintained repositories whether they are in Mercurial or Github.
 
 ## hg.mozilla.org
 
