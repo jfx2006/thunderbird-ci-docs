@@ -66,6 +66,7 @@ An entry needs to be made in the Treestatus database. For comm-esr68, @rail took
 
 ### Release services: Shipit
 
+There's a line in one of the config files that needs to change so it knows to release off of comm-esr68 instead of comm-esr60. TODO: Update this with the pull request once it's done
 
 
 
