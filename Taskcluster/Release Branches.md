@@ -17,9 +17,14 @@ For Thunderbird 76, I suggest a meta bug that would cover all esr76 issues acros
 For the build/CI pieces, I suggest three bugs:
 
 * in-tree (C-C) changes
-* one for the hg.m.o team as they have a number of components to touch, and one for the releng maintained repositories whether they are in Mercurial or Github.
+* one for the hg.m.o team as they have a number of components to touch
+* one for the releng maintained repositories whether they are in Mercurial or Github
 
-## hg.mozilla.org
+## Description of various changes
+
+This will all be different by the time Thunderbird 76 rolls around, but this list should be helpful in finding the odds and ends that got missed for Thunderbird 68.
+
+### hg.mozilla.org
 
 comm-esr68 was cloned from comm-beta on 2019-07-02.
 
@@ -31,13 +36,11 @@ This followed what Mozilla was doing to create mozilla-esr68, but may have been 
 
 The work is done by the hg.m.o maintainers, we just need to open the bug and give them ample time to get it done.
 
-## Taskcluster
-
-### In-tree changes
+### Taskcluster In-tree changes
 
 The work for comm-esr68 was done in bug [1552389](http://bugzil.la/1552389). In most cases it was updating some regular expressions to match comm-esr68 in addition to comm-esr60.
 
-### ci-configuration
+### Taskcluster external: ci-configuration
 
 The Taskcluster server needs to be configured to watch the repository. This is done by updating the "projects.yml" file in the "ci-configuration" repository. It's likely sufficient to copy the block from the previous esr repository and update a couple of fields. Changes should be submitted to Phabricator for review, and then Mozilla releng will deploy.
 
@@ -47,16 +50,25 @@ comm-* repositories also have configuration in "grants.yml" that is not mirrored
 
 That was an additional change found at [D37674](https://phabricator.services.mozilla.com/D37674).
 
-## Treeherder
-
-Treeherder needs to be updated so it knows about the new repository. [Github pull request 5134](https://github.com/mozilla/treeherder/pull/5134) holds the changes for comm-esr68. Note that the actual configuration had been added before that, and this pull request was just to activate those changes.
-
-## Treestatus
-
-An entry needs to be made in the Treestatus database. For comm-esr68, @rail took care of this via an IRC request. There's probably a more formal way to do this.
-
-## Scriptworker
+### Taskcluster external: scriptworker
 
 The new repository needs to be added to scriptworker/constants.py.
 [Github Pull Request](https://github.com/mozilla-releng/scriptworker/pull/364)
+
+### Treeherder
+
+Treeherder needs to be updated so it knows about the new repository. [Github pull request 5134](https://github.com/mozilla/treeherder/pull/5134) holds the changes for comm-esr68. Note that the actual configuration had been added before that, and this pull request was just to activate those changes.
+It may be easier to make this its own bug (so a fourth) since this team is sort of separate from the others involved.
+
+### Release services: Treestatus
+
+An entry needs to be made in the Treestatus database. For comm-esr68, @rail took care of this via an IRC request. There's probably a more formal way to do this. There was no code to update.
+
+### Release services: Shipit
+
+
+
+
+
+
 
