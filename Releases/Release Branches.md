@@ -68,6 +68,9 @@ An entry needs to be made in the Treestatus database. For comm-esr68, @rail took
 
 There's a line in one of the config files that needs to change so it knows to release off of comm-esr68 instead of comm-esr60. TODO: Update this with the pull request once it's done
 
+### Balrog update rules
+
+As there is overlap between the initial release of Thunderbird 68.0 and the release of Thunderbird 60.9, a new rule needs to be added to each of the release channels on Balrog and on Balrog Staging. (release-localtest, release-cdntest, release)
 
 
 
