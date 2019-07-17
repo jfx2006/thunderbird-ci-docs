@@ -72,6 +72,7 @@ There's a line in one of the config files that needs to change so it knows to re
 
 As there is overlap between the initial release of Thunderbird 68.0 and the release of Thunderbird 60.9, a new rule needs to be added to each of the release channels on Balrog and on Balrog Staging. (release-localtest, release-cdntest, release)
 
+![Screen Shot 2019-07-17 at 19](file://media/1138082525.png)
 
 
 
