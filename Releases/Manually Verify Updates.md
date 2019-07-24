@@ -6,6 +6,7 @@ Occasionally the Update Verify jobs fail, and it might be useful to test the pro
 ## Requirements
 
 * A machine to run the update on. In CI this happens on Linux
+* A copy of "com"
 * Starting version package on the test machine (Linux)
 	* thunderbird-68.0b4.tar.bz2
 * Starting version package for the target platform:
@@ -34,10 +35,10 @@ Make sure that all of these packages are for the same locale.
 	* `( cd start
 		mv "Thunderbird/Thunderbird.app" .
 		rm -rf Thunderbird
-		cp "Thunderbird.app/Contents/Resources/{update-settings.ini,precomplete}" ".app/" )`
+		cp "Thunderbird.app/Contents/Resources/{update-settings.ini,precomplete}" "Thunderbird.app/" )`
 
 	* `( cd destination
-		mv "Thunderbird/*.app" .
+		mv "Thunderbird/Thunderbird.app" .
 		rm -rf Thunderbird )`
 
 
@@ -50,5 +51,7 @@ Make sure that all of these packages are for the same locale.
 * Copy mar file into update directory
 	* `cp thunderbird-69.0b1.complete.mar "$update/update.mar"`
 * Run update program
-	* `pushd start/`
-	* `"$updater" "$update"`
+	* `pushd start/Thunderbird.app`
+	* Yes,. run it just like this. It's sort of a silly program to run from the commandline.
+	* `"$updater" "$update" $(pwd) $(pwd) 0`
+
