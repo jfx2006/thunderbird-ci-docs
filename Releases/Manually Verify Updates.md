@@ -37,7 +37,7 @@ Make sure that all of these packages are for the same locale.
 	* `( cd start
 		mv "Thunderbird/Thunderbird.app" .
 		rm -rf Thunderbird
-		cp "Thunderbird.app/Contents/Resources/{update-settings.ini,precomplete}" "Thunderbird.app/" )`
+		cp Thunderbird.app/Contents/Resources/{update-settings.ini,precomplete} Thunderbird.app/ )`
 
 	* `( cd destination
 		mv "Thunderbird/Thunderbird.app" .
@@ -57,8 +57,13 @@ Make sure that all of these packages are for the same locale.
 	* Yes,. run it just like this. It's sort of a silly program to run from the commandline.
 	* `"$updater" "$update" $(pwd) $(pwd) 0``
 	* `popd`
+* View log file. Look for errors.
+	* `less "${update}/update.log"`
+* **macOSX only** Undo Mangling
+	* `rm -f "start/Thunderbird.app/{update-settings.ini,precomplete}"`
 
 ## Compare Start to Destination
 
 * Run compare-directories.py
 	* `python compare-directories.py --verbose start/Thunderbird.app destination/Thunderbird.app beta-localtest`
+* You will get output indicating anything that is different. 
