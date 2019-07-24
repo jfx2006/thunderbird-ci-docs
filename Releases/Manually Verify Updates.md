@@ -60,3 +60,5 @@ Make sure that all of these packages are for the same locale.
 
 ## Compare Start to Destination
 
+* Run compare-directories.py
+	* `python compare-directories.py --verbose start/Thunderbird.app destination/Thunderbird.app beta-localtest`
