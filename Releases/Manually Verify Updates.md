@@ -60,10 +60,20 @@ Make sure that all of these packages are for the same locale.
 * View log file. Look for errors.
 	* `less "${update}/update.log"`
 * **macOSX only** Undo Mangling
-	* `rm -f "start/Thunderbird.app/{update-settings.ini,precomplete}"`
+	* `rm -f start/Thunderbird.app/{update-settings.ini,precomplete}`
 
 ## Compare Start to Destination
 
 * Run compare-directories.py
 	* `python compare-directories.py --verbose start/Thunderbird.app destination/Thunderbird.app beta-localtest`
 * You will get output indicating anything that is different. 
+
+```
+Comparing start/Thunderbird.app with destination/Thunderbird.app...
+Files only in start/Thunderbird.app:
+  Contents/Library/Spotlight/thunderbird.mdimporter/Contents/_CodeSignature/._CodeResources
+```
+
+## Analysis
+
+In the macOS UV example here, we find that there is an extraneous file left behind during the update process 
