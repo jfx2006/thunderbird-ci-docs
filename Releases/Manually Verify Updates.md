@@ -32,14 +32,23 @@ Make sure that all of these packages are for the same locale.
 	* `( cd destination; 7z x "../Thunderbird 69.0b1.dmg" )`
 * **macOSX only** Mangling
 	* `( cd start
-		mv "Thunderbird/*.app" .
+		mv "Thunderbird/Thunderbird.app" .
 		rm -rf Thunderbird
-		cp "\*.app/Contents/Resources/{update-settings.ini,precomplete}" "*.app/" )`
+		cp "Thunderbird.app/Contents/Resources/{update-settings.ini,precomplete}" ".app/" )`
 
 	* `( cd destination
 		mv "Thunderbird/*.app" .
 		rm -rf Thunderbird )`
 
+
 ## Run updater
 
-* Make sure you are in the top of your directory structure, you shoudl
+* Make sure you are in the top of your directory structure, you should see three directories: *thunderbird*, *start*, *destination*, and your downloaded files.
+* Set some variables
+	* `updater=$(realpath thunderbird/updater)`
+	* `update=$(realpath thunderbird/update)`
+* Copy mar file into update directory
+	* `cp thunderbird-69.0b1.complete.mar "$update/update.mar"`
+* Run update program
+	* `pushd start/`
+	* `"$updater" "$update"`
