@@ -24,13 +24,22 @@ Make sure that all of these packages are for the same locale.
 ## Unpack
 
 * Unpack the test machine package. If you're on Linux it will unpack into a directory named "thunderbird"
-	* tar xvf thunderbird-68.0b4.tar.bz2
+	* `tar xvf thunderbird-68.0b4.tar.bz2`
 * Create start and destination directories
-	* mkdir start destination
+	* `mkdir start destination`
 * Unpack the Start version inro start, Destination version in destination
-	* ( cd start; 7z x "../Thunderbird 68.0b4.dmg" )
-	* ( cd destination; 7z x "../Thunderbird 69.0b1.dmg" )
+	* `( cd start; 7z x "../Thunderbird 68.0b4.dmg" )`
+	* `( cd destination; 7z x "../Thunderbird 69.0b1.dmg" )`
 * **macOSX only** Mangling
-	* ( cd start
-		mv "Thunderbird/app" .
-   rm -rf Thunderbird; cp "\*.app/Contents/Resources/{update-settings.ini,precomplete}" "*.app/")
+	* `( cd start
+		mv "Thunderbird/*.app" .
+		rm -rf Thunderbird
+		cp "\*.app/Contents/Resources/{update-settings.ini,precomplete}" "*.app/" )`
+
+	* `( cd destination
+		mv "Thunderbird/*.app" .
+		rm -rf Thunderbird )`
+
+## Run updater
+
+* Make sure you are in the top of your directory structure, you shoudl
