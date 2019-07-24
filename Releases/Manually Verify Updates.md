@@ -6,7 +6,9 @@ Occasionally the Update Verify jobs fail, and it might be useful to test the pro
 ## Requirements
 
 * A machine to run the update on. In CI this happens on Linux
-* A copy of "com"
+* Python (2.7 is still in use)
+* A copy of "compare-directories.py" from a M-C checkout.
+	* *M-C:tools/update-verify/release/compare-directories.py*
 * Starting version package on the test machine (Linux)
 	* thunderbird-68.0b4.tar.bz2
 * Starting version package for the target platform:
@@ -53,5 +55,8 @@ Make sure that all of these packages are for the same locale.
 * Run update program
 	* `pushd start/Thunderbird.app`
 	* Yes,. run it just like this. It's sort of a silly program to run from the commandline.
-	* `"$updater" "$update" $(pwd) $(pwd) 0`
+	* `"$updater" "$update" $(pwd) $(pwd) 0``
+	* `popd`
+
+## Compare Start to Destination
 
