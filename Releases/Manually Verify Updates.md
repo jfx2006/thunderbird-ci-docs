@@ -76,4 +76,4 @@ Files only in start/Thunderbird.app:
 
 ## Analysis
 
-In the macOS UV example here, we find that there is an extraneous file left behind during the update process 
+In the macOS UV example here, we find that there is an extraneous file left behind during the update process due to a code signing bug in a previous version. In this case the updater needs to be told to look for and remove that extra file if it exists which should fix this issue.
