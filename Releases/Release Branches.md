@@ -10,6 +10,10 @@ Two bugs tracked the work, and the distribution of what went with which bug is a
 * [1552389](http://bugzil.la/1552389) - Port bug 1551738 - Add in-tree support for comm-esr68
 * [1561934](http://bugzil.la/1561934) - Please clone comm-beta to releases/comm-esr68
 
+Additionally, we have from when we actually tried to release off comm-esr68
+
+* [1572836](http://bugzil.la/1572836) - releasing off comm-esr68
+
 #### Thinking ahead a little
 
 For Thunderbird 76, I suggest a meta bug that would cover all esr76 issues across Thunderbird. I don't believe there was one for Thunderbird 68.
@@ -39,6 +43,8 @@ The work is done by the hg.m.o maintainers, we just need to open the bug and giv
 ### Taskcluster In-tree changes
 
 The work for comm-esr68 was done in bug [1552389](http://bugzil.la/1552389). In most cases it was updating some regular expressions to match comm-esr68 in addition to comm-esr60.
+
+Additionally, see bug [1572836](http://bugzil.la/1572836).
 
 ### Taskcluster external: ci-configuration
 
