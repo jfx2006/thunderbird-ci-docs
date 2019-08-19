@@ -34,5 +34,9 @@ Starting with Tom's config files, I made a config file for comm-esr68. The confi
 - Checked out mozilla-esr68 and comm-esr68 like usual.
 - Applied the config file patch from bug [1572316](http://bugzil.la/1572316)
 
-_The config file we have will automatically use the major version from comm/mail/config/version.txt
+_The config file we have will automatically use the major version from comm/mail/config/version.txt. Since that will pull in revisions from tb64, I am modifying it as such_
+
+```
+
+```
 
