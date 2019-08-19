@@ -27,4 +27,12 @@ The suggestion from Axel  H was to use the changesets from tb69, and then port c
 
 ### Config files
 
-Starting with Tom's config files, I made a config file for comm-esr68. The configs are not in the tree just yet because I don't think this process will work in automation like it's supposed to. So I;
+Starting with Tom's config files, I made a config file for comm-esr68. The configs are not in the tree just yet because I don't think this process will work in automation like it's supposed to. So I'm just running it locally. Bug [1572316](http://bugzil.la/1572316) is where they are for now.
+
+### Process
+
+- Checked out mozilla-esr68 and comm-esr68 like usual.
+- Applied the config file patch from bug [1572316](http://bugzil.la/1572316)
+
+_The config file we have will automatically use the major version f
+
