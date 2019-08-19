@@ -25,3 +25,6 @@ The suggestion from Axel  H was to use the changesets from tb69, and then port c
 
 [Thunderbird_68_L10n.eml](file://attachments/898635061.eml)
 
+### Config files
+
+Starting with Tom's config files, I made a config file for comm-esr68. The configs are not in the tree just yet because I don't think this process will work in automation like it's supposed to. So I;
