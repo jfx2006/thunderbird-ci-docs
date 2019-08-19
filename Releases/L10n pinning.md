@@ -34,9 +34,22 @@ Starting with Tom's config files, I made a config file for comm-esr68. The confi
 - Checked out mozilla-esr68 and comm-esr68 like usual.
 - Applied the config file patch from bug [1572316](http://bugzil.la/1572316)
 
-_The config file we have will automatically use the major version from comm/mail/config/version.txt. Since that will pull in revisions from tb64, I am modifying it as such_
+_The config file we have will automatically use the major version from comm/mail/config/version.txt. Since that will pull in revisions from tb64, I am modifying it as such to force pulling in the tb69 revisions._
+
+```
+--- mozharness/l10n_bumper/comm-esr68.py	(revision 37709:4007b4f13de3d792548580652941b1d57e16e8a1)
++++ mozharness/l10n_bumper/comm-esr68.py	(revision 37709+:4007b4f13de3+)
+@@ -20,7 +25,7 @@
+         "path": "mail/locales/l10n-changesets.json",
+         "format": "json",
+         "name": "Thunderbird l10n changesets",
+-        "revision_url": "https://l10n.mozilla.org/shipping/l10n-changesets?av=tb%(MAJOR_VERSION)s",
++        "revision_url": "https://l10n.mozilla.org/shipping/l10n-changesets?av=tb69",
+         "ignore_config": {
+             "ja": ["macosx64"],
+             "ja-JP-mac": [
 
 ```
 
-```
+_Note that the config file for comm-esr68 has an **actions** key toward the top of the file. This overrides the default behavior which would commit and push and other stuff. We don't want that until this runs in CI._
 
