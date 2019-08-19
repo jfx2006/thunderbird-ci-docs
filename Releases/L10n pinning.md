@@ -15,9 +15,13 @@ mach python -- testing/mozharness/scripts/l10n_bumper.py --bump-changesets --no-
 ```
 And his config files can be found at https://phabricator.services.mozilla.com/D5891
 
+[Thunderbird_l10n_bumper.eml](file://attachments/788213760.eml)
 
 ## ESR68
 
 We missed the signoff window for ESR68, so if we pin to tb68, we will actually get the revisions for Thunderbird 64. 
 
-The suggestion from Axel  H was ti 
+The suggestion from Axel  H was to use the changesets from tb69, and then port changesets.json to 68.
+
+[Thunderbird_68_L10n.eml](file://attachments/898635061.eml)
+

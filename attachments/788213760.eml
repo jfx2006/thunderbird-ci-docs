@@ -1,0 +1,125 @@
+FCC: imap://rob%40thunderbird.net@imap.fastmail.com/Sent
+X-Identity-Key: id1
+X-Account-Key: account1
+From: Rob Lemley <rob@thunderbird.net>
+Subject: Re: Thunderbird merges for Sept 4, 2018 (c-c -> 64 / c-b -> 63 / c-r
+ -> 62)
+To: =?UTF-8?Q?J=c3=b6rg_Knobloch?= <jorgk@jorgk.com>
+Cc: Patrick Cloke <patrick@cloke.us>,
+ tb-drivers <thunderbird-drivers@mozilla.org>,
+ Rob Lemley <rob@thunderbird.net>
+References: <96cef3ff-5b6d-cc20-a999-4a2c20d98ed4@cloke.us>
+ <087c2d8a-c934-29f6-5508-f2f1730aaf74@cloke.us>
+ <b893b3c1-8860-0c51-ff3c-a587dfcf4e30@cloke.us>
+ <e63f611b-f613-1f85-a680-2b3cee6ee04a@jorgk.com>
+Openpgp: preference=signencrypt
+Autocrypt: addr=rob@thunderbird.net; keydata=
+ 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
+X-Enigmail-Draft-Status: N11110
+Message-ID: <fa336722-14d2-9ef7-e003-89fb906593fd@thunderbird.net>
+Date: Fri, 19 Jul 2019 11:44:08 -0400
+X-Mozilla-Draft-Info: internal/draft; vcard=0; receipt=0; DSN=0; uuencode=0;
+ attachmentreminder=0; deliveryformat=4
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101
+ Thunderbird/60.8.0
+MIME-Version: 1.0
+In-Reply-To: <e63f611b-f613-1f85-a680-2b3cee6ee04a@jorgk.com>
+Content-Type: text/html; charset=utf-8
+Content-Language: en-US
+Content-Transfer-Encoding: 8bit
+
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  </head>
+  <body text="#000000" bgcolor="#FFFFFF">
+    <div dir="ltr">
+      <div dir="ltr">
+        <div dir="ltr"><br>
+          <br>
+          <div class="gmail_quote">
+            <div dir="ltr">On Wed, Sep 5, 2018 at 2:44 AM Jörg Knobloch
+              &lt;<a href="mailto:jorgk@jorgk.com" target="_blank"
+                moz-do-not-send="true">jorgk@jorgk.com</a>&gt; wrote:<br>
+            </div>
+            <blockquote class="gmail_quote" style="margin:0px 0px 0px
+              0.8ex;border-left:1px solid
+              rgb(204,204,204);padding-left:1ex">&gt; Tom/Jörg --
+              unfortunately I couldn't get bump-l10n to run properly,<br>
+              &gt; unfortunately. Could one of you please run that for
+              me? Sorry!<br>
+              &gt;<br>
+              No idea what that is. CC'ing Rob, oh, he doesn't have
+              Level 3 access yet.<br>
+            </blockquote>
+            <div><br>
+            </div>
+            <div>Sorry for the delay in replying to this. This script is
+              <a
+href="https://searchfox.org/mozilla-central/source/testing/mozharness/scripts/l10n_bumper.py"
+                moz-do-not-send="true">l10n_bumper.py</a>. I've run it
+              like</div>
+            <div><br>
+            </div>
+            <div><span style="font-family:monospace,monospace">mach
+                python -- testing/mozharness/scripts/l10n_bumper.py
+                --bump-changesets --no-push-loop --extra-config
+                comm/mozharness --config-file
+                l10n_bumper/comm-&lt;tree&gt;.py</span></div>
+            <div><br>
+            </div>
+            <div>with configs from <a
+                href="https://phabricator.services.mozilla.com/D5891"
+                moz-do-not-send="true">https://phabricator.services.mozilla.com/D5891</a></div>
+            <div><br>
+            </div>
+            <div>-- Tom<br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
