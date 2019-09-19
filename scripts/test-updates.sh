@@ -2,7 +2,7 @@
 
 source ./libjfxbash
 
-URL="https://aus5.mozilla.org/update/6/Thunderbird/@@VERSION@@/default/Linux_x86_64-gcc3/en-US/release-cdntest/default/ISET:SSE4_2,MEM:32059/default/default/update.xml"
+URL="https://aus5.mozilla.org/update/6/Thunderbird/@@VERSION@@/default/Linux_x86_64-gcc3/en-US/release/default/ISET:SSE4_2,MEM:32059/default/default/update.xml"
 
 get_url() {
   local _force

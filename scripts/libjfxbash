@@ -3,6 +3,12 @@
 # This is meant to be sourced like:
 # source $path/libjfxbash
 
+# All of my scripts need at least bash 4
+if [[ ${BASH_VERSINFO[0]} -lt 4 ]]; then
+  echo "Bash version $BASH_VERSION is too old. Bash 4 required."
+  exit 6
+fi
+  
 # Internal constants
 # shellcheck disable=SC2034
 {
@@ -38,6 +44,19 @@ isFunction () {
 }
 export -f isFunction
 
+
+function inArray() {
+    # $1 is your needle
+    # $2 is your haystack
+    # Returns $TRUE or $FALSE
+    # Usage: inArray "needle" "${HAYSTACK[@]}"
+    local hay needle="$1"
+    shift
+    for hay; do
+      [[ "$hay" == "$needle" ]] && return 0
+    done
+    return 1
+}
 
 prefix_output() {
   # Prefixes output from a command with the given prefix.
