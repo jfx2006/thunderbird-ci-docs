@@ -18,3 +18,4 @@ Next you need a Docker image. `mach` doesn't have functionality to download an i
 
 Podman doesn't have Zst support, so you will have to decompress and pipe to stdin.
 
+zs	
