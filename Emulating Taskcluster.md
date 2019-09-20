@@ -27,7 +27,14 @@ Copying config b1d7887d1c done
 Writing manifest to image destination
 Storing signatures
 b1d7887d1ca132bd462a5bb747e07fe42329080eb918d3490a111dfc25231fe0
+
+<font color="#8AE234"<b>➜ </b></font><font color="#4E9A06">podman</font> image ls
+REPOSITORY                             TAG      IMAGE ID       CREATED         SIZE
+docker.io/library/toolchain-20190920   latest   b1d7887d1ca1   2 minutes ago   476 MB
 </pre>
 
+
 ### Run the image
+
+First take a look at how it's built:
 
