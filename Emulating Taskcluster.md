@@ -16,6 +16,18 @@ You need to get the crun runtime from https://github.com/containers/crun as at t
 
 Next you need a Docker image. `mach` doesn't have functionality to download an image, only import it into Docker directly. That won't help us with Podman though, so find the image you want by using the Taskcluster Index Browser, or through Treeherder or any other way of getting an image.tar.zst file. In this case I'm using the toolchain image, but you can grab which ever is appropriate.
 
+### Importing an image
+
 Podman doesn't have Zst support, so you will have to decompress and pipe to stdin.
 
-zs	
+<pre><font color="#8AE234"><b>➜ </b></font><font color="#4E9A06">zstdcat</font> <font color="#75507B">image.tar.zst</font>| <font color="#4E9A06">podman</font> import <font color="#06989A">-</font> toolchain-20190920                                                                          <font color="#FCE94F"><b>2s</b></font><b> </b>
+Getting image source signatures
+Copying blob ebea6ff8f0a0 done
+Copying config b1d7887d1c done
+Writing manifest to image destination
+Storing signatures
+b1d7887d1ca132bd462a5bb747e07fe42329080eb918d3490a111dfc25231fe0
+</pre>
+
+### Run the image
+
