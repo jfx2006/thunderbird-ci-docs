@@ -14,4 +14,7 @@ I'm using Podman lately on Ubuntu. With a rootless setup, you can (in theory) mo
 
 You need to get the crun runtime from https://github.com/containers/crun as at the time of this writing there is no Ubuntu package.
 
-Next you need a Docker image. `mach` doesn't have functionality to download an image, only import it into Documer
+Next you need a Docker image. `mach` doesn't have functionality to download an image, only import it into Docker directly. That won't help us with Podman though, so find the image you want by using the Taskcluster Index Browser, or through Treeherder or any other way of getting an image.tar.zst file. In this case I'm using the toolchain image, but you can grab which ever is appropriate.
+
+Podman doesn't have Zst support, so you will have to decompress and pipe to stdin.
+
