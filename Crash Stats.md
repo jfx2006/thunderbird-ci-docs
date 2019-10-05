@@ -9,3 +9,7 @@ Someone has to create an API key in the Symbols server that the job will use to 
 
 There's actually two API keys: one for "level-1" builds (try-comm-central) and one for "level-3" (comm-central, comm-beta, comm-esrXX). This is per policy as noted in the Symbols UI. An API token cannot contain privileges for both regular and try builds.
 
+Create the keys (or if it's October 2020 Rob can extend his again) and make sure to save what they are.
+
+## Taskcluster Secrets
+
