@@ -19,3 +19,11 @@ There are two secrets in Taskcluster to store these API keys. They are set up us
 * project/comm/thunderbird/releng/build/level-3/gecko-symbol-upload
 
 You need to have access to the `project:releng:ci-group:thunderbird-releng` role in Taskcluster to be able to modify the secrets. I believe that is associated with an LDAP group named `thunderbird-releng` but I could be wrong about that. At this time Rob is the primary member of that group.
+
+The API keys need to be stored as YAML data.
+
+```
+token: XXXXXXXXX
+```
+
+In this case, there is one key, `token` and then the value is the API key.
