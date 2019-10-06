@@ -13,9 +13,9 @@ Create the keys (or if it's October 2020 Rob can extend his again) and make sure
 
 ## Taskcluster Secrets
 
-There are two secrets in Taskcluster to store these API keys.
+There are two secrets in Taskcluster to store these API keys. They are set up using the Secrets Manager on https://tools.taskcluster.net.
 
 * project/comm/thunderbird/releng/build/level-1/gecko-symbol-upload
 * project/comm/thunderbird/releng/build/level-3/gecko-symbol-upload
 
-You need to have access to the `project:releng:ci-group:thunderbird-releng` role in Taskcluster to be able to modify the secrets. I believe that is associated with an LDAP group named `thunderbird-releng` but I could be wrong about that. At this time Rob is the primary member of that group
+You need to have access to the `project:releng:ci-group:thunderbird-releng` role in Taskcluster to be able to modify the secrets. I believe that is associated with an LDAP group named `thunderbird-releng` but I could be wrong about that. At this time Rob is the primary member of that group.
