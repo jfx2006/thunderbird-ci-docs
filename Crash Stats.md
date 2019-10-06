@@ -13,3 +13,4 @@ Create the keys (or if it's October 2020 Rob can extend his again) and make sure
 
 ## Taskcluster Secrets
 
+There are two secrets in Taskcluster to store these API keys. 
