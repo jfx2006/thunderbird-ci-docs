@@ -2,7 +2,7 @@
 
 source ./libjfxbash
 
-URL="https://aus5.mozilla.org/update/6/Thunderbird/@@VERSION@@/default/Linux_x86_64-gcc3/en-US/release-cdntest/default/ISET:SSE4_2,MEM:32059/default/default/update.xml"
+URL="https://aus5.mozilla.org/update/6/Thunderbird/@@VERSION@@/default/Linux_x86_64-gcc3/en-US/release/default/ISET:SSE4_2,MEM:32059/default/default/update.xml"
 
 get_url() {
   local _force
@@ -48,15 +48,20 @@ run_test() {
 declare -A TESTS
 
 TESTS=(
-  ["52.7"]="60.9.0"
-  ["60.5.1 force"]="60.9.0"
   ["60.4"]="60.9.0"
+  ["60.9"]=""
   ["60.9.0"]=""
-  ["60.9.0 force"]="68.2.0"
-  ["68.0"]="68.2.0"
-  ["68.0 force"]="68.2.0"
+  ["60.9.0 force"]="68.2.1"
+  ["68.0"]="68.2.1"
+  ["68.1.0"]="68.2.1"
+  ["68.0 force"]="68.2.1"
 )
 
 for v in "${!TESTS[@]}"; do
   run_test "$v" "${TESTS[$v]}"
+done
+
+for i in {1..20}; do
+  echo "Run # $i"
+  run_test "60.9.0" ""
 done

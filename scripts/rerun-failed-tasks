@@ -63,7 +63,7 @@ function run_failed_tasks() {
   declare -a TC_FAILED
 
   GROUP_ID="${1}"
-  COMMAND="group list -f ${GROUP_ID}"
+  COMMAND="group list -e -f ${GROUP_ID}"
   # shellcheck disable=SC2034
   mapfile -t -c 1 -C 'rerun_task' TC_FAILED < <(run_taskcluster ${COMMAND})
 }
