@@ -1,0 +1,7 @@
+WE_20191215
+===========
+
+_2019-12-09_
+
+* [1602583](http://bugzil.la/1602583) - Port Bug 1579981 Remove some unused and unnecessary rust toolchains
+	* get ahead of the curve
