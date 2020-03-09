@@ -2,17 +2,31 @@
 
 source ./libjfxbash
 
-URL="https://aus5.mozilla.org/update/6/Thunderbird/@@VERSION@@/default/Linux_x86_64-gcc3/en-US/release/default/ISET:SSE4_2,MEM:32059/default/default/update.xml"
+URL="https://aus5.mozilla.org/update/6/Thunderbird/@@VERSION@@/default/@@PLATFORM@@/pl/release/default/ISET:SSE4_2,MEM:1024/default/default/update.xml"
 
 get_url() {
-  local _force
+  local _version
+  local _platform
+  local _args
   local _url
-  if [[ "$2" = "force" ]]; then
-    _force="?force=1"
+
+  _version="$1"
+  shift
+  _platform="$1"
+  shift
+
+  if [[ -n "$1" ]]; then
+    _args="?${1}=1"
   fi
-  _url=${URL//@@VERSION@@/$1}
+  shift
+  if [[ -n "$1" ]]; then
+    _args="${_args}&${1}=1"
+  fi
+
+  _url=${URL//@@VERSION@@/$_version}
+  _url=${_url//@@PLATFORM@@/$_platform}
   # _url=$(echo "$URL" | sed -e "s/@@VERSION@@/$1/")
-  _url="${_url}${_force}"
+  _url="${_url}${_args}"
   echo "${_url}"
 }
 
@@ -48,20 +62,36 @@ run_test() {
 declare -A TESTS
 
 TESTS=(
-  ["60.4"]="60.9.0"
-  ["60.9"]=""
-  ["60.9.0"]=""
-  ["60.9.0 force"]="68.2.1"
-  ["68.0"]="68.2.1"
-  ["68.1.0"]="68.2.1"
-  ["68.0 force"]="68.2.1"
+  ["60.4 WINNT_x86-msvc"]="60.9.1"
+  ["60.9.1 WINNT_x86-msvc force"]="68.5.0"
+  ["68.4.0 WINNT_x86-msvc"]="68.5.0"
+  ["68.4.0 WINNT_x86-msvc force"]="68.5.0"
+  ["68.5.0 WINNT_x86-msvc"]=""
+  
+  ["60.4 WINNT_x86-msvc-x64"]="60.9.1"
+  ["60.9.1 WINNT_x86-msvc-x64 force"]="68.5.0"
+  ["68.4.0 WINNT_x86-msvc-x64"]="68.5.0"
+  ["68.4.0 WINNT_x86-msvc-x64 force"]="68.5.0"
+  ["68.5.0 WINNT_x86-msvc-x64"]=""
+
+  ["60.4 WINNT_x86-msvc-x86"]="60.9.1"
+  ["60.9.1 WINNT_x86-msvc-x86 force"]="68.5.0"
+  ["68.4.0 WINNT_x86-msvc-x86"]="68.5.0"
+  ["68.4.0 WINNT_x86-msvc-x86 force"]="68.5.0"
+  ["68.5.0 WINNT_x86-msvc-x86"]=""
+
+  ["60.4 WINNT_x86-msvc-x64"]="60.9.1"
+  ["60.9.1 WINNT_x86-msvc-x64 force mig64"]="68.5.0"
+  ["68.4.0 WINNT_x86-msvc-x64 mig64"]="68.5.0"
+  ["68.4.0 WINNT_x86-msvc-x64 force mig64"]="68.5.0"
+  ["68.5.0 WINNT_x86-msvc-x64 mig64"]=""
 )
 
 for v in "${!TESTS[@]}"; do
   run_test "$v" "${TESTS[$v]}"
 done
 
-for i in {1..20}; do
-  echo "Run # $i"
-  run_test "60.9.0" ""
-done
+#for i in {1..20}; do
+#  echo "Run # $i"
+#  run_test "60.9.0" ""
+#done
