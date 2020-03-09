@@ -67,20 +67,14 @@ TESTS=(
   ["68.4.0 WINNT_x86-msvc"]="68.5.0"
   ["68.4.0 WINNT_x86-msvc force"]="68.5.0"
   ["68.5.0 WINNT_x86-msvc"]=""
-  
-  ["60.4 WINNT_x86-msvc-x64"]="60.9.1"
   ["60.9.1 WINNT_x86-msvc-x64 force"]="68.5.0"
   ["68.4.0 WINNT_x86-msvc-x64"]="68.5.0"
   ["68.4.0 WINNT_x86-msvc-x64 force"]="68.5.0"
   ["68.5.0 WINNT_x86-msvc-x64"]=""
-
-  ["60.4 WINNT_x86-msvc-x86"]="60.9.1"
   ["60.9.1 WINNT_x86-msvc-x86 force"]="68.5.0"
   ["68.4.0 WINNT_x86-msvc-x86"]="68.5.0"
   ["68.4.0 WINNT_x86-msvc-x86 force"]="68.5.0"
   ["68.5.0 WINNT_x86-msvc-x86"]=""
-
-  ["60.4 WINNT_x86-msvc-x64"]="60.9.1"
   ["60.9.1 WINNT_x86-msvc-x64 force mig64"]="68.5.0"
   ["68.4.0 WINNT_x86-msvc-x64 mig64"]="68.5.0"
   ["68.4.0 WINNT_x86-msvc-x64 force mig64"]="68.5.0"
