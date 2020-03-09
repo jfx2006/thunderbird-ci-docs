@@ -2,7 +2,7 @@
 
 source ./libjfxbash
 
-URL="https://aus5.mozilla.org/update/6/Thunderbird/@@VERSION@@/default/@@PLATFORM@@/pl/release/default/ISET:SSE4_2,MEM:1024/default/default/update.xml"
+URL="https://aus.thunderbird.net/update/6/Thunderbird/@@VERSION@@/default/@@PLATFORM@@/pl/release/default/ISET:SSE4_2,MEM:4096/default/default/update.xml"
 
 get_url() {
   local _version
@@ -48,7 +48,7 @@ run_test() {
   fi
 
   echo "${_url} ${_rv}"
-  curl -s -S "$_url" | xmllint --xpath "//updates/update[@appVersion='${_version}']/patch[@type='complete']" -
+  curl -s -L -S "$_url" | xmllint --xpath "//updates/update[@appVersion='${_version}']/patch[@type='complete']" -
   # xmllint --xpath "//updates/update[@appVersion='$2']/patch[@type='complete']" test.txt
   if [[ $? -eq ${_rv} ]]; then
     print_GREEN PASS
