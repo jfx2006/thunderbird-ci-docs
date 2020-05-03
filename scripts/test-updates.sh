@@ -2,7 +2,7 @@
 
 source ./libjfxbash
 
-URL="https://aus.thunderbird.net/update/6/Thunderbird/@@VERSION@@/default/@@PLATFORM@@/pl/release/default/ISET:SSE4_2,MEM:4096/default/default/update.xml"
+URL="https://aus.thunderbird.net/update/6/Thunderbird/@@VERSION@@/default/@@PLATFORM@@/en-US/nightly/default/ISET:SSE4_2,MEM:4096/default/default/update.xml"
 
 get_url() {
   local _version
@@ -81,11 +81,11 @@ TESTS=(
   ["68.5.0 WINNT_x86-msvc-x64 mig64"]=""
 )
 
-for v in "${!TESTS[@]}"; do
-  run_test "$v" "${TESTS[$v]}"
-done
+#for v in "${!TESTS[@]}"; do
+#  run_test "$v" "${TESTS[$v]}"
+#done
 
 #for i in {1..20}; do
 #  echo "Run # $i"
-#  run_test "60.9.0" ""
+  run_test "76.0a1" ""
 #done
