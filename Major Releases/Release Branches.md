@@ -1,4 +1,4 @@
-Release Branches
+ESR 68
 ================
 
 What was done to create the comm-esr68 branch, including the related changes in repositories not owned or maintained by Thunderbird.
