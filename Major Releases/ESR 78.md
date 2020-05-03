@@ -1,4 +1,4 @@
 ESR 78
 ========================
 
-This document is to supplement 
+This document is to supplement what's in Bugzilla, not replace it. For Thunderbird 78, there is a meta bug for build-relate
