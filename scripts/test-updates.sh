@@ -2,7 +2,7 @@
 
 source ./libjfxbash
 
-URL="https://aus.thunderbird.net/update/6/Thunderbird/@@VERSION@@/default/@@PLATFORM@@/en-US/nightly/default/ISET:SSE4_2,MEM:4096/default/default/update.xml"
+URL="https://aus.thunderbird.net/update/6/Thunderbird/@@VERSION@@/default/@@PLATFORM@@/en-US/beta-localtest/default/ISET:SSE4_2,MEM:4096/default/default/update.xml"
 
 get_url() {
   local _version
@@ -48,7 +48,8 @@ run_test() {
   fi
 
   echo "${_url} ${_rv}"
-  curl -s -L -S "$_url" | xmllint --xpath "//updates/update[@appVersion='${_version}']/patch[@type='complete']" -
+  curl -s -L -S "$_url" | tee /tmp/grab | xmllint --xpath "//updates/update[@appVersion='${_version}']/patch[@type='complete']" -
+  #cat /tmp/grab
   # xmllint --xpath "//updates/update[@appVersion='$2']/patch[@type='complete']" test.txt
   if [[ $? -eq ${_rv} ]]; then
     print_GREEN PASS
@@ -62,30 +63,34 @@ run_test() {
 declare -A TESTS
 
 TESTS=(
-  ["60.4 WINNT_x86-msvc"]="60.9.1"
-  ["60.9.1 WINNT_x86-msvc force"]="68.5.0"
-  ["68.4.0 WINNT_x86-msvc"]="68.5.0"
-  ["68.4.0 WINNT_x86-msvc force"]="68.5.0"
-  ["68.5.0 WINNT_x86-msvc"]=""
-  ["60.9.1 WINNT_x86-msvc-x64 force"]="68.5.0"
-  ["68.4.0 WINNT_x86-msvc-x64"]="68.5.0"
-  ["68.4.0 WINNT_x86-msvc-x64 force"]="68.5.0"
-  ["68.5.0 WINNT_x86-msvc-x64"]=""
-  ["60.9.1 WINNT_x86-msvc-x86 force"]="68.5.0"
-  ["68.4.0 WINNT_x86-msvc-x86"]="68.5.0"
-  ["68.4.0 WINNT_x86-msvc-x86 force"]="68.5.0"
-  ["68.5.0 WINNT_x86-msvc-x86"]=""
-  ["60.9.1 WINNT_x86-msvc-x64 force mig64"]="68.5.0"
-  ["68.4.0 WINNT_x86-msvc-x64 mig64"]="68.5.0"
-  ["68.4.0 WINNT_x86-msvc-x64 force mig64"]="68.5.0"
-  ["68.5.0 WINNT_x86-msvc-x64 mig64"]=""
+  ["73.0 WINNT_x86-msvc"]="77.0"
+  ["73.0 WINNT_x86-msvc force"]="77.0"
+#  ["74.0 Darwin_x86-gcc3"]="76.0"
+#  ["74.0 Darwin_x86-gcc3 force"]="76.0"
+#  ["74.0 Darwin_x86-gcc3-u-i386-x86_64"]="76.0"
+#  ["74.0 Darwin_x86-gcc3-u-i386-x86_64 force"]="76.0"
+#  ["74.0 Darwin_x86_64-gcc3"]="76.0"
+#  ["74.0 Darwin_x86_64-gcc3 force"]="76.0"
+#  ["74.0 Darwin_x86_64-gcc3-u-i386-x86_64"]="76.0"
+#  ["74.0 Darwin_x86_64-gcc3-u-i386-x86_64 force"]="76.0"
+#  ["76.0 Darwin_x86-gcc3"]=""
+#  ["76.0 Darwin_x86-gcc3 force"]=""
+#  ["76.0 Darwin_x86-gcc3-u-i386-x86_64"]=""
+#  ["76.0 Darwin_x86-gcc3-u-i386-x86_64 force"]=""
+#  ["76.0 Darwin_x86_64-gcc3"]=""
+#  ["76.0 Darwin_x86_64-gcc3 force"]=""
+#  ["76.0 Darwin_x86_64-gcc3-u-i386-x86_64"]=""
+#  ["76.0 Darwin_x86_64-gcc3-u-i386-x86_64 force"]=""
+  ["74.0 Linux_x86_64-gcc3"]="77.0"
+  ["76.0 Linux_x86_64-gcc3"]="77.0"
 )
 
-#for v in "${!TESTS[@]}"; do
-#  run_test "$v" "${TESTS[$v]}"
-#done
+for v in "${!TESTS[@]}"; do
+  echo "$v"
+  run_test "$v" "${TESTS[$v]}"
+done
 
 #for i in {1..20}; do
 #  echo "Run # $i"
-  run_test "76.0a1" ""
+#  run_test "76.0a1" ""
 #done
