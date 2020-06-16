@@ -22,4 +22,4 @@ This document is to supplement what's in Bugzilla, not replace it. For Thunderbi
 
 ### Treestatus
 
-Looks like Callek covered this in 
+Looks like Callek covered this in bug [1645646](http://bugzil.la/1645646) - Support treestatus groups for esr78
