@@ -16,3 +16,6 @@ This document is to supplement what's in Bugzilla, not replace it. For Thunderbi
 [1646074](http://bugzil.la/1646074) - Add support for comm-esr78 repos
 
 
+### Treeherder
+
+[1646078](http://bugzil.la/1646078) - Activate comm-esr78 repository
