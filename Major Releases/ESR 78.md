@@ -19,3 +19,7 @@ This document is to supplement what's in Bugzilla, not replace it. For Thunderbi
 ### Treeherder
 
 [1646078](http://bugzil.la/1646078) - Activate comm-esr78 repository
+
+### Treestatus
+
+Looks like Callek covered this in 
