@@ -11,3 +11,6 @@ This document is to supplement what's in Bugzilla, not replace it. For Thunderbi
 [1646065](http://bugzil.la/1646065) - clone releases/comm-beta to releases/comm-esr78
 
 
+### Taskcluster external: ci-configuration
+
+[1646074](http://bugzil.la/1646074) - Add support for comm-esr78 repos
