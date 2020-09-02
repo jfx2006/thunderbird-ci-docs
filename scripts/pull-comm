@@ -13,8 +13,8 @@ declare -A REPOMAP=( [comm]=central
                      [c-c]=central
                      [comm-beta]=beta
                      [c-b]=beta
-                     [comm-esr60]=esr60
-                     [comm-esr68]=esr68 )
+                     [comm-esr68]=esr68
+                     [comm-esr78]=esr78 )
 
 # Load libbash libraries
 # shellcheck disable=SC2086
