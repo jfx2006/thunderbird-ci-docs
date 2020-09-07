@@ -226,7 +226,7 @@ class BZQueryRunner {
    */
   async loadConfig() {
     let bugzilla_version = null
-    this.config = await this.getJSON("/assets/bug_queries.json")
+    this.config = await this.getJSON("/thunderbird-ci-docs/assets/bug_queries.json")
     // this.released_versions = await this.getJSON(this.config.RELEASED_VERSIONS)
     const current_version = await this.getCurrentVersion()
     const nightly_major = await this.getNightlyMajor()
