@@ -1,0 +1,12 @@
+[Core]
+name = typescript_compile
+module = ts_compile
+
+[Documentation]
+author = Rob Lemley
+version = 1.0
+website = https://github.com/jfx2006
+description = Compile Typescript assets
+
+[Nikola]
+PluginCategory = Task

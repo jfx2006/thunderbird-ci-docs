@@ -1,0 +1,22 @@
+{% extends 'base.tmpl' %}
+
+{% block extra_head_data %}
+  <link rel="stylesheet" href="/assets/css/bootstrap-table.min.css">
+{% endblock %}
+
+{% block extra_js %}
+  <script src="/assets/js/bootstrap-table.min.js"></script>
+  <script src="/assets/js/bugzilla.js"></script>
+  <script>
+      $("#content").removeClass("container").addClass("container-fluid")
+      window.addEventListener('DOMContentLoaded', () => new BZQueryRunner("#bugquery"), {once: true});
+
+  </script>
+{% endblock %}
+
+{% block content %}
+  <h3 id="bugquery-title" class="card-title"></h3>
+  <div class="table-responsive">
+    <table id="bugquery"></table>
+  </div>
+{% endblock %}

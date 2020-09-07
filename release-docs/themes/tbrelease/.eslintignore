@@ -1,0 +1,5 @@
+.eslintrc.js
+node_modules/
+assets/css/bootstrap.css
+assets/css/bootstrap-table.css
+assets/js/bootstrap-table.js
