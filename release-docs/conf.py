@@ -20,7 +20,7 @@ BLOG_AUTHOR = "Thunderbird Release Team"  # (translatable)
 BLOG_TITLE = "Thunderbird Release Documentation"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "https://jfx2006.github.io//thunderbird-ci-docs/"
+SITE_URL = "https://jfx2006.github.io/thunderbird-ci-docs/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "https://jfx2006.github.io/thunderbird-release/"
@@ -1299,7 +1299,7 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code',
 # USE_BUNDLES = True
 
 # Plugins you don't want to use. Be careful :-)
-# DISABLED_PLUGINS = ["render_galleries"]
+DISABLED_PLUGINS = ["render_galleries", "render_listings", "render_taxonomies"]
 
 # Special settings to disable only parts of the indexes plugin.
 # Use with care.
