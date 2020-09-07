@@ -20,7 +20,7 @@ BLOG_AUTHOR = "Thunderbird Release Team"  # (translatable)
 BLOG_TITLE = "Thunderbird Release Documentation"  # (translatable)
 # This is the main URL for your site. It will be used
 # in a prominent link. Don't forget the protocol (http/https)!
-SITE_URL = "https://jfx2006.github.io/thunderbird-release/"
+SITE_URL = "https://jfx2006.github.io//thunderbird-ci-docs/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
 # BASE_URL = "https://jfx2006.github.io/thunderbird-release/"
@@ -640,8 +640,8 @@ REDIRECTIONS = [
 # For more details, read the manual:
 # https://getnikola.com/handbook.html#deploying-to-github
 # You will need to configure the deployment branch on GitHub.
-GITHUB_SOURCE_BRANCH = 'src'
-GITHUB_DEPLOY_BRANCH = 'master'
+GITHUB_SOURCE_BRANCH = 'docs'
+GITHUB_DEPLOY_BRANCH = 'gh-pages'
 
 # The name of the remote where you wish to push to, using github_deploy.
 GITHUB_REMOTE_NAME = 'origin'

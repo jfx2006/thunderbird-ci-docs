@@ -30,7 +30,7 @@ This will start a dev server and open a browser to it.
     
 ## Deploy
 
-TODO
+Set up this git repo as "origin" and `nikola github_deploy` will work hopefully.
 
 # Bugzilla Queries
 
