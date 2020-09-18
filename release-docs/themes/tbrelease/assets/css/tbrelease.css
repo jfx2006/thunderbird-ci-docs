@@ -1,0 +1,65 @@
+.dash-nav {
+    min-width: 238px;
+    max-width: 238px;
+    width: 238px;
+}
+
+.dash-nav.dash-nav-dark {
+    color: #fff;
+}
+
+.dash-nav-item {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.dash-nav-dark .dash-nav-item.active {
+    background-color: rgba(5, 125, 244, 0.20);
+    font-weight: bold;
+}
+
+.spur-logo > img {
+    width: 64px;
+    height: 64px;
+    margin-right: 20px;
+}
+
+header.dash-toolbar {
+    background-color: #010101;
+    display: flex;
+    justify-content: right;
+}
+
+header.dash-toolbar span {
+    font-style: italic;
+    font-weight: bold;
+    color: #9cb2dc;
+    font-size: 125%;
+}
+
+iframe.release-dashboard {
+    display: flex;
+    width: 100%;
+    border: none;
+}
+
+main.no-padding {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+main.no-padding div.container-fluid {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-header {
+    display: flex;
+}
+
+.dashboard-wrapper {
+    display: flex;
+    flex-grow: 1;
+}
+

@@ -1,0 +1,78 @@
+{#  -*- coding: utf-8 -*- #}
+{% import 'base_helper.tmpl' as base with context %}
+{% import 'helpers.tmpl' as tbhelper with context %}
+{% import 'annotation_helper.tmpl' as notes with context %}
+{{ set_locale(lang) }}
+{{ base.html_headstart() }}
+{% block extra_head %}
+  {#  Leave this block alone. #}
+{% endblock %}
+<link href="/assets/css/tbrelease.css" rel="stylesheet" type="text/css">
+{{ template_hooks['extra_head']() }}
+</head>
+<body>
+<div class="dash">
+  <div class="dash-nav dash-nav-dark">
+    <header>
+      <a href="/" class="spur-logo">
+        {% if logo_url %}
+          <img src="{{ logo_url }}" alt="{{ blog_title|e }}" id="logo"
+               class="d-inline-block align-top">
+        {% endif %}
+      </a>
+    </header>
+    <nav class="dash-nav-list">
+      <ul class="nav nav-pills flex-column">
+        {{ tbhelper.html_navigation_links_entries(navigation_links) }}
+        {{ template_hooks['menu']() }}
+      </ul>
+    </nav>
+  </div>
+
+  <div class="dash-app" id="content" role="main">
+    <header class="dash-toolbar">
+      <span>The reports of Thunderbird's death have been greatly exaggerated.</span>
+      {{ template_hooks['page_header']() }}
+      {% block extra_header %}{% endblock %}
+    </header>
+
+    <!--Body content-->
+    <main class="dash-content">
+      <div class="container-fluid">
+        {% block content %}{% endblock %}
+      </div>
+    </main>
+    <!--End of body content-->
+
+    <footer id="footer">
+      {{ content_footer }}
+      {{ template_hooks['page_footer']() }}
+      {% block extra_footer %}{% endblock %}
+    </footer>
+  </div>
+</div>
+
+{{ base.late_load_js() }}
+{% if date_fanciness != 0 %}
+  <!-- fancy dates -->
+  <script>
+      luxon.Settings.defaultLocale = "{{ luxon_locales[lang] }}";
+      fancydates({{ date_fanciness }}, {{ luxon_date_format }});
+  </script>
+  <!-- end fancy dates -->
+{% endif %}
+{% block extra_js %}{% endblock %}
+<script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function (element) {
+            return element.getElementsByTagName('img')[0].alt;
+        }
+    });
+</script>
+{{ body_end }}
+{{ template_hooks['body_end']() }}
+</body>
+</html>
+
+

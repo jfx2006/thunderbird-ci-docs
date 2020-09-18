@@ -1,0 +1,25 @@
+{% extends 'base.tmpl' %}
+{% import 'post_header.tmpl' as pheader with context %}
+
+{% block extra_js %}
+<script>
+    $(function () {
+        let $main = $("main.dash-content")
+        $main.addClass("no-padding")
+        //let main_height = $main.height()
+        //let header_height = $("header.dashboard-header").outerHeight(true)
+        //$(".dashboard-wrapper").height(main_height - header_height)
+    })
+
+</script>
+{% endblock %}
+
+{% block content %}
+  <header class="dashboard-header">
+    {{ pheader.html_title() }}
+    {{ pheader.html_translations(post) }}
+  </header>
+  <div class="dashboard-wrapper">
+    {{ post.text() }}
+  </div>
+{% endblock %}

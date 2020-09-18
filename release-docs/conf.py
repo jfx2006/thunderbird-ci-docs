@@ -139,7 +139,11 @@ TRANSLATIONS_PATTERN = '{path}.{lang}.{ext}'
 
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
-#        ("/archive.html", "Archive"),
+        ("/documentation/", "About Thunderbird Releases"),
+        ("/dashboard/", "Release Dashboard"),
+        ("/tools/", "Release Tools"),
+        ("/documentation/developers/", "Docs for Devs"),
+        ("/documentation/drivers/", "Docs for Drivers"),
 #        ("/categories/", "Tags"),
 #        ("/rss.xml", "RSS feed"),
     ),
@@ -219,10 +223,12 @@ THEME_CONFIG = {
 POSTS = (
 )
 PAGES = (
-    ("pages/*.md", "pages", "page.tmpl"),
-    ("pages/*.rst", "pages", "page.tmpl"),
-    ("pages/*.txt", "pages", "page.tmpl"),
-    ("pages/*.html", "pages", "page.tmpl"),
+    ("documentation/*.md", "documentation", "page.tmpl"),
+    ("documentation/*.rst", "documentation", "page.tmpl"),
+    ("documentation/*.txt", "documentation", "page.tmpl"),
+    ("documentation/*.html", "documentation", "page.tmpl"),
+    ("tools/*.md", "tools", "page.tmpl"),
+    ("dashboard/*.md", "dashboard", "page.tmpl"),
 )
 
 
@@ -248,7 +254,7 @@ TIMEZONE = "UTC"
 # Date format used to display post dates. (translatable)
 # Used by babel.dates, CLDR style: http://cldr.unicode.org/translation/date-time
 # You can also use 'full', 'long', 'medium', or 'short'
-# DATE_FORMAT = 'yyyy-MM-dd HH:mm'
+DATE_FORMAT = 'yyyy-MM-dd HH:mm'
 
 # Date format used to display post dates, if local dates are used. (translatable)
 # Used by Luxon: https://moment.github.io/luxon/docs/manual/formatting
@@ -273,13 +279,16 @@ TIMEZONE = "UTC"
 # One or more folders containing files to be copied as-is into the output.
 # The format is a dictionary of {source: relative destination}.
 # Default is:
-# FILES_FOLDERS = {'files': ''}
+FILES_FOLDERS = {'release-dashboard': 'release-dashboard',
+                 'assets': '',
+                 }
 # Which means copy 'files' into 'output'
 
 # One or more folders containing code listings to be processed and published on
 # the site. The format is a dictionary of {source: relative destination}.
 # Default is:
 # LISTINGS_FOLDERS = {'listings': 'listings'}
+LISTINGS_FOLDERS = {'scripts': 'scripts'}
 # Which means process listings from 'listings' into 'output/listings'
 
 # A mapping of languages to file-extensions that represent that language.
@@ -331,7 +340,7 @@ METADATA_FORMAT = "Pelican"
 # Nikola supports logo display.  If you have one, you can put the URL here.
 # Final output is <img src="LOGO_URL" id="logo" alt="BLOG_TITLE">.
 # The URL may be relative to the site root.
-# LOGO_URL = ''
+LOGO_URL = '/images/thunderbird-watermark.svg'
 
 # When linking posts to social media, Nikola provides Open Graph metadata
 # which is used to show a nice preview. This includes an image preview
@@ -596,7 +605,7 @@ FRONT_INDEX_HEADER = {
 
 # Atom filename base (without extension); used for indexes.
 # (translatable)
-ATOM_FILENAME_BASE = "feed"
+#ATOM_FILENAME_BASE = "feed"
 
 # Extension for Atom feed files
 # ATOM_EXTENSION = ".atom"
@@ -617,7 +626,7 @@ ATOM_FILENAME_BASE = "feed"
 #
 # If you don't need any of these, just set to []
 REDIRECTIONS = [
-    ("/index.html", "pages/index.html")
+#     ("/index.html", "pages/index.html")
 ]
 
 # Presets of commands to execute to deploy. Can be anything, for
@@ -897,6 +906,9 @@ IMAGE_FOLDERS = {'images': 'images'}
 #     ("icon", "/favicon.ico", "16x16"),
 #     ("icon", "/icon_128x128.png", "128x128"),
 # )
+FAVICONS = (
+    ("favicon", "/favicon.ico", "48x48"),
+)
 
 # Show teasers (instead of full posts) in indexes? Defaults to False.
 # INDEX_TEASERS = False
@@ -942,7 +954,8 @@ LICENSE = ""
 
 # A small copyright notice for the page footer (in HTML).
 # (translatable)
-CONTENT_FOOTER = 'Contents &copy; {date}         <a href="mailto:{email}">{author}</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         {license}'
+#CONTENT_FOOTER = 'Contents &copy; {date}         <a href="mailto:{email}">{author}</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         {license}'
+CONTENT_FOOTER = ''
 
 # Things that will be passed to CONTENT_FOOTER.format().  This is done
 # for translatability, as dicts are not formattable.  Nikola will
@@ -1079,7 +1092,7 @@ PRETTY_URLS = True
 # With the following example configuration you can use a custom jinja template
 # called `toggle.tpl` which has to be located in your site/blog main folder:
 # IPYNB_CONFIG = {'Exporter': {'template_file': 'toggle'}}
-("pages/*.md", "", "page.tmpl"),
+# ("pages/*.md", "", "page.tmpl"),
 # What  extensions to enable?
 # You will also get gist, nikola and podcast because those are
 # done in the code, hope you don't mind ;-)
@@ -1207,7 +1220,7 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code',
 # Bootstrap is served from BootstrapCDN (provided by MaxCDN)
 # Set this to False if you want to host your site without requiring access to
 # external resources.
-# USE_CDN = False
+USE_CDN = False
 
 # Check for USE_CDN compatibility.
 # If you are using custom themes, have configured the CSS properly and are
@@ -1296,7 +1309,7 @@ MARKDOWN_EXTENSIONS = ['markdown.extensions.fenced_code',
 # Bundle JS and CSS into single files to make site loading faster in a HTTP/1.1
 # environment but is not recommended for HTTP/2.0 when caching is used.
 # Defaults to True.
-# USE_BUNDLES = True
+USE_BUNDLES = False
 
 # Plugins you don't want to use. Be careful :-)
 DISABLED_PLUGINS = ["render_galleries", "render_listings", "render_taxonomies"]

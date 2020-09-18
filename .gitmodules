@@ -1,0 +1,3 @@
+[submodule "release-dashboard"]
+	path = release-dashboard
+	url = git@github.com:jfx2006/release-dashboard.git

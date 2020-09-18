@@ -37,3 +37,8 @@ Set up this git repo as "origin" and `nikola github_deploy` will work hopefully.
 release-docs/themes/tbrelease has the Jinja2 template and corresponding
 Javascript that builds the bug query tables. There is a package.json file,
 but it's only needed for ESLint/Prettier. 
+
+# Dashboard
+
+This is a fork of Mozilla's delivery dashboard. The source is in
+"release-dashboard"

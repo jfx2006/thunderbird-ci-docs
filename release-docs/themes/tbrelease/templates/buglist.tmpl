@@ -6,10 +6,12 @@
 
 {% block extra_js %}
   <script src="/assets/js/bootstrap-table.min.js"></script>
-  <script src="/assets/js/bugzilla.js"></script>
-  <script>
+  <script type="module">
+      import BZQueryRunner from "/assets/js/bugzilla.js"
+
       $("#content").removeClass("container").addClass("container-fluid")
-      window.addEventListener('DOMContentLoaded', () => new BZQueryRunner("#bugquery"), {once: true});
+      window.addEventListener(
+          'DOMContentLoaded', () => new BZQueryRunner("#bugquery"), {once: true});
 
   </script>
 {% endblock %}
@@ -18,5 +20,8 @@
   <h3 id="bugquery-title" class="card-title"></h3>
   <div class="table-responsive">
     <table id="bugquery"></table>
+  </div>
+  <div id="bugzilla-link">
+    <a href="#" target="_blank" hidden>Open in Bugzilla</a>
   </div>
 {% endblock %}
