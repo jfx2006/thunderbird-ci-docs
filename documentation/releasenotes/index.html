@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>releasenotes | Thunderbird Release Documentation</title>
+<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#2284fe">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://jfx2006.github.io/thunderbird-ci-docs/documentation/releasenotes/">
+<link rel="favicon" href="../../favicon.ico" sizes="48x48">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Thunderbird Release Team">
+<meta property="og:site_name" content="Thunderbird Release Documentation">
+<meta property="og:title" content="releasenotes">
+<meta property="og:url" content="https://jfx2006.github.io/thunderbird-ci-docs/documentation/releasenotes/">
+<meta property="og:description" content="For writing release notes for an ESR release, ideally any bug that is uplifted
+and requiring a note will already have had a note in a previous beta.
+The copy-paste manual labor can be done with gather">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-09-08T22:30:06Z">
+<link href="../../assets/css/tbrelease.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="dash">
+  <div class="dash-nav dash-nav-dark">
+    <header><a href="../../" class="spur-logo">
+          <img src="../../images/thunderbird-watermark.svg" alt="Thunderbird Release Documentation" id="logo" class="d-inline-block align-top"></a>
+    </header><nav class="dash-nav-list"><ul class="nav nav-pills flex-column">
+<li class="dash-nav-item">
+<a href="../" class="nav-link">About Thunderbird Releases</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../dashboard/" class="nav-link">Release Dashboard</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../tools/" class="nav-link">Release Tools</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../developers/" class="nav-link">Docs for Devs</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../drivers/" class="nav-link">Docs for Drivers</a>
+
+        
+      </li>
+</ul></nav>
+</div>
+
+  <div class="dash-app" id="content" role="main">
+    <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
+      
+    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">releasenotes</a></h1>
+
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<p>For writing release notes for an ESR release, ideally any bug that is uplifted
+and requiring a note will already have had a note in a previous beta.</p>
+<p>The copy-paste manual labor can be done with <code>gather_notes.py</code> found in the
+thunderbird-notes repo in the tools directory.</p>
+<p><code>gather_notes.py</code> requires a list of bug numbers to look for. <code>mach release buglist</code>
+will sort of help with that.</p>
+<p>TODO: Make this nicer.</p>
+<p>In a full checkout of mozilla-central (or a branch repo):</p>
+<pre class="code literal-block"><span class="err">./mach release buglist --version &lt;new release ver&gt; --product thunderbird \</span>
+<span class="err">    --repo https://hg.mozilla.org/releases/&lt;repo branch&gt; --revision &lt;release rev&gt;</span>
+</pre>
+
+<p>For example:</p>
+<pre class="code literal-block"><span class="err">./mach release buglist --version 78.2.2 --product thunderbird</span>
+<span class="err">    --repo https://hg.mozilla.org/releases/comm-esr78 --revision 85fc86689124</span>
+</pre>
+
+<p>This gives you a URL to open the list of bugs in Bugzilla.</p>
+<pre class="code literal-block"><span class="c">https://bugzilla.mozilla.org/buglist.cgi?bug_id=1651298%2C1642536%2C1661924%2C1371309%2C1660917%2C1624676%2C1658890%2C1662585%2C1663269%2C1644311%2C1653690%2C1662536%2C1657221%2C1661216%2C1655627%2C1641773%2C1659323%2C1658923%2C1659380%2C1662881%2C875059%2C1660923%2C1663037%2C1663219%2C1563411%2C1661229%2C1663157%2C1662481%2C1649123%2C1659946%2C1660702%2C1597180%2C1653647%2C1601749%2C1662492%2C1661546%2C1663013%2C1658797%2C1659318%2C1445778%2C1661913%2C492216%2C1663490%2C1662831%2C1659528%2C1660134</span>
+</pre>
+
+<p>Which is not very useful.</p>
+<pre class="code literal-block"><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span><span class="p">,</span> <span class="n">parse_qs</span>
+
+<span class="n">u</span><span class="o">=</span><span class="n">urlparse</span><span class="p">(</span><span class="s1">'&lt;the url from above&gt;'</span><span class="p">)</span>
+<span class="n">bugs</span><span class="o">=</span><span class="n">parse_qs</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">query</span><span class="p">)[</span><span class="s1">'bug_id'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">bug</span> <span class="ow">in</span> <span class="n">bugs</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">','</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">bug</span><span class="p">)</span>
+</pre>
+
+<p>Run the above and put the output into a file named <code>bugs_fixed.txt</code>. Then run
+<code>gather_notes.py</code>.</p>
+<pre class="code literal-block"><span class="err">./tools/gather_notes.py &lt;previous esr&gt; &lt;current_beta&gt;</span>
+</pre>
+
+<p>TODO: Make <code>gather_notes.py</code> more verbose about what it does.</p>
+<p>Then you should have a file <code>ver_notes.yml</code> that will give you a decent starting
+point. Do not publish that as-is!</p>
+</div>
+    </div>
+    
+</article>
+</div>
+    </main><!--End of body content--><footer id="footer"></footer>
+</div>
+</div>
+
+            <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function (element) {
+            return element.getElementsByTagName('img')[0].alt;
+        }
+    });
+</script>
+</body>
+</html>

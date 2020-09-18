@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Managing Releases | Thunderbird Release Documentation</title>
+<link href="../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#2284fe">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
+<link rel="canonical" href="https://jfx2006.github.io/thunderbird-ci-docs/documentation/drivers/">
+<link rel="favicon" href="../../favicon.ico" sizes="48x48">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Thunderbird Release Team">
+<meta property="og:site_name" content="Thunderbird Release Documentation">
+<meta property="og:title" content="Managing Releases">
+<meta property="og:url" content="https://jfx2006.github.io/thunderbird-ci-docs/documentation/drivers/">
+<meta property="og:description" content="Target Milestones
+A bug is typically marked as fixed when it lands on trunk (i.e. comm-central).
+The only exception to this is when it does not actually apply to trunk,
+but only to a stable branch.
+Th">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-09-18T03:48:25Z">
+<link href="../../assets/css/tbrelease.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="dash">
+  <div class="dash-nav dash-nav-dark">
+    <header><a href="../../" class="spur-logo">
+          <img src="../../images/thunderbird-watermark.svg" alt="Thunderbird Release Documentation" id="logo" class="d-inline-block align-top"></a>
+    </header><nav class="dash-nav-list"><ul class="nav nav-pills flex-column">
+<li class="dash-nav-item">
+<a href="../" class="nav-link">About Thunderbird Releases</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../dashboard/" class="nav-link">Release Dashboard</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../tools/" class="nav-link">Release Tools</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../developers/" class="nav-link">Docs for Devs</a>
+          </li>
+<li class="dash-nav-item active">
+<a href="." class="nav-link">Docs for Drivers
+            <span class="sr-only">(active)</span></a>
+
+        
+      </li>
+</ul></nav>
+</div>
+
+  <div class="dash-app" id="content" role="main">
+    <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
+      
+    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Managing Releases</a></h1>
+
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<h2>Target Milestones</h2>
+<p>A bug is typically marked as fixed when it lands on trunk (i.e. comm-central).
+The only exception to this is when it does not actually apply to trunk,
+but only to a stable branch.</p>
+<p>Thunderbird Drivers request that when a bug is marked as fixed, its milestone
+is updated to be the match the next trunk release milestone. </p>
+<h2>Triage</h2>
+<p>One or more of the Thunderbird drivers will regularly triage nominations and
+other status flags, consulting with other drivers and relevant parties as
+necessary.</p>
+<p>To check the current blocking and wanted bugs for a release, we have a bug
+tracking page here (NOT YET).</p>
+<h2>Merge Repositories</h2>
+<p>Merge Day happens every four weeks on a Monday and is the first step in a new
+beta version. See
+<a href="https://wiki.mozilla.org/Thunderbird/Release_Driving/Rapid_Release_Activities/Merge_Repositories">Merge Repositories</a>
+for all of the details.</p>
+<h2>Uplifts</h2>
+<p>Bugs are fixed in comm-central. When a bug is present in a beta or release
+version, the procedure for copying that fix to comm-beta or comm-esrXX is called
+uplifting.</p>
+<p>Uplifts are requested in the <em>Details</em> page of a bug attachment (patch).
+They can be requested by the developer submitting the patch or a release driver.
+They may be either regular bugzilla attachments or Phabricator review attachments.</p>
+<p>See <a href="../../tools">Release Tools</a> for the Bugzilla uplift queries.</p>
+</div>
+    </div>
+    
+</article>
+</div>
+    </main><!--End of body content--><footer id="footer"></footer>
+</div>
+</div>
+
+            <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function (element) {
+            return element.getElementsByTagName('img')[0].alt;
+        }
+    });
+</script>
+</body>
+</html>

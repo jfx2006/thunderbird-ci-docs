@@ -1,7 +1,6 @@
 {
   "BUGZILLA_URL": "https://bugzilla.mozilla.org/buglist.cgi",
   "BUGZILLA_REST_URL": "https://bugzilla.mozilla.org/rest/bug",
-  "RELEASED_VERSIONS": "https://product-details.mozilla.org/1.0/thunderbird_versions.json",
   "channels": {
     "release": {
       "pd_key": "LATEST_THUNDERBIRD_VERSION",

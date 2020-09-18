@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Release Tools | Thunderbird Release Documentation</title>
+<link href="../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/theme.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#2284fe">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../rss.xml">
+<link rel="canonical" href="https://jfx2006.github.io/thunderbird-ci-docs/tools/">
+<link rel="favicon" href="../favicon.ico" sizes="48x48">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content=":rjl">
+<meta property="og:site_name" content="Thunderbird Release Documentation">
+<meta property="og:title" content="Release Tools">
+<meta property="og:url" content="https://jfx2006.github.io/thunderbird-ci-docs/tools/">
+<meta property="og:description" content="Uplift Bug Queries
+When an uplift is requested, it should show up in either the Requested
+or Approved lists.
+If you have requested an uplift and you do not see it in the Requested
+or Approved lists, c">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-09-18T04:59:25Z">
+<link href="../assets/css/tbrelease.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="dash">
+  <div class="dash-nav dash-nav-dark">
+    <header><a href="../" class="spur-logo">
+          <img src="../images/thunderbird-watermark.svg" alt="Thunderbird Release Documentation" id="logo" class="d-inline-block align-top"></a>
+    </header><nav class="dash-nav-list"><ul class="nav nav-pills flex-column">
+<li class="dash-nav-item">
+<a href="../documentation/" class="nav-link">About Thunderbird Releases</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../dashboard/" class="nav-link">Release Dashboard</a>
+          </li>
+<li class="dash-nav-item active">
+<a href="." class="nav-link">Release Tools
+            <span class="sr-only">(active)</span></a>
+          </li>
+<li class="dash-nav-item">
+<a href="../documentation/developers/" class="nav-link">Docs for Devs</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../documentation/drivers/" class="nav-link">Docs for Drivers</a>
+
+        
+      </li>
+</ul></nav>
+</div>
+
+  <div class="dash-app" id="content" role="main">
+    <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
+      
+    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Release Tools</a></h1>
+
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<h2>Uplift Bug Queries</h2>
+<p>When an uplift is requested, it should show up in either the <em>Requested</em>
+or <em>Approved</em> lists.</p>
+<p><strong>If you have requested an uplift and you do not see it in the Requested
+or Approved lists, contact one of the release drivers via Matrix or 
+NeedInfo in Bugzilla to make sure it gets considered for inclusion.</strong></p>
+<h3>Requested Uplifts</h3>
+<p>Bugs that have <em>approval-comm-beta?</em> or <em>approval-comm-esrXX?</em> flags set. These
+bugs are under consideration for an upcoming beta or release.  </p>
+<ul>
+<li><a href="buglist/?channel=beta&amp;query=uplifts-requested">Beta Uplifts Requested</a></li>
+<li><a href="buglist/?channel=release&amp;query=uplifts-requested">Release Uplifts Requested</a></li>
+</ul>
+<h3>Approved Uplifts</h3>
+<p>The release manager will review and approve uplift requests on a regular basis.
+The <em>approval-comm-beta+</em> or <em>approval-comm-esrXX+</em> flag will be set and the
+bug will be listed in one of these lists.</p>
+<ul>
+<li><a href="buglist/?channel=beta&amp;query=uplifts-approved">Beta Uplifts Approved</a></li>
+<li><a href="buglist/?channel=release&amp;query=uplifts-approved">Release Uplifts Approved</a></li>
+</ul>
+</div>
+    </div>
+    
+</article>
+</div>
+    </main><!--End of body content--><footer id="footer"></footer>
+</div>
+</div>
+
+            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/popper.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function (element) {
+            return element.getElementsByTagName('img')[0].alt;
+        }
+    });
+</script>
+</body>
+</html>

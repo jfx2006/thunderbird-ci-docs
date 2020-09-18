@@ -4,6 +4,8 @@
 
 /* global $ */
 
+import { cachedFetch, paramsCopy } from './utils.js'
+
 const ColumnMap = {
   id: {
     title: "Bug #",
@@ -22,8 +24,9 @@ const ColumnMap = {
   },
 }
 
+
 // eslint-disable-next-line no-unused-vars
-class BZQueryRunner {
+export default class BZQueryRunner {
   constructor(tableId) {
     this._validInputs = {
       channel_name: ["release", "beta", "nightly"],
@@ -117,7 +120,11 @@ class BZQueryRunner {
    * @returns {Promise.<Object>} Decoded JSON.
    */
   async getJSON(url) {
-    return fetch(url).then((response) => response.json())
+    return cachedFetch(url, 86400)
+      .then((response) => response.json())
+      .catch((error) => {
+        console.error("Error:", error)
+      })
   }
 
   /**
@@ -126,7 +133,11 @@ class BZQueryRunner {
    * @returns {Promise.<Object>} Text.
    */
   async getText(url) {
-    return fetch(url).then((response) => response.text())
+    return cachedFetch(url, 86400)
+      .then((response) => response.text())
+      .catch((error) => {
+        console.error("Error:", error)
+      })
   }
 
   /**
@@ -135,8 +146,8 @@ class BZQueryRunner {
    * @param {String} nightly_version
    */
   fixQueryVersions(bugzilla_version, nightly_version) {
-    let fc = this.fetchColumns()
-    let qp = this.queryParams()
+    let fc = this.fetchColumns
+    let qp = this.queryParams
     const ignore_params = ["include_fields", "classification", "product"]
     for (let [index, value] of fc.entries()) {
       fc[index] = value.replace("%CHANNEL%", bugzilla_version)
@@ -145,18 +156,34 @@ class BZQueryRunner {
       if (ignore_params.indexOf(param) >= 0) {
         continue
       }
-      qp[param] = value.replace("%CHANNEL%", bugzilla_version)
-      qp[param] = value.replace("%NIGHTLY%", nightly_version)
+      this.setQueryParam(param, value.replace("%CHANNEL%", bugzilla_version))
+      this.setQueryParam(param, value.replace("%NIGHTLY%", nightly_version))
     }
   }
 
   /**
-   * Helper to get current query parameters
-   * @returns {QueryParameters} queryparams.
+   * Set a query parameter
+   * @param {string} param Query parameter name
+   * @param {string} value New value
+   * @returns {boolean}
    */
-  queryParams() {
+  setQueryParam(param, value) {
+    const qp = this.queryParams
+
+    if (Object.keys(qp).includes(param)) {
+      qp[param] = value
+      return true
+    }
+    return false
+  }
+
+  /**
+   * Helper to get current query parameters
+   * @returns {Object} queryparams.
+   */
+  get queryParams() {
     if (this.query_name !== null) {
-      return this.getChannel().queries[this.query_name].queryparams
+      return this.getChannel.queries[this.query_name].queryparams
     }
   }
 
@@ -164,9 +191,9 @@ class BZQueryRunner {
    * Helper to get current query parameters
    * @returns {String} query title.
    */
-  queryTitle() {
+  get queryTitle() {
     if (this.query_name !== null) {
-      return this.getChannel().queries[this.query_name].description
+      return this.getChannel.queries[this.query_name].description
     }
   }
 
@@ -174,9 +201,9 @@ class BZQueryRunner {
    * Helper to get current query column data
    * @returns {Object} fetch_cols.
    */
-  fetchColumns() {
+  get fetchColumns() {
     if (this.query_name !== null) {
-      return this.getChannel().queries[this.query_name].fetch_cols
+      return this.getChannel.queries[this.query_name].fetch_cols
     }
   }
 
@@ -184,9 +211,9 @@ class BZQueryRunner {
    * Generate columns for the table
    * @returns {Object} columns.
    */
-  queryColumns() {
+  get queryColumns() {
     let self = this
-    let cols = this.fetchColumns()
+    let cols = this.fetchColumns
 
     function capitalizeFirstLetter(val) {
       return val.charAt(0).toUpperCase() + val.slice(1)
@@ -212,7 +239,7 @@ class BZQueryRunner {
     })
   }
 
-  getChannel() {
+  get getChannel() {
     if ("channels" in this.config) {
       if (this.validInput("channel_name", this.channel_name)) {
         // @ts-ignore
@@ -226,8 +253,7 @@ class BZQueryRunner {
    */
   async loadConfig() {
     let bugzilla_version = null
-    this.config = await this.getJSON("/thunderbird-ci-docs/assets/bug_queries.json")
-    // this.released_versions = await this.getJSON(this.config.RELEASED_VERSIONS)
+    this.config = await this.getJSON("../bug_queries.json")
     const current_version = await this.getCurrentVersion()
     const nightly_major = await this.getNightlyMajor()
     if (current_version !== undefined && nightly_major !== undefined) {
@@ -239,8 +265,8 @@ class BZQueryRunner {
       if (bugzilla_version !== null) {
         this.bugzilla_version = bugzilla_version
         this.fixQueryVersions(bugzilla_version, nightly_major)
-        let query_params = this.queryParams()
-        query_params.include_fields = this.fetchColumns().join(",")
+        let query_params = this.queryParams
+        query_params.include_fields = this.fetchColumns.join(",")
         this.renderFetchData()
       }
     }
@@ -251,7 +277,7 @@ class BZQueryRunner {
    */
   renderFetchData() {
     if ("BUGZILLA_REST_URL" in this.config) {
-      const qp = this.queryParams()
+      const qp = this.queryParams
       const query_params = $.param(qp, true)
       const query_url = new URL(this.config.BUGZILLA_REST_URL)
       query_url.search = query_params
@@ -260,12 +286,31 @@ class BZQueryRunner {
   }
 
   /**
+   * Generate a link to Bugzilla for the current query
+   * @returns {URL} Link to bugzilla query
+   */
+  getBugzillaURL() {
+    if ("BUGZILLA_URL" in this.config) {
+      let qp = paramsCopy(this.queryParams)
+      qp["query_format"] = "advanced"
+      qp["columnlist"] = qp["include_fields"]
+      delete qp["include_fields"]
+
+      const query_params = $.param(qp, true)
+      const query_url = new URL(this.config.BUGZILLA_URL)
+      query_url.search = query_params
+      return query_url
+    }
+  }
+
+  /**
    * Render the table
    * @param {URL} query_url URL to fetch.
    */
   renderTable(query_url) {
+    const bugzilla_link = this.getBugzillaURL().href
     $(this._tableId).bootstrapTable({
-      columns: this.queryColumns(),
+      columns: this.queryColumns,
       url: query_url.href,
       idField: "id",
       showRefresh: true,
@@ -274,7 +319,11 @@ class BZQueryRunner {
       responseHandler: function (res) {
         return res["bugs"]
       },
+      onLoadSuccess: function (data, status, xhr) {
+        $("#bugzilla-link > a").attr("href", bugzilla_link).removeAttr("hidden")
+      }
     })
-    $(`${this._tableId}-title`).text(this.queryTitle())
+    $(`${this._tableId}-title`).text(this.queryTitle)
+
   }
 }
