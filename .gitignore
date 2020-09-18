@@ -6,8 +6,8 @@ __pycache__/
 *$py.class
 
 # Nikola
-release-docs/output/
-release-docs/cache/
+build/
+cache/
 release-docs/.doit.db
 
 

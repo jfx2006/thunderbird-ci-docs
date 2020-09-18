@@ -26,7 +26,13 @@ This will start a dev server and open a browser to it.
 
 ## Building
 
+First clear things out. `nikola clean` doesn't seem to be sufficient.
+
+    rm -rf build cache release-docs/.doit.db
+    
     nikola build
+    
+Output goes in the "build" directory. 
     
 ## Deploy
 
