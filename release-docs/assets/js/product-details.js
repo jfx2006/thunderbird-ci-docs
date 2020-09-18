@@ -2,7 +2,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-import cachedFetch from './cached-fetch.js'
+import { cachedFetch } from '../assets/js/utils.js'
 
 const DETAILS_URL = "https://product-details.mozilla.org/1.0/thunderbird_versions.json"
 
