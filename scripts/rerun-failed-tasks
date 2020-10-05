@@ -53,6 +53,7 @@ function rerun_task() {
 
   print_BLUE "Reruning task ${TASK_LABEL}"
   run_taskcluster task rerun "${TASK_ID}"
+  sleep 2
   return $?
 }
 
@@ -60,20 +61,32 @@ function rerun_task() {
 function run_failed_tasks() {
   local COMMAND
   local GROUP_ID
+  local GREP
   declare -a TC_FAILED
 
   GROUP_ID="${1}"
-  COMMAND="group list -e -f ${GROUP_ID}"
+  GREP="${2}"
+
+  if [[ -z "${GREP}" ]]; then
+    COMMAND="group list -e -f ${GROUP_ID}"
+  else
+    COMMAND="group list -e -f ${GROUP_ID} | grep ${GREP}"
+  fi
   # shellcheck disable=SC2034
   mapfile -t -c 1 -C 'rerun_task' TC_FAILED < <(run_taskcluster ${COMMAND})
 }
 
 function main() {
   local GROUP_ID
+  local GREP
   GROUP_ID="${1}"
+  GREP="${2}"
 
   print_BLUE "Checking for failed tasks in group ${GROUP_ID}"
-  run_failed_tasks "${GROUP_ID}"
+  if [[ -n "${GREP}" ]]; then
+    print_BLUE "  ... matching grep ${GREP}."
+  fi
+  run_failed_tasks "${GROUP_ID}" "${GREP}"
 
 }
 
@@ -83,4 +96,4 @@ if [[ -z "${1}" ]]; then
   # shellcheck disable=SC2119
   invalid_group_id
 fi
-main "${1}"
+main "${1}" "${2}"
