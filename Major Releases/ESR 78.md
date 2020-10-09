@@ -26,4 +26,4 @@ Looks like Callek covered this in bug [1645646](http://bugzil.la/1645646) - Supp
 
 ### Download bouncer aliases
 
-Even though the website does not use 
+Even though the website does not use the download bouncer, there are places that use the "latest" link like the README.txt file on the FTP
