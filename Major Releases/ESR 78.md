@@ -26,4 +26,5 @@ Looks like Callek covered this in bug [1645646](http://bugzil.la/1645646) - Supp
 
 ### Download bouncer aliases
 
-Even though the website does not use the download bouncer, there are places that use the "latest" link like the README.txt file on the FTP server. Why the hell you would need a link when you're already on the FTP server is beyond me
+Even though the website does not use the download bouncer, there are places that use the "latest" link like the README.txt file on the FTP server. Why the hell you would need a link when you're already on the FTP server is beyond me, but...
+Bouncer alias updates need to be disabled for the old esr once 
