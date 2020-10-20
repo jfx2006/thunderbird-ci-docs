@@ -15,9 +15,10 @@ export const cachedFetch = (url, options) => {
 
     const fetchUrl = new URL(url, import.meta.url)
 
-    let cacheKey = fetchUrl.href
+    const cacheKey = fetchUrl.href
+    const cacheTS = `${cacheKey}:ts`
     let cached = localStorage.getItem(cacheKey)
-    let whenCached = localStorage.getItem(cacheKey + ":ts")
+    let whenCached = localStorage.getItem(cacheTS)
     if (cached !== null && whenCached !== null) {
         let age = (Date.now() - whenCached) / 1000
         if (age < expiry) {
@@ -28,7 +29,7 @@ export const cachedFetch = (url, options) => {
             // We need to clean up this old key
             console.log(`Clearing cache for ${cacheKey}`)
             localStorage.removeItem(cacheKey)
-            localStorage.removeItem(cacheKey + ":ts")
+            localStorage.removeItem(cacheTS)
         }
     }
 
@@ -43,12 +44,18 @@ export const cachedFetch = (url, options) => {
                     .text()
                     .then((content) => {
                         localStorage.setItem(cacheKey, content)
-                        localStorage.setItem(cacheKey + ":ts", Date.now().toString())
+                        localStorage.setItem(cacheTS, Date.now().toString())
                     })
             }
         }
         return response
     })
+}
+
+export const cacheClearKey = (cacheKey) => {
+    const cacheTS = `${cacheKey}:ts`
+    localStorage.removeItem(cacheKey)
+    localStorage.removeItem(cacheTS)
 }
 
 /**
@@ -68,4 +75,4 @@ export const paramsCopy = (obj) => {
     return newObject
 }
 
-export default { cachedFetch, paramsCopy }
+export default { cachedFetch, cacheClearKey, paramsCopy }
