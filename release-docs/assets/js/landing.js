@@ -17,7 +17,7 @@ function Landing() {
             h2.innerHTML = capitalizeFirstLetter(channel)
 
             let a = document.createElement("a")
-            a.href = "release-dashboard/#pollbot/thunderbird/beta"
+            a.href = `dashboard/#pollbot/thunderbird/${channel}`
             a.innerHTML = version.toString()
 
             inner.appendChild(h2)

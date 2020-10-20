@@ -5,13 +5,13 @@
       <li class="dash-nav-item dropdown"><a href="#" class="nav-link dropdown-toggle"
                                             data-toggle="dropdown" aria-haspopup="true"
                                             aria-expanded="false">{{ text }}</a>
-        <div class="dropdown-menu">
+        <div class="dash-nav-dropdown-menu dropdown-menu">
           {% for suburl, text in url %}
             {% if rel_link(permalink, suburl) == "#" %}
-              <a href="{{ permalink }}" class="dropdown-item active">{{ text }} <span
+              <a href="{{ permalink }}" class="dash-nav-dropdown-item dropdown-item active">{{ text }} <span
                   class="sr-only">{{ messages("(active)", lang) }}</span></a>
             {% else %}
-              <a href="{{ suburl }}" class="dropdown-item">{{ text }}</a>
+              <a href="{{ suburl }}" class="dash-nav-dropdown-item dropdown-item">{{ text }}</a>
             {% endif %}
           {% endfor %}
         </div>

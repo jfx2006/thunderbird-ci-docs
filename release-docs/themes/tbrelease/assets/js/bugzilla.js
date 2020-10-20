@@ -152,12 +152,19 @@ export default class BZQueryRunner {
     for (let [index, value] of fc.entries()) {
       fc[index] = value.replace("%CHANNEL%", bugzilla_version)
     }
-    for (let [param, value] of Object.entries(qp)) {
-      if (ignore_params.indexOf(param) >= 0) {
-        continue
+    for (const param in qp) {
+      if (qp.hasOwnProperty(param)) {
+        if (ignore_params.indexOf(param) >= 0) {
+          continue
+        }
+        let value = qp[param]
+        if (value.includes("%CHANNEL%")) {
+          this.setQueryParam(param, value.replace("%CHANNEL%", bugzilla_version))
+        }
+        if (value.includes("%NIGHTLY%")) {
+          this.setQueryParam(param, value.replace("%NIGHTLY%", nightly_version))
+        }
       }
-      this.setQueryParam(param, value.replace("%CHANNEL%", bugzilla_version))
-      this.setQueryParam(param, value.replace("%NIGHTLY%", nightly_version))
     }
   }
 
@@ -168,7 +175,8 @@ export default class BZQueryRunner {
    * @returns {boolean}
    */
   setQueryParam(param, value) {
-    const qp = this.queryParams
+    let channel = this.getChannel
+    let qp = channel.queries[this.query_name].queryparams
 
     if (Object.keys(qp).includes(param)) {
       qp[param] = value

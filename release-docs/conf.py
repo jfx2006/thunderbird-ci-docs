@@ -143,7 +143,14 @@ NAVIGATION_LINKS = {
         ("/dashboard/", "Release Dashboard"),
         ("/tools/", "Release Tools"),
         ("/documentation/developers/", "Docs for Devs"),
-        ("/documentation/drivers/", "Docs for Drivers"),
+        (
+            (
+                ("/documentation/drivers/", "Overview"),
+                ('/documentation/drivers/releasenotes/', 'Release Notes'),
+            ),
+            'Docs for Drivers'
+        )
+
 #        ("/categories/", "Tags"),
 #        ("/rss.xml", "RSS feed"),
     ),
@@ -897,7 +904,7 @@ IMAGE_FOLDERS = {'images': 'images'}
 # This list MAY be incomplete since pygments adds styles every now and then.
 # Check with list(pygments.styles.get_all_styles()) in an interpreter.
 #
-# CODE_COLOR_SCHEME = 'default'
+CODE_COLOR_SCHEME = 'default'
 
 # FAVICONS contains (name, file, size) tuples.
 # Used to create favicon link like this:
@@ -1312,7 +1319,7 @@ USE_CDN = False
 USE_BUNDLES = False
 
 # Plugins you don't want to use. Be careful :-)
-DISABLED_PLUGINS = ["render_galleries", "render_listings", "render_taxonomies"]
+DISABLED_PLUGINS = ["render_galleries", "render_taxonomies"]
 
 # Special settings to disable only parts of the indexes plugin.
 # Use with care.

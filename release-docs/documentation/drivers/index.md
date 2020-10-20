@@ -1,5 +1,5 @@
 title: Managing Releases
-slug: drivers
+slug: index
 date: 2020-09-18 03:48:25 UTC
 type: text
 
@@ -39,4 +39,7 @@ They can be requested by the developer submitting the patch or a release driver.
 They may be either regular bugzilla attachments or Phabricator review attachments.
 
 See [Release Tools](/tools) for the Bugzilla uplift queries.
+
+# Release Notes
+
 

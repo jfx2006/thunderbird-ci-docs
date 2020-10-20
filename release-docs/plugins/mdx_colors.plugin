@@ -1,0 +1,13 @@
+[Core]
+name = mdx_colors
+module = mdx_colors
+
+[Nikola]
+compiler = markdown
+PluginCategory = CompilerExtension
+
+[Documentation]
+author = Rob Lemley
+version = 0.1
+website = https://github.com/jfx2006
+description = Markdown extension to set basic text colors
