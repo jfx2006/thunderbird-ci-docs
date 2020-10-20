@@ -30,7 +30,7 @@ export default class BZQueryRunner {
   constructor(tableId) {
     this._validInputs = {
       channel_name: ["release", "beta", "nightly"],
-      query_name: ["uplifts-requested", "uplifts-approved"],
+      query_name: ["uplifts-requested", "uplifts-approved", "beta-1-fixed"],
     }
     this.channel_name = null
     this.query_name = null
@@ -146,6 +146,7 @@ export default class BZQueryRunner {
    * @param {String} nightly_version
    */
   fixQueryVersions(bugzilla_version, nightly_version) {
+    const old_beta = (Number(bugzilla_version) - 1).toString(10)
     let fc = this.fetchColumns
     let qp = this.queryParams
     const ignore_params = ["include_fields", "classification", "product"]
@@ -163,6 +164,9 @@ export default class BZQueryRunner {
         }
         if (value.includes("%NIGHTLY%")) {
           this.setQueryParam(param, value.replace("%NIGHTLY%", nightly_version))
+        }
+        if (value.includes("%OLDBETA%")) {
+          this.setQueryParam(param, value.replace("%OLDBETA%", old_beta))
         }
       }
     }

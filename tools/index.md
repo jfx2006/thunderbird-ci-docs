@@ -30,3 +30,9 @@ bug will be listed in one of these lists.
 * [Beta Uplifts Approved](buglist/?channel=beta&query=uplifts-approved)
 * [Release Uplifts Approved](buglist/?channel=release&query=uplifts-approved)
 
+## Other useful queries
+
+* [Beta 1 Fixed](bugl**ist/?channel=beta&query=beta-1-fixed) lists a reduced set of
+    bugs that were fixed during the last development milestone, but not uplifted.
+    It's used as a starting point for writing the release notes for a beta 1
+    release.
