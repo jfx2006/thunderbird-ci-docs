@@ -36,9 +36,13 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
           </li>
 <li class="dash-nav-item">
 <a href="../documentation/developers/" class="nav-link">Docs for Devs</a>
-          </li>
-<li class="dash-nav-item">
-<a href="../documentation/drivers/" class="nav-link">Docs for Drivers</a>
+      </li>
+<li class="dash-nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs for Drivers</a>
+        <div class="dash-nav-dropdown-menu dropdown-menu">
+              <a href="../documentation/drivers/" class="dash-nav-dropdown-item dropdown-item">Overview</a>
+              <a href="../documentation/drivers/releasenotes/" class="dash-nav-dropdown-item dropdown-item">Release Notes</a>
+        </div>
 
         
       </li>
@@ -65,9 +69,10 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
     $(function () {
         let $main = $("main.dash-content")
         $main.addClass("no-padding")
-        //let main_height = $main.height()
-        //let header_height = $("header.dashboard-header").outerHeight(true)
-        //$(".dashboard-wrapper").height(main_height - header_height)
+        let $iframe = $(".release-dashboard")
+        let url_hash = document.location.hash
+        let iframe_src = `/release-dashboard/${url_hash}`
+        $iframe.attr('src', iframe_src)
     })
 
 </script><script>

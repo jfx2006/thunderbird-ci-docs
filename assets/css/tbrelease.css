@@ -63,3 +63,31 @@ main.no-padding div.container-fluid {
     flex-grow: 1;
 }
 
+
+.text-blue {
+    color: #007bf1;
+}
+.text-purple {
+    color: #6f42c1;
+}
+.text-pink {
+    color: #e83e81;
+}
+.text-red {
+    color: #dc3541;
+}
+.text-orange {
+    color: #fd7e11;
+}
+.text-yellow {
+    color: #ffc101;
+}
+.text-green {
+    color: #28a741;
+}
+.text-white {
+    color: #fff;
+}
+.text-black {
+    color: #000;
+}
