@@ -19,13 +19,14 @@ export const cachedFetch = (url, options) => {
     let cached = localStorage.getItem(cacheKey)
     let whenCached = localStorage.getItem(cacheKey + ":ts")
     if (cached !== null && whenCached !== null) {
-        console.log(`Using cache for ${cacheKey}`)
         let age = (Date.now() - whenCached) / 1000
         if (age < expiry) {
+            console.log(`Using cache for ${cacheKey}`)
             let response = new Response(new Blob([cached]))
             return Promise.resolve(response)
         } else {
             // We need to clean up this old key
+            console.log(`Clearing cache for ${cacheKey}`)
             localStorage.removeItem(cacheKey)
             localStorage.removeItem(cacheKey + ":ts")
         }

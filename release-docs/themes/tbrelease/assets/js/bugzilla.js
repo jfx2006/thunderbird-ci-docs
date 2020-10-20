@@ -120,7 +120,7 @@ export default class BZQueryRunner {
    * @returns {Promise.<Object>} Decoded JSON.
    */
   async getJSON(url) {
-    return cachedFetch(url, 86400)
+    return cachedFetch(url, 3600)
       .then((response) => response.json())
       .catch((error) => {
         console.error("Error:", error)
@@ -133,7 +133,7 @@ export default class BZQueryRunner {
    * @returns {Promise.<Object>} Text.
    */
   async getText(url) {
-    return cachedFetch(url, 86400)
+    return cachedFetch(url, 3600)
       .then((response) => response.text())
       .catch((error) => {
         console.error("Error:", error)
