@@ -32,7 +32,7 @@ bug will be listed in one of these lists.
 
 ## Other useful queries
 
-* [Beta 1 Fixed](bugl**ist/?channel=beta&query=beta-1-fixed) lists a reduced set of
+* [Beta 1 Fixed](buglist/?channel=beta&query=beta-1-fixed) lists a reduced set of
     bugs that were fixed during the last development milestone, but not uplifted.
     It's used as a starting point for writing the release notes for a beta 1
     release.
