@@ -155,29 +155,14 @@ for how to use that repository.</p>
 and requiring a note will already have had a note in a previous beta.</p>
 <p>The copy-paste manual labor can be done with <code>gather_notes.py</code> found in the
 thunderbird-notes repo in the tools directory.</p>
-<p><code>gather_notes.py</code> requires a list of bug numbers to look for. <code>mach release buglist</code>
-will help get that list.</p>
-<p>In a full checkout of mozilla-central (or a branch repo):</p>
-<pre class="code literal-block">./mach release buglist --version &lt;new release ver&gt; --product thunderbird <span class="se">\</span>
-    --repo https://hg.mozilla.org/releases/&lt;repo branch&gt; --revision &lt;release rev&gt;
-
-./mach release buglist --version <span class="m">78</span>.2.2 --product thunderbird
-    --repo https://hg.mozilla.org/releases/comm-esr78 --revision 85fc86689124
+<p><code>gather_notes.py</code> needs the most recent ESR release version and the current beta
+version.</p>
+<pre class="code literal-block">./tools/gather_notes.py &lt;previous_esr&gt; &lt;current_beta&gt;
+./tools/gather_notes.py <span class="m">78</span>.4.3 <span class="m">84</span>.0
 </pre>
 
-<p>This gives you a URL to open the list of bugs in Bugzilla.</p>
-<pre class="code literal-block"><span class="c">https://bugzilla.mozilla.org/buglist.cgi?bug_id=1651298%2C1642536%2C1661924%2C1371309%2C1660917%2C1624676%2C1658890%2C1662585%2C1663269%2C1644311%2C1653690%2C1662536%2C1657221%2C1661216%2C1655627%2C1641773%2C1659323%2C1658923%2C1659380%2C1662881%2C875059%2C1660923%2C1663037%2C1663219%2C1563411%2C1661229%2C1663157%2C1662481%2C1649123%2C1659946%2C1660702%2C1597180%2C1653647%2C1601749%2C1662492%2C1661546%2C1663013%2C1658797%2C1659318%2C1445778%2C1661913%2C492216%2C1663490%2C1662831%2C1659528%2C1660134</span>
-</pre>
-
-<p>Then run <code>gather_notes.py</code> with the first esr version (eg. 78.0) and the
-current beta version as parameters. Do not include the beta number.</p>
-<pre class="code literal-block">./tools/gather_notes.py &lt;first esr&gt; &lt;current_beta&gt;
-./tools/gather_notes.py <span class="m">78</span>.0 <span class="m">81</span>.0
-</pre>
-
-<p><code>gather_notes.py</code> will prompt for the URL that <code>mach release buglist</code> printed
-out. </p>
-<p>TODO: Make <code>gather_notes.py</code> more verbose about what it does.</p>
+<p><code>gather_notes.py</code> will print out the bugs it found and then pull release notes
+for those bugs from the beta notes directory.</p>
 <p>Then you should have a file <code>ver_notes.yml</code> that will give you a decent starting
 point. Do not publish that as-is!</p>
 </div>
