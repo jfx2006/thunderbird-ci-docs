@@ -85,37 +85,16 @@ and requiring a note will already have had a note in a previous beta.
 The copy-paste manual labor can be done with `gather_notes.py` found in the
 thunderbird-notes repo in the tools directory.
 
-`gather_notes.py` requires a list of bug numbers to look for. `mach release buglist`
-will help get that list.
-
-In a full checkout of mozilla-central (or a branch repo):
-
-```bash
-./mach release buglist --version <new release ver> --product thunderbird \
-    --repo https://hg.mozilla.org/releases/<repo branch> --revision <release rev>
-
-./mach release buglist --version 78.2.2 --product thunderbird
-    --repo https://hg.mozilla.org/releases/comm-esr78 --revision 85fc86689124
-```
-
-This gives you a URL to open the list of bugs in Bugzilla.
-
-```
-https://bugzilla.mozilla.org/buglist.cgi?bug_id=1651298%2C1642536%2C1661924%2C1371309%2C1660917%2C1624676%2C1658890%2C1662585%2C1663269%2C1644311%2C1653690%2C1662536%2C1657221%2C1661216%2C1655627%2C1641773%2C1659323%2C1658923%2C1659380%2C1662881%2C875059%2C1660923%2C1663037%2C1663219%2C1563411%2C1661229%2C1663157%2C1662481%2C1649123%2C1659946%2C1660702%2C1597180%2C1653647%2C1601749%2C1662492%2C1661546%2C1663013%2C1658797%2C1659318%2C1445778%2C1661913%2C492216%2C1663490%2C1662831%2C1659528%2C1660134
-```
-
-Then run `gather_notes.py` with the first esr version (eg. 78.0) and the
-current beta version as parameters. Do not include the beta number.
+`gather_notes.py` needs the most recent ESR release version and the current beta
+version.
  
 ```bash
-./tools/gather_notes.py <first esr> <current_beta>
-./tools/gather_notes.py 78.0 81.0
+./tools/gather_notes.py <previous_esr> <current_beta>
+./tools/gather_notes.py 78.4.3 84.0
 ```
 
-`gather_notes.py` will prompt for the URL that `mach release buglist` printed
-out. 
-
-TODO: Make `gather_notes.py` more verbose about what it does.
+`gather_notes.py` will print out the bugs it found and then pull release notes
+for those bugs from the beta notes directory.
 
 Then you should have a file `ver_notes.yml` that will give you a decent starting
 point. Do not publish that as-is!
