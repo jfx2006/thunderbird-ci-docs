@@ -1,0 +1,7 @@
+rename . comm
+include calendar
+include directory/xpcom
+include mail
+include mailnews
+include other-licenses/branding/thunderbird
+include suite
