@@ -23,7 +23,7 @@ BLOG_TITLE = "Thunderbird Release Documentation"  # (translatable)
 SITE_URL = "https://jfx2006.github.io/thunderbird-ci-docs/"
 # This is the URL where Nikola's output will be deployed.
 # If not set, defaults to SITE_URL
-# BASE_URL = "https://jfx2006.github.io/thunderbird-release/"
+BASE_URL = "https://jfx2006.github.io/thunderbird-release/"
 BLOG_EMAIL = "tb-builds@thunderbird.net"
 BLOG_DESCRIPTION = "What goes into a Thunderbird release"  # (translatable)
 
