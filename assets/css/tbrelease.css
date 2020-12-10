@@ -18,6 +18,10 @@
     font-weight: bold;
 }
 
+.dropdown-menu {
+    background-color: #181f2c;
+}
+
 .spur-logo > img {
     width: 64px;
     height: 64px;

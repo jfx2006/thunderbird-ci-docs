@@ -1,4 +1,4 @@
-Sitemap: https://jfx2006.github.io/thunderbird-ci-docs/sitemapindex.xml
+Sitemap: https://jfx2006.github.io/thunderbird-release/sitemapindex.xml
 
 User-Agent: *
 Host: jfx2006.github.io

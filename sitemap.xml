@@ -6,43 +6,43 @@
     xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
-  <loc>https://jfx2006.github.io/thunderbird-ci-docs/</loc>
-  <lastmod>2020-11-16T16:35:00Z</lastmod>
+  <loc>https://jfx2006.github.io/thunderbird-release/</loc>
+  <lastmod>2020-12-10T20:29:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jfx2006.github.io/thunderbird-ci-docs/dashboard/</loc>
-  <lastmod>2020-11-16T16:35:00Z</lastmod>
+  <loc>https://jfx2006.github.io/thunderbird-release/dashboard/</loc>
+  <lastmod>2020-12-10T20:29:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jfx2006.github.io/thunderbird-ci-docs/documentation/</loc>
-  <lastmod>2020-11-16T16:35:00Z</lastmod>
+  <loc>https://jfx2006.github.io/thunderbird-release/documentation/</loc>
+  <lastmod>2020-12-10T20:29:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jfx2006.github.io/thunderbird-ci-docs/documentation/developers/</loc>
-  <lastmod>2020-11-16T16:35:00Z</lastmod>
+  <loc>https://jfx2006.github.io/thunderbird-release/documentation/developers/</loc>
+  <lastmod>2020-12-10T20:29:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jfx2006.github.io/thunderbird-ci-docs/documentation/drivers/</loc>
-  <lastmod>2020-11-16T16:35:00Z</lastmod>
+  <loc>https://jfx2006.github.io/thunderbird-release/documentation/drivers/</loc>
+  <lastmod>2020-12-10T20:29:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jfx2006.github.io/thunderbird-ci-docs/documentation/drivers/releasenotes/</loc>
-  <lastmod>2020-11-16T16:35:00Z</lastmod>
+  <loc>https://jfx2006.github.io/thunderbird-release/documentation/drivers/releasenotes/</loc>
+  <lastmod>2020-12-10T20:29:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jfx2006.github.io/thunderbird-ci-docs/documentation/tools/</loc>
-  <lastmod>2020-11-16T16:35:00Z</lastmod>
+  <loc>https://jfx2006.github.io/thunderbird-release/documentation/tools/</loc>
+  <lastmod>2020-12-10T20:29:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jfx2006.github.io/thunderbird-ci-docs/release-dashboard/</loc>
-  <lastmod>2020-11-16T16:35:00Z</lastmod>
+  <loc>https://jfx2006.github.io/thunderbird-release/release-dashboard/</loc>
+  <lastmod>2020-12-10T20:29:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jfx2006.github.io/thunderbird-ci-docs/tools/</loc>
-  <lastmod>2020-11-16T16:35:00Z</lastmod>
+  <loc>https://jfx2006.github.io/thunderbird-release/tools/</loc>
+  <lastmod>2020-12-10T20:29:00Z</lastmod>
  </url>
  <url>
-  <loc>https://jfx2006.github.io/thunderbird-ci-docs/tools/buglist/</loc>
-  <lastmod>2020-11-16T16:35:00Z</lastmod>
+  <loc>https://jfx2006.github.io/thunderbird-release/tools/buglist/</loc>
+  <lastmod>2020-12-10T20:29:00Z</lastmod>
  </url>
 </urlset>
