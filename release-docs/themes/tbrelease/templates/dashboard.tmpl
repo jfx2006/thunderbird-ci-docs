@@ -7,8 +7,9 @@
         let $main = $("main.dash-content")
         $main.addClass("no-padding")
         let $iframe = $(".release-dashboard")
+        let iframe_base_src = $iframe.attr('src')
         let url_hash = document.location.hash
-        let iframe_src = `/release-dashboard/${url_hash}`
+        let iframe_src = `${iframe_base_src}/${url_hash}`
         $iframe.attr('src', iframe_src)
     })
 
