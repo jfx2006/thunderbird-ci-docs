@@ -28,6 +28,11 @@ beta version. See
 [Merge Repositories](https://wiki.mozilla.org/Thunderbird/Release_Driving/Rapid_Release_Activities/Merge_Repositories)
 for all of the details.
 
+# Merge Day Automation
+
+This process is planned to replace the above. It is based on the Firefox Merge
+process. See [Merge Day Automation](mergedayautomation).
+
 # Uplifts
 
 Bugs are fixed in comm-central. When a bug is present in a beta or release

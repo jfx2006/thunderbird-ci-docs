@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merge Day Automation | Thunderbird Release Documentation</title>
+<link href="../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#2284fe">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../rss.xml">
+<link rel="canonical" href="https://jfx2006.github.io/thunderbird-release/documentation/drivers/mergedayautomation/">
+<link rel="favicon" href="../../../favicon.ico" sizes="48x48">
+<!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Thunderbird Release Team">
+<meta property="og:site_name" content="Thunderbird Release Documentation">
+<meta property="og:title" content="Merge Day Automation">
+<meta property="og:url" content="https://jfx2006.github.io/thunderbird-release/documentation/drivers/mergedayautomation/">
+<meta property="og:description" content="Overview
+Merge day happens at 4-week intervals (most of the time), and follows the
+Firefox Rapid Release schedule. This document only covers merge activities,
+not the related releases that happen on t">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-12-11T20:05:37Z">
+<link href="../../../assets/css/tbrelease.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="dash">
+  <div class="dash-nav dash-nav-dark">
+    <header><a href="../../../" class="spur-logo">
+          <img src="../../../images/thunderbird-watermark.svg" alt="Thunderbird Release Documentation" id="logo" class="d-inline-block align-top"></a>
+    </header><nav class="dash-nav-list"><ul class="nav nav-pills flex-column">
+<li class="dash-nav-item">
+<a href="../../" class="nav-link">About Thunderbird Releases</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../../dashboard/" class="nav-link">Release Dashboard</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../../tools/" class="nav-link">Release Tools</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../developers/" class="nav-link">Docs for Devs</a>
+      </li>
+<li class="dash-nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs for Drivers</a>
+        <div class="dash-nav-dropdown-menu dropdown-menu">
+              <a href="../" class="dash-nav-dropdown-item dropdown-item">Overview</a>
+              <a href="../releasenotes/" class="dash-nav-dropdown-item dropdown-item">Release Notes</a>
+              <a href="../mergeautomation/" class="dash-nav-dropdown-item dropdown-item">Merge Automation</a>
+        </div>
+
+        
+      </li>
+</ul></nav>
+</div>
+
+  <div class="dash-app" id="content" role="main">
+    <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
+      
+    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Merge Day Automation</a></h1>
+
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<h2>Overview</h2>
+<p>Merge day happens at 4-week intervals (most of the time), and follows the
+Firefox Rapid Release schedule. This document only covers merge activities,
+not the related releases that happen on the same day.</p>
+<p>On Merge day:</p>
+<ul>
+<li>Communication about the merges</li>
+<li>Merge comm-central to comm-beta</li>
+<li>Tag and bump comm-central versions</li>
+<li>Update ShipIt nightly version</li>
+</ul>
+<h2>Communication</h2>
+<p>This section needs to be written still.</p>
+<h2>Steps</h2>
+<p>Make sure you are logged into Treeherder. You will need to have
+"thunderbird-releng" permissions, which are set in
+<a href="https://hg.mozilla.org/ci/ci-configuration/file/1d37a3cf95a4e272eeaa7a910193e58ff2028646/grants.yml#l2415">Taskcluster</a>.</p>
+<p>Close the trees in <a href="https://treestatus.mozilla-releng.net/">TreeStatus</a>.</p>
+<h3>comm-central -&gt; comm-beta</h3>
+<ol>
+<li>In Treeherder, select the comm-central repository</li>
+<li>Select the Decision task of the latest push</li>
+<li>Click the down arrow in the top right corner and select "Custom push action..."</li>
+<li>Choose "merge-automation"</li>
+<li>Update the payload (note that with <code>force-dry-run</code> set to <code>true</code>, the value of
+   <code>push</code> is ignored)
+    <code>YAML
+    behavior: comm-central-to-beta
+    force-dry-run: true
+    push: true</code>
+</li>
+<li>Trigger!</li>
+</ol>
+<p>If the dry-run is successful, run it again, this time setting <code>force-dry-run</code> to
+<code>false</code>.</p>
+<h3>Bump Nightly version</h3>
+<ol>
+<li>Select comm-central repository in Treeherder and select the "merge-automation"
+   custom action as above</li>
+<li>Update the payload
+   <code>YAML
+   behavior: comm-bump-central
+   force-dry-run: true
+   push: true</code>
+</li>
+<li>Trigger!</li>
+</ol>
+<p>If the dry-run is successful, run again without <code>force-dry-run</code>.</p>
+<h3>Bump Release version</h3>
+<ol>
+<li>Select comm-esr78 repository and select the "merge-automation" custom action</li>
+<li>Update the payload
+   <code>YAML
+   behavior: comm-bump-esr
+   force-dry-run: true
+   push: true</code>
+</li>
+<li>Trigger!</li>
+</ol>
+<p><em>Note</em>: This is currently set to bump comm-esr78. When there are two release
+versions (such as 78.x and 91.x) this will need to run twice, overriding
+<code>to-branch</code> and <code>to-repo</code> on one of the runs.</p>
+<pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comm-bump-esr</span>
+<span class="nt">force-dry-run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">push</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">to-branch</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comm-esr78</span>
+<span class="nt">to-repo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://hg.mozilla.org/releases/comm-esr78</span>
+</pre>
+
+<h2>What's not documented here (yet)</h2>
+<ul>
+<li>Bump the suite versions. Refer to
+  <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1619767#c38">bug 1619767 comment 38</a>
+  for how this should be done. This will be added to automation later.</li>
+<li>Updating <code>.gecko_rev.yml</code>. This file will be obsoleted as part of the one-repo
+  project. For now, update by hand prior to starting a release.</li>
+<li>Communication. It needs to be similar to what has been sent in the past, but
+  update the list of steps and refer to this document.</li>
+<li>Update Shipit. Refer to the old documentation on the wiki for what to do.</li>
+</ul>
+</div>
+    </div>
+    
+</article>
+</div>
+    </main><!--End of body content--><footer id="footer"></footer>
+</div>
+</div>
+
+            <script src="../../../assets/js/jquery.min.js"></script><script src="../../../assets/js/popper.min.js"></script><script src="../../../assets/js/bootstrap.min.js"></script><script src="../../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function (element) {
+            return element.getElementsByTagName('img')[0].alt;
+        }
+    });
+</script>
+</body>
+</html>
