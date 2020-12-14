@@ -1,5 +1,5 @@
 README
 ======
 
-An effort to make the Taskcluster integration for Thunderbird less mysterious.
+An effort to make the Thunderbird build & release engineering processes m
 
