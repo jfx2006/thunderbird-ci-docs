@@ -6,7 +6,7 @@ SCRIPT=$(realpath "$0")
 HERE=$(dirname "${SCRIPT}")
 
 REPO="single-repo"
-CC_REPO="comm-central"
+CC_REPO="COMM-CENTRAL"
 CC_URL="https://hg.mozilla.org/comm-central"
 
 HG="/usr/bin/chg"
