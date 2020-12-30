@@ -77,6 +77,28 @@ Within each of those: Mail, Address book, Chat, Calendar, then Mail Extensions.
     * [green]Partial updates not working[/green]
 
 
+# Generating a bug list
+
+Once you have completed the uplifts and have pushed to Mercurial, there is a `nach`
+command that will help generate a list of bugs that went into the release.
+
+You need a recent checkout of `mozilla-central` for `mach`. It doesn't need
+to be on the same revision or anything.
+
+```commandline
+mach release buglist --version <version of release> --product thunderbird --repo <url of release repo> --revision <revision you pushed>
+
+mach release buglist --version 85.0b3 --product thunderbird --repo https://hg.mozilla.org/releases/comm-beta --revision 7066e91fbe5ae7e07bd47f283ae4d5921d977008
+```
+
+The output is a link you can open in your browser:
+
+```text
+Comparing Mercurial tag THUNDERBIRD_85_0b2_RELEASE to THUNDERBIRD_85_0b3_RELEASE:
+* [Bugs since previous changeset](https://bugzilla.mozilla.org/buglist.cgi?bug_id=1682023%2C1682971%2C1679769%2C1683642%2C1682309%2C1622640%2C1682035%2C1658781%2C1680527%2C77806%2C1682808%2C1681575%2C1682407%2C1680468)
+* [Full Mercurial changelog](https://hg.mozilla.org/releases/comm-beta/pushloghtml?fromchange=THUNDERBIRD_85_0b2_RELEASE&tochange=7066e91fbe5ae7e07bd47f283ae4d5921d977008&full=1)
+```
+
 # Don't repeat yourself
 
 For writing release notes for an ESR release, ideally any bug that is uplifted
