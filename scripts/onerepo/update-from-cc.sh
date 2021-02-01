@@ -5,7 +5,7 @@ set -e
 SCRIPT=$(realpath "$0")
 HERE=$(dirname "${SCRIPT}")
 
-REPO="single-repo"
+REPO="jamun"
 CC_REPO="COMM-CENTRAL"
 CC_URL="https://hg.mozilla.org/comm-central"
 

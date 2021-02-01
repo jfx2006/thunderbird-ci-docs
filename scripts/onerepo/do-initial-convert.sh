@@ -32,18 +32,31 @@ echo "rename . comm" | tee filemap.txt
 
 ${HG} convert --filemap=cc0.txt --branchmap=branchmap.txt $CVS_GIT_REPO ${SINGLE_REPO}/
 
+echo WAITING.... check converted repo
+read junk
+
 CVS_TIP=$(${HG} id -R ${SINGLE_REPO} -i -r tip --debug)
 CC_0=$(hg id -R ${CC_HG_REPO} -i -r 0 --debug)
 echo "${CC_0}" "${CVS_TIP}" | tee splicemap.txt
 
-${HG} convert --splicemap=splicemap.txt \
+echo WAITING ... check splicemap.txt
+read junk
+
+${HG} convert \
+	--splicemap=splicemap.txt \
 	--filemap=filemap.txt \
 	--branchmap=branchmap.txt \
 	"${HERE}/${CC_HG_REPO}" \
 	${SINGLE_REPO}/
 
+echo "WAITING... check C-C converted on top of the import of CVS"
+read junk
+
 ${HG} -R ${SINGLE_REPO} up default
 ${HG} -R ${SINGLE_REPO} pull -f -b default "${HERE}/${MC_HG_REPO}"
+
+echo WAITING... checkm M-C import.. maybe debugsetparents?
+read junk
 
 ${HG} -R ${SINGLE_REPO} up comm/default
 ${HG} -R ${SINGLE_REPO} merge default

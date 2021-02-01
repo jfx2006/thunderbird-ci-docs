@@ -5,9 +5,39 @@ set -e
 TMP="/tmp/graft_msg.txt"
 BUGLOG="/tmp/bug_log.txt"
 
+echoerr() { printf "%s\n" "$*" >&2; }
+PROG=`basename "$0"`
+usage() {
+    echoerr "Error: $@"
+    echoerr "Usage: $PROG REVSPEC APPROVER"
+    exit -1
+}
+
 ORIG_REV="$1"
 APPROVER="$2"
+missing_extensions=0
 
+check_extension() {
+    hg config "extensions.$1" 2>&1 >/dev/null || ext_missing=1
+    if [ -n "$ext_missing" ]; then
+        echoerr "Error: Missing prerequsite mercurial extension: $1"
+        missing_extensions=1
+        unset ext_missing
+    fi
+}
+check_extension "histedit"
+check_extension "evolve"
+check_extension "firefoxtree"
+
+if [ $missing_extensions -gt 0 ]; then
+    exit -1
+fi
+if [ -z "$ORIG_REV" ]; then
+    usage "Missing REVSPEC."
+fi
+if [ -z "$APPROVER" ]; then
+    usage "Missing approver."
+fi
 
 check_reviewer() {
   head -n 1 $TMP | grep -q "r=$APPROVER"

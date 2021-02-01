@@ -2,7 +2,7 @@
 
 source ./libjfxbash
 
-URL="https://aus.thunderbird.net/update/6/Thunderbird/@@VERSION@@/default/@@PLATFORM@@/en-US/beta-localtest/default/ISET:SSE4_2,MEM:4096/default/default/update.xml"
+URL="https://aus.thunderbird.net/update/6/Thunderbird/@@VERSION@@/default/@@PLATFORM@@/en-US/release-cdntest/default/ISET:SSE4_2,MEM:4096/default/default/update.xml"
 
 get_url() {
   local _version
@@ -63,9 +63,9 @@ run_test() {
 declare -A TESTS
 
 TESTS=(
-  ["73.0 WINNT_x86-msvc"]="77.0"
-  ["73.0 WINNT_x86-msvc force"]="77.0"
-#  ["74.0 Darwin_x86-gcc3"]="76.0"
+  ["60.7 WINNT_x86-msvc"]="60.9.1"
+#  ["73.0 WINNT_x86-msvc force"]="77.0"
+  ["68.6 Darwin_x86-gcc3"]="68.12.1"
 #  ["74.0 Darwin_x86-gcc3 force"]="76.0"
 #  ["74.0 Darwin_x86-gcc3-u-i386-x86_64"]="76.0"
 #  ["74.0 Darwin_x86-gcc3-u-i386-x86_64 force"]="76.0"
@@ -73,7 +73,7 @@ TESTS=(
 #  ["74.0 Darwin_x86_64-gcc3 force"]="76.0"
 #  ["74.0 Darwin_x86_64-gcc3-u-i386-x86_64"]="76.0"
 #  ["74.0 Darwin_x86_64-gcc3-u-i386-x86_64 force"]="76.0"
-#  ["76.0 Darwin_x86-gcc3"]=""
+  ["76.0 Linux_x86_64-gcc3"]="78.6.0"
 #  ["76.0 Darwin_x86-gcc3 force"]=""
 #  ["76.0 Darwin_x86-gcc3-u-i386-x86_64"]=""
 #  ["76.0 Darwin_x86-gcc3-u-i386-x86_64 force"]=""
@@ -81,8 +81,8 @@ TESTS=(
 #  ["76.0 Darwin_x86_64-gcc3 force"]=""
 #  ["76.0 Darwin_x86_64-gcc3-u-i386-x86_64"]=""
 #  ["76.0 Darwin_x86_64-gcc3-u-i386-x86_64 force"]=""
-  ["74.0 Linux_x86_64-gcc3"]="77.0"
-  ["76.0 Linux_x86_64-gcc3"]="77.0"
+#  ["74.0 Linux_x86_64-gcc3"]="77.0"
+#  ["76.0 Linux_x86_64-gcc3"]="77.0"
 )
 
 for v in "${!TESTS[@]}"; do

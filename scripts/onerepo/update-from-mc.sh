@@ -5,7 +5,7 @@ set -e
 SCRIPT=$(realpath "$0")
 HERE=$(dirname "${SCRIPT}")
 
-REPO="single-repo"
+REPO="jamun"
 MC_URL="https://hg.mozilla.org/mozilla-central"
 
 HG="hg -R ${REPO}"
