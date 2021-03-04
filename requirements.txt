@@ -2,3 +2,4 @@ Nikola
 aiohttp
 watchdog
 ghp-import2
+jinja2

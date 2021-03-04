@@ -36,6 +36,7 @@ export default class BZQueryRunner {
     this.query_name = null
     this.config = {}
     this._tableId = tableId
+    this.$table = null;
     this.loadParams()
   }
 
@@ -321,10 +322,11 @@ export default class BZQueryRunner {
    */
   renderTable(query_url) {
     const bugzilla_link = this.getBugzillaURL().href
-    $(this._tableId).bootstrapTable({
+    this.$table = $(this._tableId).bootstrapTable({
       columns: this.queryColumns,
       url: query_url.href,
       idField: "id",
+      toolbar: "#toolbar",
       showRefresh: true,
       showButtonIcons: false,
       showButtonText: true,
@@ -332,10 +334,17 @@ export default class BZQueryRunner {
         return res["bugs"]
       },
       onLoadSuccess: function (data, status, xhr) {
-        $("#bugzilla-link > a").attr("href", bugzilla_link).removeAttr("hidden")
+        $("#open_bugzilla").data("href", bugzilla_link)
+        $("#get_data").data("href", query_url.href)
+        $("#bug_count").text(`Bug count: ${data.length}`)
+        $("#toolbar").removeAttr("hidden")
       }
     })
     $(`${this._tableId}-title`).text(this.queryTitle)
-
+    $(".bug-toolbar").on("click", function() {
+      const href = $(this).data("href")
+      if (href)
+        window.open(href)
+    })
   }
 }

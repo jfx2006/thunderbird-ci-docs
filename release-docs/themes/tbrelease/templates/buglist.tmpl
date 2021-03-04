@@ -1,6 +1,6 @@
 {% extends 'base.tmpl' %}
 
-{% block extra_head_data %}
+{% block extra_head %}
   <link rel="stylesheet" href="/assets/css/bootstrap-table.min.css">
 {% endblock %}
 
@@ -21,7 +21,9 @@
   <div class="table-responsive">
     <table id="bugquery"></table>
   </div>
-  <div id="bugzilla-link">
-    <a href="#" target="_blank" hidden>Open in Bugzilla</a>
+  <div id="toolbar" hidden>
+    <button id="open_bugzilla" class="bug-toolbar btn btn-secondary">Open in Bugzilla</button>
+    <button id="get_data" class="bug-toolbar btn btn-secondary">Get Raw Data</button>
+    <span id="bug_count"></span>
   </div>
 {% endblock %}
