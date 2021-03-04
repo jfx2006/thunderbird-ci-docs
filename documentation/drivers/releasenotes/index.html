@@ -156,17 +156,15 @@ for how to use that repository.</p>
 command that will help generate a list of bugs that went into the release.</p>
 <p>You need a recent checkout of <code>mozilla-central</code> for <code>mach</code>. It doesn't need
 to be on the same revision or anything.</p>
-<pre class="code literal-block"><span class="n">mach</span> <span class="n">release</span> <span class="n">buglist</span> <span class="c1">--version &lt;version of release&gt; --product thunderbird --repo &lt;url of release repo&gt; --revision &lt;revision you pushed&gt;</span>
+<pre class="code literal-block">mach release buglist --version &lt;version of release&gt; --product thunderbird --repo &lt;url of release repo&gt; --revision &lt;revision you pushed&gt;
 
-<span class="n">mach</span> <span class="n">release</span> <span class="n">buglist</span> <span class="c1">--version 85.0b3 --product thunderbird --repo https://hg.mozilla.org/releases/comm-beta --revision 7066e91fbe5ae7e07bd47f283ae4d5921d977008</span>
+mach release buglist --version 85.0b3 --product thunderbird --repo https://hg.mozilla.org/releases/comm-beta --revision 7066e91fbe5ae7e07bd47f283ae4d5921d977008
 </pre>
-
 <p>The output is a link you can open in your browser:</p>
 <pre class="code literal-block">Comparing Mercurial tag THUNDERBIRD_85_0b2_RELEASE to THUNDERBIRD_85_0b3_RELEASE:
 * [Bugs since previous changeset](https://bugzilla.mozilla.org/buglist.cgi?bug_id=1682023%2C1682971%2C1679769%2C1683642%2C1682309%2C1622640%2C1682035%2C1658781%2C1680527%2C77806%2C1682808%2C1681575%2C1682407%2C1680468)
 * [Full Mercurial changelog](https://hg.mozilla.org/releases/comm-beta/pushloghtml?fromchange=THUNDERBIRD_85_0b2_RELEASE&amp;tochange=7066e91fbe5ae7e07bd47f283ae4d5921d977008&amp;full=1)
 </pre>
-
 <h2>Don't repeat yourself</h2>
 <p>For writing release notes for an ESR release, ideally any bug that is uplifted
 and requiring a note will already have had a note in a previous beta.</p>
@@ -177,7 +175,6 @@ version.</p>
 <pre class="code literal-block">./tools/gather_notes.py &lt;previous_esr&gt; &lt;current_beta&gt;
 ./tools/gather_notes.py <span class="m">78</span>.4.3 <span class="m">84</span>.0
 </pre>
-
 <p><code>gather_notes.py</code> will print out the bugs it found and then pull release notes
 for those bugs from the beta notes directory.</p>
 <p>Then you should have a file <code>ver_notes.yml</code> that will give you a decent starting
