@@ -36,3 +36,6 @@ bug will be listed in one of these lists.
     bugs that were fixed during the last development milestone, but not uplifted.
     It's used as a starting point for writing the release notes for a beta 1
     release.
+* [Next Beta 1 Fixed](buglist/?channel=beta&query=beta-1-next) same list as above,
+    but for the next beta 1. This one works prior to merging on merge day to
+    facilitate writing release notes before the merges happen.

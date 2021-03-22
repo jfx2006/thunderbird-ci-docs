@@ -30,7 +30,7 @@ export default class BZQueryRunner {
   constructor(tableId) {
     this._validInputs = {
       channel_name: ["release", "beta", "nightly"],
-      query_name: ["uplifts-requested", "uplifts-approved", "beta-1-fixed"],
+      query_name: ["uplifts-requested", "uplifts-approved", "beta-1-fixed", "beta-1-next"],
     }
     this.channel_name = null
     this.query_name = null
