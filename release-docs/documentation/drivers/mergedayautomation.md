@@ -94,3 +94,23 @@ to-repo: https://hg.mozilla.org/releases/comm-esr78
   update the list of steps and refer to this document.
 * Update Shipit. Refer to the old documentation on the wiki for what to do.
 
+
+# Test runs with a real push
+
+You can push to `try-comm-central` with to-repo/from-repo to test that pushing
+actually works, though it really shouldn't break now that it's working.
+
+# to-repo, from-repo, to-branch, from-branch?
+
+It's kind of confusing...
+
+* to-branch and from-branch are Firefoxtree "branch" names, and correspond
+  to "branches" of code for release purposes
+* **to-repo** in a merge context is the URL of the destination repository you
+  want to merge into. So for comm-central-to-beta, that's the _full URL_ (https)
+  of comm-beta on hg.m.o.
+* **from-repo** then is the repo URL you are merging into to-repo. So, comm-central's
+  URL.
+* **VERY IMPORTANT** Merge day work will push to both `to-repo` and `from-repo`.
+  So if you are testing push stuff, make sure to set both to `try-comm-central`'s
+  URL.

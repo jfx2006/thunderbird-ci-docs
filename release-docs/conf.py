@@ -147,7 +147,7 @@ NAVIGATION_LINKS = {
             (
                 ("/documentation/drivers/", "Overview"),
                 ('/documentation/drivers/releasenotes/', 'Release Notes'),
-                ('/documentation/drivers/mergeautomation/', 'Merge Automation'),
+                ('/documentation/drivers/mergedayautomation/', 'Merge Day Automation'),
             ),
             'Docs for Drivers'
         )
