@@ -51,7 +51,7 @@ not the related releases that happen on t">
         <div class="dash-nav-dropdown-menu dropdown-menu">
               <a href="../" class="dash-nav-dropdown-item dropdown-item">Overview</a>
               <a href="../releasenotes/" class="dash-nav-dropdown-item dropdown-item">Release Notes</a>
-              <a href="../mergeautomation/" class="dash-nav-dropdown-item dropdown-item">Merge Automation</a>
+              <a href="." class="dash-nav-dropdown-item dropdown-item active">Merge Day Automation <span class="sr-only">(active)</span></a>
         </div>
 
         
@@ -146,6 +146,26 @@ versions (such as 78.x and 91.x) this will need to run twice, overriding
 <li>Communication. It needs to be similar to what has been sent in the past, but
   update the list of steps and refer to this document.</li>
 <li>Update Shipit. Refer to the old documentation on the wiki for what to do.</li>
+</ul>
+<h2>Test runs with a real push</h2>
+<p>You can push to <code>try-comm-central</code> with to-repo/from-repo to test that pushing
+actually works, though it really shouldn't break now that it's working.</p>
+<h2>to-repo, from-repo, to-branch, from-branch?</h2>
+<p>It's kind of confusing...</p>
+<ul>
+<li>to-branch and from-branch are Firefoxtree "branch" names, and correspond
+  to "branches" of code for release purposes</li>
+<li>
+<strong>to-repo</strong> in a merge context is the URL of the destination repository you
+  want to merge into. So for comm-central-to-beta, that's the <em>full URL</em> (https)
+  of comm-beta on hg.m.o.</li>
+<li>
+<strong>from-repo</strong> then is the repo URL you are merging into to-repo. So, comm-central's
+  URL.</li>
+<li>
+<strong>VERY IMPORTANT</strong> Merge day work will push to both <code>to-repo</code> and <code>from-repo</code>.
+  So if you are testing push stuff, make sure to set both to <code>try-comm-central</code>'s
+  URL.</li>
 </ul>
 </div>
     </div>

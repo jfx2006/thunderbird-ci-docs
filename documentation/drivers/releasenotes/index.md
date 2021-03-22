@@ -49,7 +49,9 @@ Within each of those: Mail, Address book, Chat, Calendar, then Mail Extensions.
     release notes.
 * For fixed and changed items, use past tense and state the thing that was
     broken or changed. Don't repeat the word "fixed".
-* Don't link to bugs in the note.
+* Don't link to bugs in the note unless there is good reason.
+* Don't address the user as "you" as the implication is that the user is at
+  fault not the bug.
 * Notes are sentence fragments. Don't start them with 'The', 'A', etc. Don't
     use periods. Unless there is a good reason for the note to have more
     than one sentence.
