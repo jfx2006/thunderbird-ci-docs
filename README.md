@@ -15,7 +15,7 @@ All `nikola` commands below run in release-docs directory
     cd release-docs
 
 ## Creating a new page
-cd .
+
     nikola new_page
 
 ## Dev Server
