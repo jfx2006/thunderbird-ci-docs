@@ -154,7 +154,7 @@ for how to use that repository.</p>
 </li>
 </ul>
 <h2>Generating a bug list</h2>
-<p>Once you have completed the uplifts and have pushed to Mercurial, there is a <code>nach</code>
+<p>Once you have completed the uplifts and have pushed to Mercurial, there is a <code>mach</code>
 command that will help generate a list of bugs that went into the release.</p>
 <p>You need a recent checkout of <code>mozilla-central</code> for <code>mach</code>. It doesn't need
 to be on the same revision or anything.</p>
@@ -170,17 +170,15 @@ mach release buglist --version 85.0b3 --product thunderbird --repo https://hg.mo
 <h2>Don't repeat yourself</h2>
 <p>For writing release notes for an ESR release, ideally any bug that is uplifted
 and requiring a note will already have had a note in a previous beta.</p>
-<p>The copy-paste manual labor can be done with <code>gather_notes.py</code> found in the
+<p>The copy-paste manual labor can be done with <code>mk_esr_notes.py</code> found in the
 thunderbird-notes repo in the tools directory.</p>
-<p><code>gather_notes.py</code> needs the most recent ESR release version and the current beta
-version.</p>
-<pre class="code literal-block">./tools/gather_notes.py &lt;previous_esr&gt; &lt;current_beta&gt;
-./tools/gather_notes.py <span class="m">78</span>.4.3 <span class="m">84</span>.0
-</pre>
-<p><code>gather_notes.py</code> will print out the bugs it found and then pull release notes
-for those bugs from the beta notes directory.</p>
-<p>Then you should have a file <code>ver_notes.yml</code> that will give you a decent starting
-point. Do not publish that as-is!</p>
+<p><strong><code>mk_esr_notes.py</code> requires Python 3 and <code>ruamel.yaml</code>.</strong> It's totally worth it
+though.</p>
+<p><code>mk_esr_notes.py</code> takes no arguments, and produces a near-ready YAML file. Before
+using it, check for backout bugs that should not be included as well as any
+bugs that a note could not be found. Finally, if a link to security notes is
+needed, add that. Move the file to the <code>releases</code> directory, and do a visual
+sanity check with <code>preview.py</code> before pushing.</p>
 </div>
     </div>
     

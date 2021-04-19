@@ -81,7 +81,7 @@ Within each of those: Mail, Address book, Chat, Calendar, then Mail Extensions.
 
 # Generating a bug list
 
-Once you have completed the uplifts and have pushed to Mercurial, there is a `nach`
+Once you have completed the uplifts and have pushed to Mercurial, there is a `mach`
 command that will help generate a list of bugs that went into the release.
 
 You need a recent checkout of `mozilla-central` for `mach`. It doesn't need
@@ -106,19 +106,14 @@ Comparing Mercurial tag THUNDERBIRD_85_0b2_RELEASE to THUNDERBIRD_85_0b3_RELEASE
 For writing release notes for an ESR release, ideally any bug that is uplifted
 and requiring a note will already have had a note in a previous beta.
 
-The copy-paste manual labor can be done with `gather_notes.py` found in the
+The copy-paste manual labor can be done with `mk_esr_notes.py` found in the
 thunderbird-notes repo in the tools directory.
 
-`gather_notes.py` needs the most recent ESR release version and the current beta
-version.
- 
-```bash
-./tools/gather_notes.py <previous_esr> <current_beta>
-./tools/gather_notes.py 78.4.3 84.0
-```
+**`mk_esr_notes.py` requires Python 3 and `ruamel.yaml`.** It's totally worth it
+though.
 
-`gather_notes.py` will print out the bugs it found and then pull release notes
-for those bugs from the beta notes directory.
-
-Then you should have a file `ver_notes.yml` that will give you a decent starting
-point. Do not publish that as-is!
+`mk_esr_notes.py` takes no arguments, and produces a near-ready YAML file. Before
+using it, check for backout bugs that should not be included as well as any
+bugs that a note could not be found. Finally, if a link to security notes is
+needed, add that. Move the file to the `releases` directory, and do a visual
+sanity check with `preview.py` before pushing.
