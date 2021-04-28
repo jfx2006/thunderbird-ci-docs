@@ -39,3 +39,7 @@ bug will be listed in one of these lists.
 * [Next Beta 1 Fixed](buglist/?channel=beta&query=beta-1-next) same list as above,
     but for the next beta 1. This one works prior to merging on merge day to
     facilitate writing release notes before the merges happen.
+  
+* [Beta Regression Fixes](buglist/?channel=beta&query=beta-regressions) Regression
+    bugs in the current beta that have fixes available on nightly -- potential
+    uplift candidates.
