@@ -12,8 +12,9 @@ urlstring = sys.argv[1]
 url = urlparse(urlstring)
 qp = parse_qs(url.query)
 qp['include_fields'] = ''
-del qp['columnlist']
+
 try:
+    del qp['columnlist']
     del qp['known_name']
 except KeyError:
     pass

@@ -320,6 +320,47 @@
               "v8": "eslint",
               "v9": "Use HTML input"
             }
+          },
+          "beta-regressions": {
+            "description": "Bugs identified as regressions in the current beta that are fixed in nightly",
+            "fetch_cols": [
+              "id",
+              "summary",
+              "status",
+              "product",
+              "component",
+              "target_milestone",
+              "priority",
+              "bug_severity",
+              "cf_last_resolved",
+              "cf_status_thunderbird_%CHANNEL%"
+            ],
+            "queryparams": {
+              "include_fields": "",
+              "bug_status": [
+                "RESOLVED",
+                "VERIFIED"
+              ],
+              "classification": [
+                "Client Software",
+                "Developer Infrastructure",
+                "Components",
+                "Server Software",
+                "Other"
+              ],
+              "f1": "cf_status_thunderbird_%CHANNEL%",
+              "f2": "target_milestone",
+              "f3": "product",
+              "keywords": "regression",
+              "keywords_type": "allwords",
+              "o1": "equals",
+              "o2": "allwordssubstr",
+              "o3": "anywordssubstr",
+              "resolution": "FIXED",
+              "v1": "affected",
+              "v2": "%NIGHTLY%",
+              "v3": "MailNews Chat Calendar Thunderbird"
+            }
           }
         }
       },
