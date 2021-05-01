@@ -351,15 +351,18 @@
               "f1": "cf_status_thunderbird_%CHANNEL%",
               "f2": "target_milestone",
               "f3": "product",
+              "f4": "flagtypes.name",
               "keywords": "regression",
               "keywords_type": "allwords",
               "o1": "equals",
               "o2": "allwordssubstr",
               "o3": "anywordssubstr",
+              "o4": "notsubstring",
               "resolution": "FIXED",
               "v1": "affected",
               "v2": "%NIGHTLY%",
-              "v3": "MailNews Chat Calendar Thunderbird"
+              "v3": "MailNews Chat Calendar Thunderbird",
+              "v4": "approval-comm-beta"
             }
           }
         }
