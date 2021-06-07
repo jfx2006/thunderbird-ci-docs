@@ -37,7 +37,7 @@ export default class BZQueryRunner {
     this._validInputs = {
       channel_name: ["release", "beta", "nightly"],
       query_name: ["uplifts-requested", "uplifts-approved", "beta-1-fixed",
-        "beta-1-next", "beta-regressions"],
+        "beta-1-next", "beta-regressions", "beta-affected"],
     }
     this.channel_name = null
     this.query_name = null
