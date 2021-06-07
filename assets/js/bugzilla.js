@@ -6,6 +6,12 @@
 
 import { cachedFetch, paramsCopy } from './utils.js'
 
+// Make sure that HTML content in table data is escaped to avoid XSS or
+// rendering problems
+window.jQuery.extend(window.jQuery.fn.bootstrapTable.columnDefaults, {
+  escape: true
+})
+
 const ColumnMap = {
   id: {
     title: "Bug #",
@@ -31,7 +37,7 @@ export default class BZQueryRunner {
     this._validInputs = {
       channel_name: ["release", "beta", "nightly"],
       query_name: ["uplifts-requested", "uplifts-approved", "beta-1-fixed",
-        "beta-1-next", "beta-regressions"],
+        "beta-1-next", "beta-regressions", "beta-affected"],
     }
     this.channel_name = null
     this.query_name = null

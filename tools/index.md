@@ -43,3 +43,6 @@ bug will be listed in one of these lists.
 * [Beta Regression Fixes](buglist/?channel=beta&query=beta-regressions) Regression
     bugs in the current beta that have fixes available on nightly -- potential
     uplift candidates.
+
+* [Beta Affected](buglist/?channel=beta&query=beta-affected) Non-regression bugs in the
+  current beta that are fixed on Nightly
