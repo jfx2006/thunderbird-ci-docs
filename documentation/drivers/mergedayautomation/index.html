@@ -101,7 +101,18 @@ not the related releases that happen on the same day.</p>
 </pre>
 <p>If the dry-run is successful, run it again, this time setting <code>force-dry-run</code> to
 <code>false</code>.</p>
-<h3>Bump Nightly version</h3>
+<h4>Update .gecko_rev.yml</h4>
+<p><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1720188">Bug 1720188</a></p>
+<h4>Manual step: bump suite version</h4>
+<p>This requires a local clone of comm-beta. Run this after the above pushes to
+comm-beta.</p>
+<ol>
+<li>Edit suite/config/version.txt. Drop "a1" from the version.</li>
+<li>Edit suite/config/version_display.txt. Change "a1" to "b1".</li>
+<li>Commit: "No bug - Bump suite versions. r=me a=merge CLOSED TREE DONTBUILD"</li>
+<li>Push to comm-beta.</li>
+</ol>
+<h3>Bump Daily version</h3>
 <ol>
 <li>Select comm-central repository in Treeherder and select the "merge-automation"
    custom action as above</li>
@@ -112,33 +123,43 @@ not the related releases that happen on the same day.</p>
 <span class="nt">push</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre>
 <p>If the dry-run is successful, run again without <code>force-dry-run</code>.</p>
-<h3>Bump Release version</h3>
-<p><strong>DO NOT RUN THIS</strong></p>
+<h4>Manual step: bump suite version</h4>
+<p>This requires a local clone of comm-central. Run this after the above pushes to
+comm-central.</p>
 <ol>
-<li>Select comm-esr78 repository and select the "merge-automation" custom action</li>
-<li>Update the payload &amp; trigger</li>
+<li>Edit suite/config/version.txt and version_display.txt Increment the minor
+   number in each by 1. The files should be identical when complete.</li>
+<li>Commit: "No bug - Bump suite versions. r=me a=merge CLOSED TREE DONTBUILD"</li>
+<li>Push to comm-central.</li>
 </ol>
+<!-- ## Bump Release version
+
+**DO NOT RUN THIS**
+
+1. Select comm-esr78 repository and select the "merge-automation" custom action
+1. Update the payload & trigger
+
+
 <pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comm-bump-esr</span>
 <span class="nt">force-dry-run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">push</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 </pre>
-<p><em>Note</em>: This is currently set to bump comm-esr78. When there are two release
+
+
+_Note_: This is currently set to bump comm-esr78. When there are two release
 versions (such as 78.x and 91.x) this will need to run twice, overriding
-<code>to-branch</code> and <code>to-repo</code> on one of the runs.</p>
+`to-branch` and `to-repo` on one of the runs.
+
+
 <pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comm-bump-esr</span>
 <span class="nt">force-dry-run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">push</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">to-branch</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comm-esr78</span>
 <span class="nt">to-repo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://hg.mozilla.org/releases/comm-esr78</span>
 </pre>
-<h2>What's not documented here (yet)</h2>
+
+--><h2>What's not documented here (yet)</h2>
 <ul>
-<li>Bump the suite versions. Refer to
-  <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1619767#c38">bug 1619767 comment 38</a>
-  for how this should be done. This will be added to automation later.</li>
-<li>Updating <code>.gecko_rev.yml</code>. This file will be obsoleted as part of the one-repo
-  project. For now, update by hand prior to starting a release.</li>
-<li>Run a l10n_bump on comm-beta.  </li>
 <li>Communication. It needs to be similar to what has been sent in the past, but
   update the list of steps and refer to this document.</li>
 <li>Update Shipit. Refer to the old documentation on the wiki for what to do.</li>
