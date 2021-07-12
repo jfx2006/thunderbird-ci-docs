@@ -46,7 +46,21 @@ push: true
 If the dry-run is successful, run it again, this time setting `force-dry-run` to
 `false`.
 
-## Bump Nightly version
+### Update .gecko_rev.yml
+
+[Bug 1720188](https://bugzilla.mozilla.org/show_bug.cgi?id=1720188)
+
+### Manual step: bump suite version
+
+This requires a local clone of comm-beta. Run this after the above pushes to
+comm-beta.
+
+1. Edit suite/config/version.txt. Drop "a1" from the version.
+1. Edit suite/config/version_display.txt. Change "a1" to "b1".
+1. Commit: "No bug - Bump suite versions. r=me a=merge CLOSED TREE DONTBUILD"
+1. Push to comm-beta.
+
+## Bump Daily version
 
 1. Select comm-central repository in Treeherder and select the "merge-automation"
    custom action as above
@@ -60,7 +74,17 @@ push: true
 
 If the dry-run is successful, run again without `force-dry-run`.
 
-## Bump Release version
+### Manual step: bump suite version
+
+This requires a local clone of comm-central. Run this after the above pushes to
+comm-central.
+
+1. Edit suite/config/version.txt and version_display.txt Increment the minor
+   number in each by 1. The files should be identical when complete.
+1. Commit: "No bug - Bump suite versions. r=me a=merge CLOSED TREE DONTBUILD"
+1. Push to comm-central.
+
+<!-- ## Bump Release version
 
 **DO NOT RUN THIS**
 
@@ -84,15 +108,10 @@ push: true
 to-branch: comm-esr78
 to-repo: https://hg.mozilla.org/releases/comm-esr78
 ```
+-->
 
 # What's not documented here (yet)
 
-* Bump the suite versions. Refer to
-  [bug 1619767 comment 38](https://bugzilla.mozilla.org/show_bug.cgi?id=1619767#c38)
-  for how this should be done. This will be added to automation later.
-* Updating `.gecko_rev.yml`. This file will be obsoleted as part of the one-repo
-  project. For now, update by hand prior to starting a release.
-* Run a l10n_bump on comm-beta.  
 * Communication. It needs to be similar to what has been sent in the past, but
   update the list of steps and refer to this document.
 * Update Shipit. Refer to the old documentation on the wiki for what to do.
