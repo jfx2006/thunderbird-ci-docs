@@ -43,7 +43,8 @@ The changes that should be included in releases notes include:
 * Fixed items
 * Unresolved
 
-Within each of those: Mail, Address book, Chat, Calendar, then Mail Extensions.
+Within each of those: Mail, Address book, Chat, Calendar, then Themes. UI/UX
+changes that are not theme changes can go with the component.
 
 * Don't copy commit message or bug description. They are rarely fit for the
     release notes.
@@ -60,6 +61,7 @@ Within each of those: Mail, Address book, Chat, Calendar, then Mail Extensions.
 * Do not use abbreviations. For example, "pref" should be "preference".
 * Group items that belong to a category together. For example, items with
     Address book can be grouped together.
+* Add a link to mail extension API notes. 
 * Add a note for security fixes pointing to the link is provided by the
     Security team.
 
