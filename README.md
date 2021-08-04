@@ -20,9 +20,10 @@ All `nikola` commands below run in release-docs directory
 
 ## Dev Server
 
-This will start a dev server and open a browser to it.
+This will start a dev server and open a browser to it. Updates automagically
+when files change.
 
-    nikola serve -b
+    nikola auto -b
 
 ## Building
 
