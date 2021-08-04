@@ -12,6 +12,9 @@ export const cachedFetch = (url, options) => {
     } else if (typeof options === "object") {
         expiry = options.seconds || expiry
     }
+    if (document.location.hostname === "127.0.0.1") {
+        expiry = 15
+    }
 
     const fetchUrl = new URL(url, import.meta.url)
 

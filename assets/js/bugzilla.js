@@ -4,12 +4,12 @@
 
 /* global $ */
 
-import { cachedFetch, paramsCopy } from './utils.js'
+import { cachedFetch, paramsCopy } from "./utils.js"
 
 // Make sure that HTML content in table data is escaped to avoid XSS or
 // rendering problems
 window.jQuery.extend(window.jQuery.fn.bootstrapTable.columnDefaults, {
-  escape: true
+  escape: true,
 })
 
 const ColumnMap = {
@@ -28,22 +28,30 @@ const ColumnMap = {
   cf_last_resolved: {
     title: "Resolved",
   },
+  regressed_by: {
+    title: "Regressed By",
+  },
 }
-
 
 // eslint-disable-next-line no-unused-vars
 export default class BZQueryRunner {
   constructor(tableId) {
     this._validInputs = {
-      channel_name: ["release", "beta", "nightly"],
-      query_name: ["uplifts-requested", "uplifts-approved", "beta-1-fixed",
-        "beta-1-next", "beta-regressions", "beta-affected"],
+      channel_name: ["release78", "release91", "beta", "nightly"],
+      query_name: [
+        "uplifts-requested",
+        "uplifts-approved",
+        "beta-1-fixed",
+        "beta-1-next",
+        "affected",
+        "missed",
+      ],
     }
     this.channel_name = null
     this.query_name = null
     this.config = {}
     this._tableId = tableId
-    this.$table = null;
+    this.$table = null
     this.loadParams()
   }
 
@@ -273,12 +281,15 @@ export default class BZQueryRunner {
    */
   async loadConfig() {
     let bugzilla_version = null
+    let current_version = null
     this.config = await this.getJSON("../bug_queries.json")
-    const current_version = await this.getCurrentVersion()
+    current_version = await this.getCurrentVersion()
     const nightly_major = await this.getNightlyMajor()
     if (current_version !== undefined && nightly_major !== undefined) {
-      if (this.channel_name === "release") {
-        bugzilla_version = `esr${current_version.major_version}`
+      if (this.channel_name === "release78") {
+        bugzilla_version = "esr78"
+      } else if (this.channel_name === "release91") {
+        bugzilla_version = `esr91`
       } else if (this.channel_name === "beta") {
         bugzilla_version = current_version.major_version.toString()
       }
@@ -312,8 +323,13 @@ export default class BZQueryRunner {
   getBugzillaURL() {
     if ("BUGZILLA_URL" in this.config) {
       let qp = paramsCopy(this.queryParams)
+      let columns = Array.from(this.fetchColumns)
+      let summary_pos = columns.indexOf("summary")
+      if (summary_pos >= 0) {
+        columns[summary_pos] = "short_desc"
+      }
       qp["query_format"] = "advanced"
-      qp["columnlist"] = qp["include_fields"]
+      qp["columnlist"] = columns.join(",")
       delete qp["include_fields"]
 
       const query_params = $.param(qp, true)
@@ -345,13 +361,12 @@ export default class BZQueryRunner {
         $("#get_data").data("href", query_url.href)
         $("#bug_count").text(`Bug count: ${data.length}`)
         $("#toolbar").removeAttr("hidden")
-      }
+      },
     })
     $(`${this._tableId}-title`).text(this.queryTitle)
-    $(".bug-toolbar").on("click", function() {
+    $(".bug-toolbar").on("click", function () {
       const href = $(this).data("href")
-      if (href)
-        window.open(href)
+      if (href) window.open(href)
     })
   }
 }

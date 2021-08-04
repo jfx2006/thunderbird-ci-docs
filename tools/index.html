@@ -76,42 +76,54 @@ or <em>Approved</em> lists.</p>
 <p><strong>If you have requested an uplift and you do not see it in the Requested
 or Approved lists, contact one of the release drivers via Matrix or 
 NeedInfo in Bugzilla to make sure it gets considered for inclusion.</strong></p>
-<h3>Requested Uplifts</h3>
-<p>Bugs that have <em>approval-comm-beta?</em> or <em>approval-comm-esrXX?</em> flags set. These
-bugs are under consideration for an upcoming beta or release.  </p>
+<h3>Thunderbird Beta</h3>
 <ul>
-<li><a href="buglist/?channel=beta&amp;query=uplifts-requested">Beta Uplifts Requested</a></li>
-<li><a href="buglist/?channel=release&amp;query=uplifts-requested">Release Uplifts Requested</a></li>
+<li>
+<a href="buglist/?channel=beta&amp;query=uplifts-requested">Uplifts Requested</a><ul>
+<li>Bugs under consideration for an upcoming beta.</li>
 </ul>
-<h3>Approved Uplifts</h3>
-<p>The release manager will review and approve uplift requests on a regular basis.
-The <em>approval-comm-beta+</em> or <em>approval-comm-esrXX+</em> flag will be set and the
-bug will be listed in one of these lists.</p>
-<ul>
-<li><a href="buglist/?channel=beta&amp;query=uplifts-approved">Beta Uplifts Approved</a></li>
-<li><a href="buglist/?channel=release&amp;query=uplifts-approved">Release Uplifts Approved</a></li>
+</li>
+<li>
+<a href="buglist/?channel=beta&amp;query=uplifts-approved">Uplifts Approved</a><ul>
+<li>Bugs approved for the next beta.</li>
 </ul>
-<h3>Other useful queries</h3>
+</li>
+<li>
+<a href="buglist/?channel=beta&amp;query=beta-1-fixed">Beta 1 Fixed</a><ul>
+<li>Lists a reduced set of bugs that were fixed during the last development
+  milestone, but not uplifted. It's used as a starting point for writing
+  the release notes for a beta 1 release.</li>
+</ul>
+</li>
+<li>
+<a href="buglist/?channel=beta&amp;query=beta-1-next">Next Beta 1 Fixed</a><ul>
+<li>Same list as above, but for the next beta 1. This one works prior to
+  merging on merge day to facilitate writing release notes before the merges
+  happen.</li>
+</ul>
+</li>
+<li>
+<a href="buglist/?channel=beta&amp;query=affected">Affected</a><ul>
+<li>Bugs affecting Beta that are fixed in Nightly.</li>
+</ul>
+</li>
+<li>
+<a href="buglist/?channel=beta&amp;query=missed">Missed Uplifts</a><ul>
+<li>Bugs approved for Beta uplift that were missed</li>
+</ul>
+</li>
+</ul>
+<h3>Thunderbird 78.x</h3>
 <ul>
-<li>
-<a href="buglist/?channel=beta&amp;query=beta-1-fixed">Beta 1 Fixed</a> lists a reduced set of
-    bugs that were fixed during the last development milestone, but not uplifted.
-    It's used as a starting point for writing the release notes for a beta 1
-    release.</li>
-<li>
-<p><a href="buglist/?channel=beta&amp;query=beta-1-next">Next Beta 1 Fixed</a> same list as above,
-    but for the next beta 1. This one works prior to merging on merge day to
-    facilitate writing release notes before the merges happen.</p>
-</li>
-<li>
-<p><a href="buglist/?channel=beta&amp;query=beta-regressions">Beta Regression Fixes</a> Regression
-    bugs in the current beta that have fixes available on nightly -- potential
-    uplift candidates.</p>
-</li>
-<li>
-<p><a href="buglist/?channel=beta&amp;query=beta-affected">Beta Affected</a> Non-regression bugs in the
-  current beta that are fixed on Nightly</p>
-</li>
+<li><a href="buglist/?channel=release78&amp;query=uplifts-requested">Uplifts Requested</a></li>
+<li><a href="buglist/?channel=release78&amp;query=uplifts-approved">Uplifts Approved</a></li>
+</ul>
+<h3>Thunderbird 91.x</h3>
+<ul>
+<li><a href="buglist/?channel=release91&amp;query=uplifts-requested">Uplifts Requested</a></li>
+<li><a href="buglist/?channel=release91&amp;query=uplifts-approved">Uplifts Approved</a></li>
+<li><a href="buglist/?channel=release91&amp;query=affected">Affected</a></li>
+<li><a href="buglist/?channel=release91&amp;query=missed">Missed Uplifts</a></li>
 </ul>
 </div>
     </div>
