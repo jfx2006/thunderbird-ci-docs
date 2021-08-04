@@ -13,36 +13,33 @@ or *Approved* lists.
 or Approved lists, contact one of the release drivers via Matrix or 
 NeedInfo in Bugzilla to make sure it gets considered for inclusion.**
 
-## Requested Uplifts
+## Thunderbird Beta
 
-Bugs that have *approval-comm-beta?* or *approval-comm-esrXX?* flags set. These
-bugs are under consideration for an upcoming beta or release.  
+* [Uplifts Requested](buglist/?channel=beta&query=uplifts-requested)
+    - Bugs under consideration for an upcoming beta.
+* [Uplifts Approved](buglist/?channel=beta&query=uplifts-approved)
+    - Bugs approved for the next beta.
+* [Beta 1 Fixed](buglist/?channel=beta&query=beta-1-fixed)
+    - Lists a reduced set of bugs that were fixed during the last development
+      milestone, but not uplifted. It's used as a starting point for writing
+      the release notes for a beta 1 release.
+* [Next Beta 1 Fixed](buglist/?channel=beta&query=beta-1-next)
+    - Same list as above, but for the next beta 1. This one works prior to
+      merging on merge day to facilitate writing release notes before the merges
+      happen.
+* [Affected](buglist/?channel=beta&query=affected)
+    - Bugs affecting Beta that are fixed in Nightly.
+* [Missed Uplifts](buglist/?channel=beta&query=missed)
+    - Bugs approved for Beta uplift that were missed
 
-* [Beta Uplifts Requested](buglist/?channel=beta&query=uplifts-requested)
-* [Release Uplifts Requested](buglist/?channel=release&query=uplifts-requested)
+## Thunderbird 78.x
 
-## Approved Uplifts
+* [Uplifts Requested](buglist/?channel=release78&query=uplifts-requested)
+* [Uplifts Approved](buglist/?channel=release78&query=uplifts-approved)
 
-The release manager will review and approve uplift requests on a regular basis.
-The *approval-comm-beta+* or *approval-comm-esrXX+* flag will be set and the
-bug will be listed in one of these lists.
+## Thunderbird 91.x
 
-* [Beta Uplifts Approved](buglist/?channel=beta&query=uplifts-approved)
-* [Release Uplifts Approved](buglist/?channel=release&query=uplifts-approved)
-
-## Other useful queries
-
-* [Beta 1 Fixed](buglist/?channel=beta&query=beta-1-fixed) lists a reduced set of
-    bugs that were fixed during the last development milestone, but not uplifted.
-    It's used as a starting point for writing the release notes for a beta 1
-    release.
-* [Next Beta 1 Fixed](buglist/?channel=beta&query=beta-1-next) same list as above,
-    but for the next beta 1. This one works prior to merging on merge day to
-    facilitate writing release notes before the merges happen.
-  
-* [Beta Regression Fixes](buglist/?channel=beta&query=beta-regressions) Regression
-    bugs in the current beta that have fixes available on nightly -- potential
-    uplift candidates.
-
-* [Beta Affected](buglist/?channel=beta&query=beta-affected) Non-regression bugs in the
-  current beta that are fixed on Nightly
+* [Uplifts Requested](buglist/?channel=release91&query=uplifts-requested)
+* [Uplifts Approved](buglist/?channel=release91&query=uplifts-approved)
+* [Affected](buglist/?channel=release91&query=affected)
+* [Missed Uplifts](buglist/?channel=release91&query=missed)
