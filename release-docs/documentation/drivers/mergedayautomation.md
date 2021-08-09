@@ -48,17 +48,12 @@ If the dry-run is successful, run it again, this time setting `force-dry-run` to
 
 ### Update .gecko_rev.yml
 
-[Bug 1720188](https://bugzilla.mozilla.org/show_bug.cgi?id=1720188)
+The automation will pin to mozilla-beta@default. This will build. A specific
+revision needs to be pinned manuall before releasing beta 1.
 
 ### Manual step: bump suite version
 
-This requires a local clone of comm-beta. Run this after the above pushes to
-comm-beta.
-
-1. Edit suite/config/version.txt. Drop "a1" from the version.
-1. Edit suite/config/version_display.txt. Change "a1" to "b1".
-1. Commit: "No bug - Bump suite versions. r=me a=merge CLOSED TREE DONTBUILD"
-1. Push to comm-beta.
+The automation will change 2.XXa1 to 2.XXb1.
 
 ## Bump Daily version
 
