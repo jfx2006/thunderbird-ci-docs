@@ -61,20 +61,83 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
   <div id="toolbar" hidden>
     <button id="open_bugzilla" class="bug-toolbar btn btn-secondary">Open in Bugzilla</button>
     <button id="get_data" class="bug-toolbar btn btn-secondary">Get Raw Data</button>
+    <button id="bz_apikey" class="bug-toolbar btn btn-outline-warning" data-toggle="modal" data-target="#bzapikey_modal">Bugzilla API Key</button>
     <span id="bug_count"></span>
   </div>
+
+  <div id="bzapikey_modal" class="modal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Bugzilla API Key</h5>
+        </div>
+        <div class="modal-body">
+          <label for="bzapikey_input" class="col-form-label">Enter API key
+            <span id="bzapikey_errmsg" hidden> must be 40 characters</span></label>
+          <input id="bzapikey_input" type="password" class="form-control" size="40">
+</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button id="bzapi_save_key" type="button" class="btn btn-primary">Save</button>
+        </div>
       </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+
+  </script>
+</div>
     </main><!--End of body content--><footer id="footer"></footer>
 </div>
 </div>
 
             <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script src="../../assets/js/bootstrap-table.min.js"></script><script type="module">
       import BZQueryRunner from "../../assets/js/bugzilla.js"
+      import { BZAPIKey } from "../../assets/js/utils.js"
+
+      function update_apiKeyBtn() {
+          let $bz_apikey_btn = $("#bz_apikey")
+          if (BZAPIKey.apikey === null) {
+              $bz_apikey_btn.removeClass("btn-outline-success")
+              $bz_apikey_btn.addClass("btn-outline-warning")
+          } else {
+              $bz_apikey_btn.removeClass("btn-outline-warning")
+              $bz_apikey_btn.addClass("btn-outline-success")
+          }
+      }
 
       $("#content").removeClass("container").addClass("container-fluid")
       window.addEventListener(
-          'DOMContentLoaded', () => new BZQueryRunner("#bugquery"), {once: true});
+          'DOMContentLoaded', () => {
+              update_apiKeyBtn()
+              new BZQueryRunner("#bugquery")
+          }, {once: true})
 
+      $("#bzapikey_modal").on("show.bs.modal", function (e) {
+          $("#bzapikey_input").val("")
+          $("#bzapikey_errmsg").addClass("hidden")
+      })
+
+      $("#bzapi_save_key").click(function () {
+          let $input = $("#bzapikey_input")
+          let $input_errmsg = $("#bzapikey_errmsg")
+          let input_value = $input.val()
+          if (input_value.length !== 40) {
+              $input.addClass("is-invalid")
+              $input_errmsg.removeAttr("hidden")
+              return
+          }
+          try {
+              BZAPIKey.apikey = input_value
+          } catch (e) {
+              throw e
+          }
+          $input.removeClass("is-invalid")
+          $input_errmsg.attr("hidden")
+          $("#bzapikey_modal").modal("hide")
+          update_apiKeyBtn()
+      })
   </script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',

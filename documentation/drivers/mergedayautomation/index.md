@@ -49,9 +49,9 @@ If the dry-run is successful, run it again, this time setting `force-dry-run` to
 ### Update .gecko_rev.yml
 
 The automation will pin to mozilla-beta@default. This will build. A specific
-revision needs to be pinned manuall before releasing beta 1.
+revision needs to be pinned manually before releasing beta 1.
 
-### Manual step: bump suite version
+### Suite version
 
 The automation will change 2.XXa1 to 2.XXb1.
 
