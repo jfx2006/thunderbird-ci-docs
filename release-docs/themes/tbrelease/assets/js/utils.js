@@ -78,4 +78,20 @@ export const paramsCopy = (obj) => {
     return newObject
 }
 
-export default { cachedFetch, cacheClearKey, paramsCopy }
+class _BZAPIKey {
+    storageKey = "bz_api_key"
+    get apikey() {
+        return localStorage.getItem(this.storageKey)
+    }
+    set apikey(k) {
+        if ((typeof(k) === "string") && (k.length === 40)) {
+            localStorage.setItem(this.storageKey, k)
+        } else {
+            throw "BZAPIKey: API key must be a string of length 40 characters."
+        }
+    }
+}
+
+export const BZAPIKey = new _BZAPIKey()
+
+export default { cachedFetch, cacheClearKey, paramsCopy, BZAPIKey }

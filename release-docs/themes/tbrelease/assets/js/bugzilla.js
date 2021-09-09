@@ -4,7 +4,7 @@
 
 /* global $ */
 
-import { cachedFetch, paramsCopy } from "./utils.js"
+import { cachedFetch, paramsCopy, BZAPIKey } from "./utils.js"
 
 // Make sure that HTML content in table data is escaped to avoid XSS or
 // rendering problems
@@ -309,6 +309,10 @@ export default class BZQueryRunner {
   renderFetchData() {
     if ("BUGZILLA_REST_URL" in this.config) {
       const qp = this.queryParams
+      const apikey = BZAPIKey.apikey
+      if (apikey !== null) {
+        qp["api_key"] = apikey
+      }
       const query_params = $.param(qp, true)
       const query_url = new URL(this.config.BUGZILLA_REST_URL)
       query_url.search = query_params
