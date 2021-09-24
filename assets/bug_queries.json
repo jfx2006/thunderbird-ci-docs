@@ -193,7 +193,7 @@
               "Server Software",
               "Other"
             ],
-            "f1": "cf_status_thunderbird_91",
+            "f1": "cf_status_thunderbird_esr91",
             "f2": "target_milestone",
             "f3": "product",
             "f4": "flagtypes.name",
