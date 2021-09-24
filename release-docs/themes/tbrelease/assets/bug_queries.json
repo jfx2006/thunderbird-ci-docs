@@ -196,13 +196,16 @@
             "f1": "cf_status_thunderbird_esr91",
             "f2": "product",
             "f3": "flagtypes.name",
+            "f4": "target_milestone",
             "o1": "equals",
             "o2": "anywordssubstr",
             "o3": "notsubstring",
+            "o4": "notequals",
             "resolution": "FIXED",
             "v1": "affected",
             "v2": "MailNews Chat Calendar Thunderbird",
-            "v3": "approval-comm-%CHANNEL%"
+            "v3": "approval-comm-%CHANNEL%",
+            "v4": "91 Branch"
           }
         },
         "missed": {
