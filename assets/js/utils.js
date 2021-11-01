@@ -61,6 +61,17 @@ export const cacheClearKey = (cacheKey) => {
     localStorage.removeItem(cacheTS)
 }
 
+/* Get a text file via URL */
+export async function getTextURL(url)
+{
+    return cachedFetch(url, 3600)
+        .then((response) => response.text())
+        .catch((error) => {
+            console.error("Error:", error)
+        })
+}
+
+
 /**
  * It's deep enough copy to work for our purposes
  */

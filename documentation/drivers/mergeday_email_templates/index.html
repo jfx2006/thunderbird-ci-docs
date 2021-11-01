@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merge Day Emails | Thunderbird Release Documentation</title>
+<link href="../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#2284fe">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../rss.xml">
+<link rel="canonical" href="https://jfx2006.github.io/thunderbird-release/documentation/drivers/mergeday_email_templates/">
+<link rel="favicon" href="../../../favicon.ico" sizes="48x48">
+<!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><link href="../../../assets/css/tbrelease.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="dash">
+  <div class="dash-nav dash-nav-dark">
+    <header><a href="../../../" class="spur-logo">
+          <img src="../../../images/thunderbird-watermark.svg" alt="Thunderbird Release Documentation" id="logo" class="d-inline-block align-top"></a>
+    </header><nav class="dash-nav-list"><ul class="nav nav-pills flex-column">
+<li class="dash-nav-item">
+<a href="../../" class="nav-link">About Thunderbird Releases</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../../dashboard/" class="nav-link">Release Dashboard</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../../tools/" class="nav-link">Release Tools</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../developers/" class="nav-link">Docs for Devs</a>
+      </li>
+<li class="dash-nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs for Drivers</a>
+        <div class="dash-nav-dropdown-menu dropdown-menu">
+              <a href="../" class="dash-nav-dropdown-item dropdown-item">Overview</a>
+              <a href="../releasenotes/" class="dash-nav-dropdown-item dropdown-item">Release Notes</a>
+              <a href="../mergedayautomation/" class="dash-nav-dropdown-item dropdown-item">Merge Day Automation</a>
+              <a href="." class="dash-nav-dropdown-item dropdown-item active">Merge Day Email Templates <span class="sr-only">(active)</span></a>
+        </div>
+
+        
+      </li>
+</ul></nav>
+</div>
+
+  <div class="dash-app" id="content" role="main">
+    <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
+      
+    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
+  <header class="dashboard-header"><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Merge Day Emails</a></h1>
+
+    
+  </header><div class="dashboard-wrapper">
+    <div>
+<h2>Announcement Email</h2>
+<p><em>Send this email the morning of the merge. Be sure to check whether the
+Mozilla merges have finished and adjust the first paragraph accordingly.</em></p>
+<hr>
+<p><strong>Subject:</strong> Thunderbird beta merge for <span class="date today"></span> (c-c -&gt; <span class="milestone nightly"></span> / c-b -&gt; <span class="milestone beta"></span>)</p>
+<p>Hello!</p>
+<p>I’ll be doing the beta merge today. The Firefox merges <strong>have/have not</strong> completed.</p>
+<p>comm-central is going to version <span class="milestone nightly"></span>, and comm-beta to <span class="milestone beta"></span>.</p>
+<p>The merge will be performed via automation.</p>
+<p>I’ll keep people up to date by replying to this email:</p>
+<ul>
+<li>Email before merge begins</li>
+<li>Close the trees</li>
+<li>Perform the merge</li>
+<li>Email after the merge</li>
+<li>Re-open comm-central, set comm-beta to approval needed</li>
+</ul>
+<p>Please let me know if you have any questions or comments.</p>
+<p>Thanks,</p>
+<hr>
+<h2>Conclusion Email</h2>
+<p><em>Send this email after you've completed the work.</em></p>
+<hr>
+<p><strong>Merges are finished.</strong></p>
+<p>Thunderbird <span class="milestone beta"></span>beta1 will be built once the Firefox build has
+been tagged in Mercurial.</p>
+<p>comm-beta:</p>
+<ul>
+<li><strong>TREEHERDER LINK</strong></li>
+</ul>
+<p>comm-central:</p>
+<ul>
+<li><strong>TREEHERDER LINKS (3)</strong></li>
+</ul>
+<p>shipit:</p>
+<ul>
+<li><strong>SHIPIT PULL REQUEST LINK</strong></li>
+</ul>
+<p>documentation:</p>
+<ul>
+<li>No changes</li>
+</ul>
+<p>current tree status:</p>
+<ul>
+<li>comm-beta: <span style="weight:900; color:#f0ad4e">APPROVAL REQUIRED</span>
+</li>
+<li>comm-central: <span style="weight:900; color:#5cb85c">OPEN</span>
+</li>
+</ul>
+<hr>
+</div>
+  </div>
+      </div>
+    </main><!--End of body content--><footer id="footer"></footer>
+</div>
+</div>
+
+            <script src="../../../assets/js/jquery.min.js"></script><script src="../../../assets/js/popper.min.js"></script><script src="../../../assets/js/bootstrap.min.js"></script><script src="../../../assets/js/baguetteBox.min.js"></script><script type="module">
+  import {getTextURL} from "../../../assets/js/utils.js"
+
+  const NIGHTLY_VERSION_URL = "https://hg.mozilla.org/comm-central/raw-file/tip/mail/config/version_display.txt"
+
+  function doReplaceMilestones(branch, version) {
+      let elems = document.querySelectorAll(`.milestone.${branch}`)
+      for (let e of elems) {
+          e.innerText = version
+      }
+  }
+
+  function doReplaceToday() {
+      let today = new Date()
+      const today_str = today.toDateString()
+      let elems = document.querySelectorAll(".date.today")
+      for (let e of elems) {
+          e.innerText = today_str
+      }
+  }
+
+  getTextURL(NIGHTLY_VERSION_URL)
+    .then(result => {
+      let nightly_ms = result.replace(".0a1\n", "")
+      let beta_ms = (Number(nightly_ms) - 1).toString(10)
+
+      doReplaceMilestones("nightly", nightly_ms)
+      doReplaceMilestones("beta", beta_ms)
+      doReplaceToday()
+    })
+</script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function (element) {
+            return element.getElementsByTagName('img')[0].alt;
+        }
+    });
+</script>
+</body>
+</html>
