@@ -5,7 +5,8 @@
 <script type="module">
   import {getTextURL} from "../../../assets/js/utils.js"
 
-  const NIGHTLY_VERSION_URL = "https://hg.mozilla.org/comm-central/raw-file/tip/mail/config/version_display.txt"
+  const TB_NIGHTLY_VERSION_URL = "https://hg.mozilla.org/comm-central/raw-file/tip/mail/config/version_display.txt"
+  const FF_NIGHTLY_VERSION_URL = "https://hg.mozilla.org/mozilla-central/raw-file/tip/browser/config/version_display.txt"
 
   function doReplaceMilestones(branch, version) {
       let elems = document.querySelectorAll(`.milestone.${branch}`)
@@ -23,15 +24,27 @@
       }
   }
 
-  getTextURL(NIGHTLY_VERSION_URL)
-    .then(result => {
-      let nightly_ms = result.replace(".0a1\n", "")
-      let beta_ms = (Number(nightly_ms) - 1).toString(10)
+  const tb_nightly_ver = await getTextURL(TB_NIGHTLY_VERSION_URL)
+  const ff_nightly_ver = await getTextURL(FF_NIGHTLY_VERSION_URL)
 
-      doReplaceMilestones("nightly", nightly_ms)
-      doReplaceMilestones("beta", beta_ms)
-      doReplaceToday()
-    })
+  // The Thunderbird versions need to be incremented to what the new major versions
+  // will be post merge so that the emails make sense.
+  let tb_nightly_ms = Number(tb_nightly_ver.replace(".0a1\n", ""))
+  let tb_beta_ms = tb_nightly_ms
+  tb_nightly_ms = tb_nightly_ms + 1
+
+  // Check to see if the Firefox bump-central has happened. That's the last
+  // step of their process. Firefox merges are complete (enough) if the
+  // FF Nightly version from Mercurial matches the (incremented) TB Nightly
+  // version.
+  let ff_nightly_ms = Number(ff_nightly_ver.replace(".0a1\n", ""))
+  if (ff_nightly_ms === tb_nightly_ms) {
+      document.getElementById("ff_merge_negate").remove()
+  }
+
+  doReplaceMilestones("nightly", tb_nightly_ms.toString(10))
+  doReplaceMilestones("beta", tb_beta_ms.toString(10))
+  doReplaceToday()
 </script>
 {% endblock %}
 

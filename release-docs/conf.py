@@ -148,7 +148,7 @@ NAVIGATION_LINKS = {
                 ("/documentation/drivers/", "Overview"),
                 ('/documentation/drivers/releasenotes/', 'Release Notes'),
                 ('/documentation/drivers/mergedayautomation/', 'Merge Day Automation'),
-                ('/documentation/drivers/mergeday_email_templates/', 'Merge Day Email Templates'),
+                ('/documentation/drivers/mergeday_email_templates/', 'Merge Emails'),
             ),
             'Docs for Drivers'
         )

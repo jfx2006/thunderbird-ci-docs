@@ -4,10 +4,13 @@ date: 2021-11-01 14:24:25 UTC
 type: text
 template: emails.tmpl
 
+The date and version numbers will be correct assuming this page is loaded
+prior to starting the actual merge work. Proofread and verify prior to hitting
+Send.
+
 # Announcement Email
 
-_Send this email the morning of the merge. Be sure to check whether the
-Mozilla merges have finished and adjust the first paragraph accordingly._
+_Send this email the morning of the merge._
 
 ---
 
@@ -15,7 +18,7 @@ Mozilla merges have finished and adjust the first paragraph accordingly._
 
 Hello!
 
-I’ll be doing the beta merge today. The Firefox merges **have/have not** completed.
+I’ll be doing the beta merge today. The Firefox merges **have <span id="ff_merge_negate">not</span>** completed.
 
 comm-central is going to version {{% milestone nightly %}}, and comm-beta to {{% milestone beta %}}.
 
