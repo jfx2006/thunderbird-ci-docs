@@ -42,7 +42,7 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
               <a href="../" class="dash-nav-dropdown-item dropdown-item">Overview</a>
               <a href="../releasenotes/" class="dash-nav-dropdown-item dropdown-item">Release Notes</a>
               <a href="../mergedayautomation/" class="dash-nav-dropdown-item dropdown-item">Merge Day Automation</a>
-              <a href="." class="dash-nav-dropdown-item dropdown-item active">Merge Day Email Templates <span class="sr-only">(active)</span></a>
+              <a href="." class="dash-nav-dropdown-item dropdown-item active">Merge Emails <span class="sr-only">(active)</span></a>
         </div>
 
         
@@ -59,13 +59,15 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
     
   </header><div class="dashboard-wrapper">
     <div>
+<p>The date and version numbers will be correct assuming this page is loaded
+prior to starting the actual merge work. Proofread and verify prior to hitting
+Send.</p>
 <h2>Announcement Email</h2>
-<p><em>Send this email the morning of the merge. Be sure to check whether the
-Mozilla merges have finished and adjust the first paragraph accordingly.</em></p>
+<p><em>Send this email the morning of the merge.</em></p>
 <hr>
 <p><strong>Subject:</strong> Thunderbird beta merge for <span class="date today"></span> (c-c -&gt; <span class="milestone nightly"></span> / c-b -&gt; <span class="milestone beta"></span>)</p>
 <p>Hello!</p>
-<p>I’ll be doing the beta merge today. The Firefox merges <strong>have/have not</strong> completed.</p>
+<p>I’ll be doing the beta merge today. The Firefox merges <strong>have <span id="ff_merge_negate">not</span></strong> completed.</p>
 <p>comm-central is going to version <span class="milestone nightly"></span>, and comm-beta to <span class="milestone beta"></span>.</p>
 <p>The merge will be performed via automation.</p>
 <p>I’ll keep people up to date by replying to this email:</p>
@@ -119,7 +121,8 @@ been tagged in Mercurial.</p>
             <script src="../../../assets/js/jquery.min.js"></script><script src="../../../assets/js/popper.min.js"></script><script src="../../../assets/js/bootstrap.min.js"></script><script src="../../../assets/js/baguetteBox.min.js"></script><script type="module">
   import {getTextURL} from "../../../assets/js/utils.js"
 
-  const NIGHTLY_VERSION_URL = "https://hg.mozilla.org/comm-central/raw-file/tip/mail/config/version_display.txt"
+  const TB_NIGHTLY_VERSION_URL = "https://hg.mozilla.org/comm-central/raw-file/tip/mail/config/version_display.txt"
+  const FF_NIGHTLY_VERSION_URL = "https://hg.mozilla.org/mozilla-central/raw-file/tip/browser/config/version_display.txt"
 
   function doReplaceMilestones(branch, version) {
       let elems = document.querySelectorAll(`.milestone.${branch}`)
@@ -137,15 +140,27 @@ been tagged in Mercurial.</p>
       }
   }
 
-  getTextURL(NIGHTLY_VERSION_URL)
-    .then(result => {
-      let nightly_ms = result.replace(".0a1\n", "")
-      let beta_ms = (Number(nightly_ms) - 1).toString(10)
+  const tb_nightly_ver = await getTextURL(TB_NIGHTLY_VERSION_URL)
+  const ff_nightly_ver = await getTextURL(FF_NIGHTLY_VERSION_URL)
 
-      doReplaceMilestones("nightly", nightly_ms)
-      doReplaceMilestones("beta", beta_ms)
-      doReplaceToday()
-    })
+  // The Thunderbird versions need to be incremented to what the new major versions
+  // will be post merge so that the emails make sense.
+  let tb_nightly_ms = Number(tb_nightly_ver.replace(".0a1\n", ""))
+  let tb_beta_ms = tb_nightly_ms
+  tb_nightly_ms = tb_nightly_ms + 1
+
+  // Check to see if the Firefox bump-central has happened. That's the last
+  // step of their process. Firefox merges are complete (enough) if the
+  // FF Nightly version from Mercurial matches the (incremented) TB Nightly
+  // version.
+  let ff_nightly_ms = Number(ff_nightly_ver.replace(".0a1\n", ""))
+  if (ff_nightly_ms === tb_nightly_ms) {
+      document.getElementById("ff_merge_negate").remove()
+  }
+
+  doReplaceMilestones("nightly", tb_nightly_ms.toString(10))
+  doReplaceMilestones("beta", tb_beta_ms.toString(10))
+  doReplaceToday()
 </script><script>
     baguetteBox.run('div#content', {
         ignoreClass: 'islink',
