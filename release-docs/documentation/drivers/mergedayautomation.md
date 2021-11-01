@@ -18,7 +18,8 @@ On Merge day:
 
 # Communication
 
-This section needs to be written still.
+Send emails to the thunderbird-drivers list with information about the merge
+and status updates. Templates are [here](../mergeday_email_templates)
 
 # Steps
 
@@ -107,8 +108,6 @@ to-repo: https://hg.mozilla.org/releases/comm-esr78
 
 # What's not documented here (yet)
 
-* Communication. It needs to be similar to what has been sent in the past, but
-  update the list of steps and refer to this document.
 * Update Shipit. Refer to the old documentation on the wiki for what to do.
 
 

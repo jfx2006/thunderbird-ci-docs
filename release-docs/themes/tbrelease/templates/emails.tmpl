@@ -1,0 +1,46 @@
+{% extends 'base.tmpl' %}
+{% import 'post_header.tmpl' as pheader with context %}
+
+{% block extra_js %}
+<script type="module">
+  import {getTextURL} from "../../../assets/js/utils.js"
+
+  const NIGHTLY_VERSION_URL = "https://hg.mozilla.org/comm-central/raw-file/tip/mail/config/version_display.txt"
+
+  function doReplaceMilestones(branch, version) {
+      let elems = document.querySelectorAll(`.milestone.${branch}`)
+      for (let e of elems) {
+          e.innerText = version
+      }
+  }
+
+  function doReplaceToday() {
+      let today = new Date()
+      const today_str = today.toDateString()
+      let elems = document.querySelectorAll(".date.today")
+      for (let e of elems) {
+          e.innerText = today_str
+      }
+  }
+
+  getTextURL(NIGHTLY_VERSION_URL)
+    .then(result => {
+      let nightly_ms = result.replace(".0a1\n", "")
+      let beta_ms = (Number(nightly_ms) - 1).toString(10)
+
+      doReplaceMilestones("nightly", nightly_ms)
+      doReplaceMilestones("beta", beta_ms)
+      doReplaceToday()
+    })
+</script>
+{% endblock %}
+
+{% block content %}
+  <header class="dashboard-header">
+    {{ pheader.html_title() }}
+    {{ pheader.html_translations(post) }}
+  </header>
+  <div class="dashboard-wrapper">
+    {{ post.text() }}
+  </div>
+{% endblock %}
