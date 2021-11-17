@@ -37,7 +37,7 @@ const ColumnMap = {
 export default class BZQueryRunner {
   constructor(tableId) {
     this._validInputs = {
-      channel_name: ["release78", "release91", "beta", "nightly"],
+      channel_name: ["release91", "beta", "nightly"],
       query_name: [
         "uplifts-requested",
         "uplifts-approved",
@@ -286,9 +286,7 @@ export default class BZQueryRunner {
     current_version = await this.getCurrentVersion()
     const nightly_major = await this.getNightlyMajor()
     if (current_version !== undefined && nightly_major !== undefined) {
-      if (this.channel_name === "release78") {
-        bugzilla_version = "esr78"
-      } else if (this.channel_name === "release91") {
+      if (this.channel_name === "release91") {
         bugzilla_version = `esr91`
       } else if (this.channel_name === "beta") {
         bugzilla_version = current_version.major_version.toString()
