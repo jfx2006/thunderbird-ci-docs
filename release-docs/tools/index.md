@@ -32,11 +32,6 @@ NeedInfo in Bugzilla to make sure it gets considered for inclusion.**
 * [Missed Uplifts](buglist/?channel=beta&query=missed)
     - Bugs approved for Beta uplift that were missed
 
-## Thunderbird 78.x
-
-* [Uplifts Requested](buglist/?channel=release78&query=uplifts-requested)
-* [Uplifts Approved](buglist/?channel=release78&query=uplifts-approved)
-
 ## Thunderbird 91.x
 
 * [Uplifts Requested](buglist/?channel=release91&query=uplifts-requested)
