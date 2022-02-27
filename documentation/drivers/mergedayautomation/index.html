@@ -96,9 +96,9 @@ and status updates. Templates are <a href="../mergeday_email_templates">here</a>
 <li>Update the payload &amp; trigger (note that with <code>force-dry-run</code> set to <code>true</code>, the value of
    <code>push</code> is ignored)</li>
 </ol>
-<pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comm-central-to-beta</span>
-<span class="nt">force-dry-run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">push</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-central-to-beta</span><span class="w"></span>
+<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </pre>
 <p>If the dry-run is successful, run it again, this time setting <code>force-dry-run</code> to
 <code>false</code>.</p>
@@ -113,9 +113,9 @@ revision needs to be pinned manually before releasing beta 1.</p>
    custom action as above</li>
 <li>Update the payload &amp; trigger</li>
 </ol>
-<pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comm-bump-central</span>
-<span class="nt">force-dry-run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">push</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-bump-central</span><span class="w"></span>
+<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </pre>
 <p>If the dry-run is successful, run again without <code>force-dry-run</code>.</p>
 <h4>Manual step: bump suite version</h4>
@@ -135,9 +135,9 @@ comm-central.</p>
 1. Update the payload & trigger
 
 
-<pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comm-bump-esr</span>
-<span class="nt">force-dry-run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">push</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+<pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-bump-esr</span><span class="w"></span>
+<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
 </pre>
 
 
@@ -146,11 +146,11 @@ versions (such as 78.x and 91.x) this will need to run twice, overriding
 `to-branch` and `to-repo` on one of the runs.
 
 
-<pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comm-bump-esr</span>
-<span class="nt">force-dry-run</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">push</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">to-branch</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">comm-esr78</span>
-<span class="nt">to-repo</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://hg.mozilla.org/releases/comm-esr78</span>
+<pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-bump-esr</span><span class="w"></span>
+<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="nt">to-branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-esr78</span><span class="w"></span>
+<span class="nt">to-repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://hg.mozilla.org/releases/comm-esr78</span><span class="w"></span>
 </pre>
 
 --><h2>What's not documented here (yet)</h2>
