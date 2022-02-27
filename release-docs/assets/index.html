@@ -1,43 +1,57 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<head>
-  <title>Thunderbird Release Health</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css"/>
-  <link rel="shortcut icon" type="image/svg+xml" href="favicon.ico"/>
-  <link rel="stylesheet" type="text/css" href="css/landing.css">
-</head>
-<body>
-<header>
-  <hgroup>
-    <h1 id="title">Thunderbird Releases</h1>
-  </hgroup>
-</header>
-<div id="content">
-  <div class="content-head">
-    <h1>Current Versions</h1>
-  </div>
-  <div class="content-wrapper">
-    <div class="channel" id="release"></div>
-    <div class="channel" id="beta"></div>
-    <div class="channel" id="nightly"></div>
-  </div>
-</div>
-<footer>
-  <nav>
-    <h2>Projects:</h2>
-    <ul>
-      <li><a href="documentation/">Documentation</a></li>
-      <li><a href="dashboard/">Dashboard</a></li>
-      <li><a href="tools/">Tools</a></li>
-    </ul>
-  </nav>
-  <div>
-    <span id="github"><a href="https://github.com/jfx2006/thunderbird-ci-docs/tree/docs"
-                         aria-label="Fork me on GitHub"><span class="icon" aria-hidden="true">&#xF09B;</span></a></span>
-  </div>
-</footer>
-<script src="js/landing.js" type="module"></script>
-</body>
+  <head>
+    <title>Thunderbird Release Health</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css" />
+    <link rel="shortcut icon" type="image/svg+xml" href="favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/landing.css" />
+  </head>
+  <body>
+    <header>
+      <hgroup>
+        <h1 id="title">Thunderbird Releases</h1>
+      </hgroup>
+    </header>
+    <div id="content">
+      <div class="col">
+        <div class="upcoming-head">
+          <h1>Upcoming Releases</h1>
+        </div>
+        <table id="upcoming-body">
+        </table>
+      </div>
+      <div class="col">
+        <div class="content-head">
+          <h1>Current Versions</h1>
+        </div>
+        <div class="content-wrapper">
+          <div class="channel" id="release"></div>
+          <div class="channel" id="beta"></div>
+          <div class="channel" id="nightly"></div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <nav>
+        <h2>Projects:</h2>
+        <ul>
+          <li><a href="documentation/">Documentation</a></li>
+          <li><a href="dashboard/">Dashboard</a></li>
+          <li><a href="tools/">Tools</a></li>
+        </ul>
+      </nav>
+      <div>
+        <span id="github"
+          ><a
+            href="https://github.com/jfx2006/thunderbird-ci-docs/tree/docs"
+            aria-label="Fork me on GitHub"
+            ><span class="icon" aria-hidden="true">&nbsp;</span></a
+          ></span
+        >
+      </div>
+    </footer>
+    <script src="js/landing.js" type="module"></script>
+  </body>
 </html>
