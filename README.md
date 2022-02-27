@@ -1,4 +1,4 @@
-# Thunderbird Release Documentation
+# Thunderbird Release Documen       tation
 
 This repo contains documentation related to the Thunderbird release process.
 
