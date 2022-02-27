@@ -7,7 +7,7 @@ import { ThunderbirdProductDetails } from './product-details.js'
 
 function Landing() {
     const calId = "jgarvd0cmlt3599e7gthhk01a8@group.calendar.google.com"
-    const calKey = "AIzaSyAltD4ljzWSekk8ZAh5FCDqC5gvMz8Qkwg"
+    const calKey = "AIzaSyD03H3uW38Q1GGtWADDy0lsJxxJN7luRBU"
     const RELEASE_URL = `https://www.googleapis.com/calendar/v3/calendars/${calId}/events?key=${calKey}&orderBy=startTime&singleEvents=true&timeZone=UTC`
 
     function capitalizeFirstLetter(val) {
