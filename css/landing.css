@@ -1,8 +1,3 @@
-@font-face {
-    font-family: FontAwesome-GitHub;
-    src: url("../fonts/FontAwesome-GitHub.woff2") format('woff2');
-}
-
 body {
     display: flex;
     flex-direction: column;
@@ -78,41 +73,65 @@ header h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 
-.content-head {
+.col {
+    width: 50%;
+    height: 100%;
+}
+
+.content-head, .upcoming-head {
     width: 100%;
     display: block;
     text-align: center;
 }
 
-.content-head h1 {
+.content-head h1, .upcoming-head h1 {
     font-size: 3vmax;
+    font-weight: bold;
 }
 
 .content-wrapper {
     display: flex;
+    flex-direction: column;
 }
 
 .channel {
     display: flex;
-    padding: 2.5vmax;
-    flex-direction: column;
+    padding: 1.5vmax;
+    flex-direction: row;
 }
 
-.channel h2 {
+.channel .release {
     margin: 0 auto;
-    font-size: 3vmax;
+    font-size: 2vmax;
     font-weight: inherit;
     width: 20vmax;
 }
 
 .channel a {
-    font-size: 2.5vmax;
+    font-size: 2vmax;
     display: block;
     width: 20vmax;
-    padding-top: 25px;
+}
+
+#upcoming-body {
+    width: 100%;
+}
+
+.upcoming-release td {
+    padding-top: 1.5vmax;
+    padding-bottom: 1.5vmax;
+}
+
+.upcoming-release td.upcoming-date {
+    font-size: 2vmax;
+    font-weight: bold;
+}
+
+.upcoming-release td.upcoming-version {
+    font-size: 2vmax;
 }
 
 a {
@@ -168,9 +187,11 @@ footer div {
 }
 
 footer #github .icon {
-    font-family: "FontAwesome-GitHub";
-    font-size: 1.2em;
-    vertical-align: top;
+    background-image: url("../images/github.svg");
+    background-repeat: no-repeat;
+    height: 64px;
+    width: 64px;
+    display: block;
 }
 
 
