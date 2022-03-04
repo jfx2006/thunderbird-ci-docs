@@ -1,5 +1,7 @@
-{% extends 'base.tmpl' %}
+{#  -*- coding: utf-8 -*- #}
+{% import 'post_helper.tmpl' as helper with context %}
 {% import 'post_header.tmpl' as pheader with context %}
+{% extends 'post.tmpl' %}
 
 {% block extra_js %}
 <script type="module">
@@ -49,11 +51,14 @@
 {% endblock %}
 
 {% block content %}
-  <header class="dashboard-header">
+<article class="post-{{ post.meta('type') }} storypage" itemscope="itemscope"
+           itemtype="http://schema.org/Article">
+  <header>
     {{ pheader.html_title() }}
     {{ pheader.html_translations(post) }}
   </header>
-  <div class="dashboard-wrapper">
+  <div class="e-content entry-content" itemprop="articleBody text">
     {{ post.text() }}
   </div>
+</article>
 {% endblock %}
