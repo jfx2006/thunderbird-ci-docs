@@ -106,10 +106,22 @@ to-repo: https://hg.mozilla.org/releases/comm-esr78
 ```
 -->
 
-# What's not documented here (yet)
+# Update Ship-It
 
-* Update Shipit. Refer to the old documentation on the wiki for what to do.
+Mozilla's [Ship-It](https://github.com/mozilla-releng/shipit) tool must be
+updated with the new Daily version number.
 
+## Changes
+
+* Modify `api/src/shipit_api/common/config.py` and update the
+  `LATEST_THUNDERBIRD_NIGHTLY_VERSION` variable to be the new version of
+  comm-central.
+* Create a pull request with the changes. [Example](https://github.com/mozilla-releng/shipit/pull/1004)
+  * In the pull request, @mention one of the Ship-It code owners to make sure
+    the request is seen. You can also say something in #releaseduty on Matrix.
+
+If you are not familiar with Github's Fork & Pull workflow model,
+see [here](https://reflectoring.io/github-fork-and-pull/) for an introduction.
 
 # Test runs with a real push
 

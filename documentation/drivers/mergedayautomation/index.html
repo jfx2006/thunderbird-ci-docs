@@ -153,10 +153,21 @@ versions (such as 78.x and 91.x) this will need to run twice, overriding
 <span class="nt">to-repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://hg.mozilla.org/releases/comm-esr78</span><span class="w"></span>
 </pre>
 
---><h2>What's not documented here (yet)</h2>
+--><h2>Update Ship-It</h2>
+<p>Mozilla's <a href="https://github.com/mozilla-releng/shipit">Ship-It</a> tool must be
+updated with the new Daily version number.</p>
+<h3>Changes</h3>
 <ul>
-<li>Update Shipit. Refer to the old documentation on the wiki for what to do.</li>
+<li>Modify <code>api/src/shipit_api/common/config.py</code> and update the
+  <code>LATEST_THUNDERBIRD_NIGHTLY_VERSION</code> variable to be the new version of
+  comm-central.</li>
+<li>Create a pull request with the changes. <a href="https://github.com/mozilla-releng/shipit/pull/1004">Example</a>
+</li>
+<li>In the pull request, @mention one of the Ship-It code owners to make sure
+    the request is seen. You can also say something in #releaseduty on Matrix.</li>
 </ul>
+<p>If you are not familiar with Github's Fork &amp; Pull workflow model,
+see <a href="https://reflectoring.io/github-fork-and-pull/">here</a> for an introduction.</p>
 <h2>Test runs with a real push</h2>
 <p>You can push to <code>try-comm-central</code> with to-repo/from-repo to test that pushing
 actually works, though it really shouldn't break now that it's working.</p>
