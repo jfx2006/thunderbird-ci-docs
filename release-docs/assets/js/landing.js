@@ -63,6 +63,9 @@ function Landing() {
         return upcomingReleases
     }
 
+    /**
+     * @param {Object.<string, string>} releases
+     */
     function setUpcoming(releases) {
         /* <table id="upcoming-body">
           <tr class="upcoming-release">
@@ -71,14 +74,14 @@ function Landing() {
           </tr>
         </table> */
         let table = document.getElementById("upcoming-body")
-        const fmt_options = {year: 'numeric', month: 'long', day: 'numeric'}
+        const fmt_options = {year: 'numeric', month: 'long', day: 'numeric', timeZone: "UTC"}
         for (let [desc, date] of Object.entries(releases)) {
             let row = document.createElement("tr")
             row.classList.add("upcoming-release")
             let version = document.createElement("td")
             version.classList.add("upcoming-version")
             version.textContent = desc
-            let rel_date = Intl.DateTimeFormat(
+            let rel_date = new Intl.DateTimeFormat(
               navigator.language,
               fmt_options
             ).format(new Date(date))
