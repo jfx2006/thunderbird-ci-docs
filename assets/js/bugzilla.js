@@ -37,7 +37,7 @@ const ColumnMap = {
 export default class BZQueryRunner {
   constructor(tableId) {
     this._validInputs = {
-      channel_name: ["release91", "beta", "nightly"],
+      channel_name: ["release102", "release91", "beta", "nightly"],
       query_name: [
         "uplifts-requested",
         "uplifts-approved",

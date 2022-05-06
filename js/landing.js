@@ -14,6 +14,14 @@ function Landing() {
         return val.charAt(0).toUpperCase() + val.slice(1)
     }
 
+    function channel2ReleaseName(channel) {
+        if (channel === "nightly") {
+            return "Daily"
+        } else {
+            return capitalizeFirstLetter(channel)
+        }
+    }
+
     function getDateRange() {
         let start = new Date()
         let start_str = start.toISOString()
@@ -28,7 +36,7 @@ function Landing() {
             let inner = new DocumentFragment()
             let span = document.createElement("span")
             span.classList.add("release")
-            span.textContent = capitalizeFirstLetter(channel)
+            span.textContent = channel2ReleaseName(channel)
 
             let a = document.createElement("a")
             a.href = `dashboard/#pollbot/thunderbird/${channel}`
