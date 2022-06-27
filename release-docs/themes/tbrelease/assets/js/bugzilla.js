@@ -288,6 +288,8 @@ export default class BZQueryRunner {
     if (current_version !== undefined && nightly_major !== undefined) {
       if (this.channel_name === "release91") {
         bugzilla_version = `esr91`
+      } else if (this.channel_name === "release102") {
+        bugzilla_version = `esr102`
       } else if (this.channel_name === "beta") {
         bugzilla_version = current_version.major_version.toString()
       }
