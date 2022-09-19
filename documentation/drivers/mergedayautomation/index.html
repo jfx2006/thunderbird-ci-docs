@@ -81,12 +81,13 @@ not the related releases that happen on the same day.</p>
 </ul>
 <h2>Communication</h2>
 <p>Send emails to the thunderbird-drivers list with information about the merge
-and status updates. Templates are <a href="../mergeday_email_templates">here</a></p>
+and status updates. Templates are <a href="../mergeday_email_templates">here</a>.</p>
 <h2>Steps</h2>
 <p>Make sure you are logged into Treeherder. You will need to have
 "thunderbird-releng" permissions, which are set in
 <a href="https://hg.mozilla.org/ci/ci-configuration/file/1d37a3cf95a4e272eeaa7a910193e58ff2028646/grants.yml#l2415">Taskcluster</a>.</p>
-<p>Close the trees in <a href="https://treestatus.mozilla-releng.net/">TreeStatus</a>.</p>
+<p>Close the <code>comm-central</code> and <code>comm-beta</code> trees in
+<a href="https://treestatus.mozilla-releng.net/">TreeStatus</a>.</p>
 <h3>comm-central -&gt; comm-beta</h3>
 <ol>
 <li>In Treeherder, select the comm-central repository</li>
@@ -168,6 +169,25 @@ updated with the new Daily version number.</p>
 </ul>
 <p>If you are not familiar with Github's Fork &amp; Pull workflow model,
 see <a href="https://reflectoring.io/github-fork-and-pull/">here</a> for an introduction.</p>
+<h2>Check for Firefox Beta tag</h2>
+<p>The build tag for the corresponding Firefox beta release may or may not have
+been set yet. Check <code>mozilla-beta</code> for a tag like <code>FIREFOX_major_0b1_BUILD1</code>
+where "major" is the new beta version.</p>
+<p>If there is a tag, on a local "comm-beta" checkout: 
+- run <code>pin_for_release.py mozilla-beta</code>.
+- <code>hg amend -e</code> and add "CLOSED TREE" to the end of the first line of the
+    commit message.
+  - ex: <code>No bug - Pin mozilla-beta (FIREFOX_106_0b1_BUILD1/4f39db81f6e). r=release a=rjl CLOSED TREE</code>
+- Push to comm-beta.</p>
+<p>If the Firefox <code>BUILD1</code> tag has not been set, proceed with opening the trees
+and the conclusion email, but remember to run <code>pin_for_release.py</code> prior to
+promoting the Thunderbird Beta.</p>
+<h2>Open Trees &amp; Conclusion Email</h2>
+<p>If the builds running on <code>comm-central</code> and <code>comm-beta</code> look good, re-open
+the trees. If there's a build or decision task failure, handle that before
+opening the trees in TreeStatus.</p>
+<p>Use the <a href="../mergeday_email_templates">Conclusion Email template</a> to notify
+thunderbird-drivers that the work is complete.</p>
 <h2>Test runs with a real push</h2>
 <p>You can push to <code>try-comm-central</code> with to-repo/from-repo to test that pushing
 actually works, though it really shouldn't break now that it's working.</p>
