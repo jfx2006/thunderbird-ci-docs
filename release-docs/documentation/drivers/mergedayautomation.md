@@ -19,7 +19,7 @@ On Merge day:
 # Communication
 
 Send emails to the thunderbird-drivers list with information about the merge
-and status updates. Templates are [here](../mergeday_email_templates)
+and status updates. Templates are [here](../mergeday_email_templates).
 
 # Steps
 
@@ -27,7 +27,8 @@ Make sure you are logged into Treeherder. You will need to have
 "thunderbird-releng" permissions, which are set in
 [Taskcluster](https://hg.mozilla.org/ci/ci-configuration/file/1d37a3cf95a4e272eeaa7a910193e58ff2028646/grants.yml#l2415).
 
-Close the trees in [TreeStatus](https://treestatus.mozilla-releng.net/).
+Close the `comm-central` and `comm-beta` trees in
+[TreeStatus](https://treestatus.mozilla-releng.net/).
 
 ## comm-central -> comm-beta
 
@@ -122,6 +123,32 @@ updated with the new Daily version number.
 
 If you are not familiar with Github's Fork & Pull workflow model,
 see [here](https://reflectoring.io/github-fork-and-pull/) for an introduction.
+
+# Check for Firefox Beta tag
+
+The build tag for the corresponding Firefox beta release may or may not have
+been set yet. Check `mozilla-beta` for a tag like `FIREFOX_major_0b1_BUILD1`
+where "major" is the new beta version.
+
+If there is a tag, on a local "comm-beta" checkout: 
+- run `pin_for_release.py mozilla-beta`.
+- `hg amend -e` and add "CLOSED TREE" to the end of the first line of the
+    commit message.
+  - ex: `No bug - Pin mozilla-beta (FIREFOX_106_0b1_BUILD1/4f39db81f6e). r=release a=rjl CLOSED TREE`
+- Push to comm-beta.
+
+If the Firefox `BUILD1` tag has not been set, proceed with opening the trees
+and the conclusion email, but remember to run `pin_for_release.py` prior to
+promoting the Thunderbird Beta.
+
+# Open Trees & Conclusion Email
+
+If the builds running on `comm-central` and `comm-beta` look good, re-open
+the trees. If there's a build or decision task failure, handle that before
+opening the trees in TreeStatus.
+
+Use the [Conclusion Email template](../mergeday_email_templates) to notify
+thunderbird-drivers that the work is complete.
 
 # Test runs with a real push
 
