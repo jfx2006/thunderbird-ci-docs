@@ -146,15 +146,15 @@ NAVIGATION_LINKS = {
         (
             (
                 ("/documentation/drivers/", "Overview"),
-                ('/documentation/drivers/releasenotes/', 'Release Notes'),
-                ('/documentation/drivers/mergedayautomation/', 'Merge Day Automation'),
-                ('/documentation/drivers/mergeday_email_templates/', 'Merge Emails'),
+                ("/documentation/drivers/releasenotes/", "Release Notes"),
+                ("/documentation/drivers/mergedayautomation/", "Merge Day Automation"),
+                ("/documentation/drivers/mergeday_email_templates/", "Merge Emails"),
             ),
-            'Docs for Drivers'
-        )
-
-#        ("/categories/", "Tags"),
-#        ("/rss.xml", "RSS feed"),
+            "Docs for Drivers",
+        ),
+        ("/areweesmifiedyet/", "Are We ESMified Yet?")
+        #        ("/categories/", "Tags"),
+        #        ("/rss.xml", "RSS feed"),
     ),
 }
 
@@ -288,9 +288,11 @@ DATE_FORMAT = 'yyyy-MM-dd HH:mm'
 # One or more folders containing files to be copied as-is into the output.
 # The format is a dictionary of {source: relative destination}.
 # Default is:
-FILES_FOLDERS = {'release-dashboard': 'release-dashboard',
-                 'assets': '',
-                 }
+FILES_FOLDERS = {
+    "areweesmifiedyet": "areweesmifiedyet",
+    "release-dashboard": "release-dashboard",
+    "assets": "",
+}
 # Which means copy 'files' into 'output'
 
 # One or more folders containing code listings to be processed and published on
