@@ -2,4 +2,9 @@ Nikola
 aiohttp
 watchdog
 ghp-import2
-jinja2
+pip-tools
+Jinja2
+Markdown
+MarkupSafe
+requests
+Pillow
