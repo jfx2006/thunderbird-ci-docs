@@ -26,14 +26,14 @@ black
 
 from nikola.plugin_categories import MarkdownExtension
 
-from markdown.util import etree
+import xml.etree.ElementTree as etree
 from markdown.inlinepatterns import Pattern
 from markdown.extensions import Extension
 
 
 COLORS = "blue|purple|pink|red|orange|yellow|green|white|black"
 
-COLOR_RE = r'\[(?P<color>%s)\](?P<text>.+)\[/(?P=color)\]' % COLORS
+COLOR_RE = r"\[(?P<color>%s)\](?P<text>.+)\[/(?P=color)\]" % COLORS
 
 
 class TextColorPattern(Pattern):
@@ -45,10 +45,10 @@ class TextColorPattern(Pattern):
 
     def handleMatch(self, m):
         """Handle pattern matches."""
-        color = m.group('color')
-        text = m.group('text')
-        span_elem = etree.Element('span')
-        span_elem.set('class', 'text-{}'.format(color))
+        color = m.group("color")
+        text = m.group("text")
+        span_elem = etree.Element("span")
+        span_elem.set("class", "text-{}".format(color))
         span_elem.text = text
         return span_elem
 
@@ -58,7 +58,7 @@ class TextColorExtension(MarkdownExtension, Extension):
         """Extend Markdown."""
         color_md_pattern = TextColorPattern(COLOR_RE)
         color_md_pattern.md = md
-        md.inlinePatterns.register(color_md_pattern, 'textcolor', 175)
+        md.inlinePatterns.register(color_md_pattern, "textcolor", 175)
         md.registerExtension(self)
 
 
