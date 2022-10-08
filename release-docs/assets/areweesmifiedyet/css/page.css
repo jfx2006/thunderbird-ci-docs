@@ -1,0 +1,116 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+html body {
+  min-width: 800px;
+}
+
+a {
+  color: #323232;
+}
+
+.container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+@media (min-width: 1600px) {
+  .container, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+    max-width: 1540px;
+  }
+}
+
+/* heading */
+
+header {
+  font-weight: 300;
+  padding: 5px;
+  text-align: center;
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+h5 {
+  display: inline-block;
+}
+
+#description {
+  font-size: 1.2em;
+}
+
+#logo {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+}
+
+/* burndown chart */
+
+#chart {
+  text-align: center;
+  font-size: 72px;
+  font-weight: bolder;
+  width: 98%
+}
+
+/* history */
+
+#history {
+  margin: 0 2em;
+}
+
+/* status tree */
+
+#tree {
+  margin: 0 2em;
+}
+
+/* table */
+
+table {
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+table.tree-table tbody tr:nth-child(2n+1) {
+  background: #bbb;
+}
+
+th {
+  text-align: center;
+}
+th.name-column,
+th.date-column {
+  min-width: 10em;
+}
+th.number-column {
+  min-width: 4em;
+}
+
+th,
+td {
+  padding: 0.2em 1em;
+}
+td.external-link {
+  text-align: center;
+}
+td.number {
+  text-align: end;
+}
+
+#table-view-label {
+  float: right;
+  margin-bottom: 0;
+}
+
+.c3-line-esmCount, .c3-line-jsmCount {
+  opacity: 0 !important;
+}
+
+.c3-area-esmCount, .c3-area-jsmCount {
+  opacity: 0.4 !important;
+}

@@ -286,7 +286,6 @@ DATE_FORMAT = "yyyy-MM-dd HH:mm"
 # The format is a dictionary of {source: relative destination}.
 # Default is:
 FILES_FOLDERS = {
-    "areweesmifiedyet": "areweesmifiedyet",
     "release-dashboard": "release-dashboard",
     "assets": "",
 }
