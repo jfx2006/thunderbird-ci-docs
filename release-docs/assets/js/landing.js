@@ -24,6 +24,7 @@ function Landing() {
 
     function getDateRange() {
         let start = new Date()
+        start.setDate(start.getDate() + 1)
         let start_str = start.toISOString()
         start.setMonth(start.getMonth() + 1)
         let end_str = start.toISOString()
