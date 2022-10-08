@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Are We ESMified Yet?</title>
+  <link href="https://code.cdn.mozilla.net/fonts/zilla-slab.css" rel="stylesheet" type="text/css">
+  <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <link href="css/page.css" rel="stylesheet" type="text/css">
+  <link rel="icon" type="image/png" sizes="128x128" href="./img/esmification.png">
+
+  <!-- C3/D3 -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.css"
+    integrity="sha384-9Lyl02xl1c0mLtz2jmyFnSbGH3FddWR0f/1GCnSPOdzy5X0Nf2riz6V3AhDki55K"
+    crossorigin="anonymous">
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.8.2/d3.min.js"
+    integrity="sha384-Qzn3+Cb91TBtzmbsxRALVMeQw9huRQ3OU1dv7WaqJpGvA+1M97IyvHG70rqmrwQ0"
+    crossorigin="anonymous"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js"
+    integrity="sha384-xOzJ6ocROuPNeY/PUgXyXgiPyvvePCiWVkKXro4Lb1gWoGJOtrJw+zrpf3NBx1B5"
+    crossorigin="anonymous"></script>
+
+  <script src="./js/burndown.js" defer></script>
+  <script src="./js/timeline.js" defer></script>
+</head>
+<body>
+  <header>
+  <h1>Is Thunderbird ESMified Yet?</h1>
+  <div id="description">
+    ESMification is a project to migrate Mozilla-specific "JSM" module system to the standard
+    ECMAScript Module "ESM" system.<br>
+    This dashboard tracks the progress of comm-central's migration.
+  </div>
+  </header>
+  <div id="logo">
+    <img src="./img/esmification.png" width="32" height="32" alt="ESMification Logo" title="ESMification Logo">
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <div class="card">
+          <div class="card-header">
+            <h5>ESMification Chart for comm-central</h5>
+            <label id="table-view-label"><input type="checkbox" id="table-view">Table View</label>
+          </div>
+          <div class="card-body">
+            <section id="chart"></section>
+            <section id="history"></section>
+            <section id="tree"></section>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-4">
+        <div class="card">
+          <div class="card-header">
+            <h5>Links</h5>
+          </div>
+          <div class="card-body">
+            <ul>
+              <!-- <li><a href="https://chat.mozilla.org/#/room/#esmification:mozilla.org">#esmification:mozilla.org</a></li>
+              <li><a href="https://docs.google.com/document/d/1cpzIK-BdP7u6RJSar-Z955GV--2Rj8V4x2vl34m36Go/edit?usp=sharing">Migration Document</a></li>  -->
+              <li><a href="https://mzl.la/3Sql55A">Bug List</a></li>
+            </ul>
+          </div>
+          <div class="card-header">
+            <h5>Timeline</h5>
+          </div>
+          <div class="card-body">
+            <section id="timeline">Loading...</section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display: none" aria-hidden="true">
+    <svg id="external-link-icon" class="external-link-icon" xmlns="http://www.w3.org/2000/svg"
+         width="16" height="16" viewBox="0 0 16 16">
+      <path
+          d="M5 1H4a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-1a1 1 0 0 0-2 0v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h1a1 1 0 1 0 0-2z"></path>
+      <path
+          d="M14.935 1.618A1 1 0 0 0 14.012 1h-5a1 1 0 1 0 0 2h2.586L8.305 6.293A1 1 0 1 0 9.72 7.707l3.293-3.293V7a1 1 0 1 0 2 0V2a1 1 0 0 0-.077-.382z"></path>
+    </svg>
+  </div>
+  <template id="timeline-row">
+    <style>
+      tr.first {
+        border-top: 1px solid var(--gray-dark);
+      }
+      tr:last-child {
+        border-bottom: 1px solid var(--gray-dark);
+      }
+      td {
+        text-align: center;
+        padding: 4px;
+      }
+      td.td-summary {
+        text-align: initial;
+      }
+      .timeline-date {
+        font-weight: 900;
+      }
+      .timeline-status {
+        font-weight: 750;
+        display: inline-block;
+        border-radius: 5px;
+        border: 1px solid var(--gray-dark);
+        color: var(--light);
+        vertical-align: middle;
+        margin-inline-end: 2px;
+        padding: 3px;
+        min-width: 4em;
+        text-align: center;
+      }
+      .timeline-status-fixed {
+        background-color: var(--success);
+        opacity: 0.8;
+      }
+      .timeline-status-wip {
+        background-color: var(--orange);
+        opacity: 0.8;
+      }
+      .timeline-tag {
+        display: inline-block;
+        color: var(--light);
+        border-radius: 5px;
+        border: 1px solid var(--gray-dark);
+        background-color: var(--secondary);
+        vertical-align: middle;
+        margin-inline-end: 2px;
+        padding: 6px;
+        font-size: 0.8em;
+      }
+      .timeline-tag > a {
+          color: var(--light);
+      }
+    </style>
+    <tr class="first">
+      <td><span class="timeline-date"><slot name="bug-date"></slot></span></td>
+      <td rowspan="2" class="td-summary">
+        <span class="timeline-summary"><slot name="bug-summary"></slot></span>
+      </td>
+      <td><span class="timeline-tag"><slot name="bug-assigned"></slot></span></td>
+    </tr>
+    <tr>
+      <td><span class="timeline-status"><slot name="bug-status"></slot></span></td>
+      <td><span class="timeline-tag timeline-bug"><slot name="bug-num"></slot></span></td>
+    </tr>
+  </template>
+</body>
+</html>
