@@ -75,20 +75,32 @@ export default class BZQueryRunner {
     const params = new URLSearchParams(location.search)
     const channel_name = params.get("channel")
     const query_name = params.get("query")
+    const _me = this
     if (
       this.validInput("channel_name", channel_name) &&
       this.validInput("query_name", query_name)
     ) {
-      // @ts-ignore
-      this.channel_name = channel_name
-      // @ts-ignore
-      this.query_name = query_name
-      return this.loadConfig()
+      this.setParams(channel_name, query_name)
+      this.loadConfig()
+        .then((data_url) => {
+          _me.update_selectQuery()
+          _me.renderTable(data_url)
+        })
     } else {
       alert("Invalid page parameters given.")
       return null
     }
   }
+
+  /**
+   * Set Query parameters
+   */
+  setParams(channel_name, query_name) {
+      // @ts-ignore
+      this.channel_name = channel_name
+      // @ts-ignore
+      this.query_name = query_name
+    }
 
   /**
    * Get development version for the current channel
@@ -142,6 +154,57 @@ export default class BZQueryRunner {
         console.error("Error:", error)
       })
   }
+
+  /**
+   * Get an array of objects {channel: [queries]}
+   * @returns {<Array[<Object>]>}
+   */
+  getQueries() {
+    if (this.config.channels) {
+      let rv = {}
+      for (let channel in this.config.channels) {
+          rv[channel] = []
+          for (let query in this.config.channels[channel]["queries"]) {
+            const descr = this.config.channels[channel]["queries"][query]["description"]
+            rv[channel].push({"query": query, "description": descr})
+        }
+      }
+      return rv
+    }
+  }
+  update_selectQuery() {
+    const queryinfo = this.getQueries()
+    const $query_select = $("#bz_query_select")
+    const _me = this
+    let option_counter = 1
+    for (let channel in queryinfo) {
+      for (let query_data of queryinfo[channel]) {
+        const opt_id = `query_option_${option_counter}`
+        const $o = $(`<option id="${opt_id}"
+            data-channel="${channel}"
+            data-query="${query_data.query}"
+            value="${opt_id}">
+            ${query_data.description}
+        </option>`)
+        $query_select.append($o)
+        option_counter++
+      }
+    }
+    $query_select.change(function(e) {
+      if (e.target.value) {
+        let $target = $(`#${e.target.value}`)
+        _me.setParams($target.data("channel"), $target.data("query"))
+        _me.loadConfig()
+        .then((data_url) => {
+          _me.$table.bootstrapTable('refreshOptions', {
+            url: data_url,
+            columns: _me.queryColumns
+          })
+          $(`${_me._tableId}-title`).text(_me.queryTitle)
+        })
+      }
+    })
+}
 
   /**
    * Fetch a remote text file and return the contents.
@@ -286,9 +349,7 @@ export default class BZQueryRunner {
     current_version = await this.getCurrentVersion()
     const nightly_major = await this.getNightlyMajor()
     if (current_version !== undefined && nightly_major !== undefined) {
-      if (this.channel_name === "release91") {
-        bugzilla_version = `esr91`
-      } else if (this.channel_name === "release102") {
+      if (this.channel_name === "release102") {
         bugzilla_version = `esr102`
       } else if (this.channel_name === "beta") {
         bugzilla_version = current_version.major_version.toString()
@@ -298,7 +359,7 @@ export default class BZQueryRunner {
         this.fixQueryVersions(bugzilla_version, nightly_major)
         let query_params = this.queryParams
         query_params.include_fields = this.fetchColumns.join(",")
-        this.renderFetchData()
+        return this.getDataURL()
       }
     }
   }
@@ -306,7 +367,7 @@ export default class BZQueryRunner {
   /**
    * Fetch the bug list
    */
-  renderFetchData() {
+  getDataURL() {
     if ("BUGZILLA_REST_URL" in this.config) {
       const qp = this.queryParams
       const apikey = BZAPIKey.apikey
@@ -316,7 +377,7 @@ export default class BZQueryRunner {
       const query_params = $.param(qp, true)
       const query_url = new URL(this.config.BUGZILLA_REST_URL)
       query_url.search = query_params
-      this.renderTable(query_url)
+      return query_url
     }
   }
 
