@@ -2,182 +2,6 @@
   "BUGZILLA_URL": "https://bugzilla.mozilla.org/buglist.cgi",
   "BUGZILLA_REST_URL": "https://bugzilla.mozilla.org/rest/bug",
   "channels": {
-    "release91": {
-      "pd_key": "LATEST_THUNDERBIRD_VERSION",
-      "title": "Thunderbird",
-      "short_label": "91.x Release",
-      "next_version_url": "https://hg.mozilla.org/releases/comm-esr91/raw-file/tip/mail/config/version_display.txt",
-      "queries": {
-        "uplifts-requested": {
-          "description": "Thunderbird 91 Uplifts Requested",
-          "fetch_cols": [
-            "id",
-            "summary",
-            "status",
-            "product",
-            "component",
-            "target_milestone",
-            "priority",
-            "bug_severity",
-            "cf_last_resolved",
-            "cf_status_thunderbird_%CHANNEL%",
-            "cf_tracking_thunderbird_%CHANNEL%"
-          ],
-          "queryparams": {
-            "include_fields": "",
-            "classification": [
-              "Client Software",
-              "Developer Infrastructure",
-              "Components",
-              "Server Software",
-              "Other"
-            ],
-            "f1": "flagtypes.name",
-            "o1": "substring",
-            "product": [
-              "Calendar",
-              "Chat Core",
-              "MailNews Core",
-              "Thunderbird"
-            ],
-            "v1": "approval-comm-esr91?"
-          }
-        },
-        "uplifts-approved": {
-          "description": "Thunderbird 91 Uplifts Approved",
-          "fetch_cols": [
-            "id",
-            "summary",
-            "status",
-            "product",
-            "component",
-            "target_milestone",
-            "priority",
-            "bug_severity",
-            "cf_last_resolved",
-            "cf_status_thunderbird_%CHANNEL%",
-            "cf_tracking_thunderbird_%CHANNEL%"
-          ],
-          "queryparams": {
-            "include_fields": "",
-            "classification": [
-              "Client Software",
-              "Developer Infrastructure",
-              "Components",
-              "Server Software",
-              "Other"
-            ],
-            "f1": "flagtypes.name",
-            "f2": "cf_status_thunderbird_esr91",
-            "o1": "substring",
-            "o2": "nowords",
-            "product": [
-              "Calendar",
-              "Chat Core",
-              "Instantbird",
-              "MailNews Core",
-              "Thunderbird"
-            ],
-            "v1": "approval-comm-esr91+",
-            "v2": "fixed verified"
-          }
-        },
-        "affected": {
-          "description": "Bugs affecting 91.x that are fixed in Nightly.",
-          "fetch_cols": [
-            "id",
-            "summary",
-            "status",
-            "product",
-            "component",
-            "keywords",
-            "regressed_by",
-            "target_milestone",
-            "priority",
-            "bug_severity",
-            "cf_last_resolved",
-            "cf_status_thunderbird_%CHANNEL%"
-          ],
-          "queryparams": {
-            "include_fields": "",
-            "bug_status": [
-              "RESOLVED",
-              "VERIFIED"
-            ],
-            "classification": [
-              "Client Software",
-              "Developer Infrastructure",
-              "Components",
-              "Server Software",
-              "Other"
-            ],
-            "f1": "cf_status_thunderbird_esr91",
-            "f2": "product",
-            "f3": "flagtypes.name",
-            "f4": "target_milestone",
-            "o1": "equals",
-            "o2": "anywordssubstr",
-            "o3": "notsubstring",
-            "o4": "notequals",
-            "resolution": "FIXED",
-            "v1": "affected",
-            "v2": "MailNews Chat Calendar Thunderbird",
-            "v3": "approval-comm-%CHANNEL%",
-            "v4": "91 Branch"
-          }
-        },
-        "missed": {
-          "description": "Bugs that have ESR91 approval but were not uplifted (missed)",
-          "fetch_cols": [
-            "id",
-            "summary",
-            "status",
-            "product",
-            "component",
-            "target_milestone",
-            "priority",
-            "bug_severity",
-            "cf_last_resolved",
-            "cf_status_thunderbird_%CHANNEL%"
-          ],
-          "queryparams": {
-            "include_fields": "",
-            "bug_status": [
-              "ASSIGNED",
-              "REOPENED",
-              "RESOLVED",
-              "VERIFIED"
-            ],
-            "classification": [
-              "Client Software",
-              "Developer Infrastructure",
-              "Components",
-              "Server Software",
-              "Other"
-            ],
-            "f1": "flagtypes.name",
-            "f2": "longdesc",
-            "f3": "product",
-            "f4": "OP",
-            "f5": "target_milestone",
-            "f6": "target_milestone",
-            "f7": "CP",
-            "j4": "AND_G",
-            "n2": "1",
-            "o1": "substring",
-            "o2": "substring",
-            "o3": "anywords",
-            "o5": "greaterthaneq",
-            "o6": "lessthaneq",
-            "v1": "approval-comm-esr91+",
-            "v2": "releases/comm-esr91/rev",
-            "v3": "MailNews Chat Calendar Thunderbird",
-            "v5": "92",
-            "v6": "104"
-          }
-        }
-      }
-    },
     "release102": {
       "pd_key": "LATEST_THUNDERBIRD_VERSION",
       "title": "Thunderbird",
@@ -185,7 +9,7 @@
       "next_version_url": "https://hg.mozilla.org/releases/comm-esr102/raw-file/tip/mail/config/version_display.txt",
       "queries": {
         "uplifts-requested": {
-          "description": "Thunderbird 102 Uplifts Requested",
+          "description": "Thunderbird 102 - Uplifts Requested",
           "fetch_cols": [
             "id",
             "summary",
@@ -220,7 +44,7 @@
           }
         },
         "uplifts-approved": {
-          "description": "Thunderbird 102 Uplifts Approved",
+          "description": "Thunderbird 102 - Uplifts Approved",
           "fetch_cols": [
             "id",
             "summary",
@@ -259,7 +83,7 @@
           }
         },
         "affected": {
-          "description": "Bugs affecting 102.x that are fixed in Nightly.",
+          "description": "Thunderbird 102 - Fixed in Daily",
           "fetch_cols": [
             "id",
             "summary",
@@ -303,7 +127,7 @@
           }
         },
         "missed": {
-          "description": "Bugs that have ESR102 approval but were not uplifted (missed)",
+          "description": "Thunderbird 102 - Missed uplifts",
           "fetch_cols": [
             "id",
             "summary",
@@ -360,8 +184,87 @@
       "short_label": "Beta",
       "next_version_url": "https://hg.mozilla.org/releases/comm-beta/raw-file/tip/mail/config/version_display.txt",
       "queries": {
+        "uplifts-requested": {
+          "description": "Thunderbird Beta - Uplifts Requested",
+          "fetch_cols": [
+            "id",
+            "summary",
+            "status",
+            "product",
+            "component",
+            "target_milestone",
+            "priority",
+            "bug_severity",
+            "cf_last_resolved",
+            "cf_status_thunderbird_%CHANNEL%",
+            "cf_tracking_thunderbird_%CHANNEL%"
+          ],
+          "queryparams": {
+            "include_fields": "",
+            "classification": [
+              "Client Software",
+              "Developer Infrastructure",
+              "Components",
+              "Server Software",
+              "Other"
+            ],
+            "f1": "flagtypes.name",
+            "f2": "target_milestone",
+            "o1": "substring",
+            "o2": "anywords",
+            "product": [
+              "Calendar",
+              "Chat Core",
+              "MailNews Core",
+              "Thunderbird"
+            ],
+            "v1": "approval-comm-beta?",
+            "v2": "%NIGHTLY%"
+          }
+        },
+        "uplifts-approved": {
+          "description": "Thunderbird Beta - Uplifts Approved",
+          "fetch_cols": [
+            "id",
+            "summary",
+            "status",
+            "product",
+            "component",
+            "target_milestone",
+            "priority",
+            "bug_severity",
+            "cf_last_resolved",
+            "cf_status_thunderbird_%CHANNEL%",
+            "cf_tracking_thunderbird_%CHANNEL%"
+          ],
+          "queryparams": {
+            "include_fields": "",
+            "classification": [
+              "Client Software",
+              "Developer Infrastructure",
+              "Components",
+              "Server Software",
+              "Other"
+            ],
+            "f1": "target_milestone",
+            "f2": "flagtypes.name",
+            "f3": "cf_status_thunderbird_%CHANNEL%",
+            "o1": "anywords",
+            "o2": "substring",
+            "o3": "nowords",
+            "product": [
+              "Calendar",
+              "Chat Core",
+              "MailNews Core",
+              "Thunderbird"
+            ],
+            "v1": "%NIGHTLY%",
+            "v2": "approval-comm-beta+",
+            "v3": "fixed verified"
+          }
+        },
         "beta-1-fixed": {
-          "description": "Bugs fixed in last development milestone for beta 1",
+          "description": "Thunderbird Beta - Beta 1 Release Notes",
           "fetch_cols": [
             "id",
             "summary",
@@ -436,87 +339,8 @@
             "v9": "Use HTML input"
           }
         },
-        "uplifts-requested": {
-          "description": "Beta Uplifts Requested",
-          "fetch_cols": [
-            "id",
-            "summary",
-            "status",
-            "product",
-            "component",
-            "target_milestone",
-            "priority",
-            "bug_severity",
-            "cf_last_resolved",
-            "cf_status_thunderbird_%CHANNEL%",
-            "cf_tracking_thunderbird_%CHANNEL%"
-          ],
-          "queryparams": {
-            "include_fields": "",
-            "classification": [
-              "Client Software",
-              "Developer Infrastructure",
-              "Components",
-              "Server Software",
-              "Other"
-            ],
-            "f1": "flagtypes.name",
-            "f2": "target_milestone",
-            "o1": "substring",
-            "o2": "anywords",
-            "product": [
-              "Calendar",
-              "Chat Core",
-              "MailNews Core",
-              "Thunderbird"
-            ],
-            "v1": "approval-comm-beta?",
-            "v2": "%NIGHTLY%"
-          }
-        },
-        "uplifts-approved": {
-          "description": "Beta Uplifts Approved",
-          "fetch_cols": [
-            "id",
-            "summary",
-            "status",
-            "product",
-            "component",
-            "target_milestone",
-            "priority",
-            "bug_severity",
-            "cf_last_resolved",
-            "cf_status_thunderbird_%CHANNEL%",
-            "cf_tracking_thunderbird_%CHANNEL%"
-          ],
-          "queryparams": {
-            "include_fields": "",
-            "classification": [
-              "Client Software",
-              "Developer Infrastructure",
-              "Components",
-              "Server Software",
-              "Other"
-            ],
-            "f1": "target_milestone",
-            "f2": "flagtypes.name",
-            "f3": "cf_status_thunderbird_%CHANNEL%",
-            "o1": "anywords",
-            "o2": "substring",
-            "o3": "nowords",
-            "product": [
-              "Calendar",
-              "Chat Core",
-              "MailNews Core",
-              "Thunderbird"
-            ],
-            "v1": "%NIGHTLY%",
-            "v2": "approval-comm-beta+",
-            "v3": "fixed verified"
-          }
-        },
         "beta-1-next": {
-          "description": "Bugs for next major beta (for writing notes pre-merge)",
+          "description": "Thunderbird Beta - Next Beta 1 Release Notes",
           "fetch_cols": [
             "id",
             "summary",
@@ -592,7 +416,7 @@
           }
         },
         "affected": {
-          "description": "Bugs affecting Beta that are fixed in Nightly. Shows keywords and regressing bugs",
+          "description": "Thunderbird Beta - Fixed in Daily",
           "fetch_cols": [
             "id",
             "summary",
@@ -637,7 +461,7 @@
           }
         },
         "missed": {
-          "description": "Bugs that have Beta approval but were not uplifted (missed)",
+          "description": "Thunderbird Beta - Missed uplifts",
           "fetch_cols": [
             "id",
             "summary",

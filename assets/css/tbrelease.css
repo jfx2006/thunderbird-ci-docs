@@ -95,3 +95,8 @@ main.no-padding div.container-fluid {
 .text-black {
     color: #000;
 }
+
+#bz_query_select {
+    display: inline-block;
+    width: fit-content;
+}
