@@ -124,15 +124,8 @@ revision needs to be pinned manually before releasing beta 1.</p>
 </pre></div>
 
 <p>If the dry-run is successful, run again without <code>force-dry-run</code>.</p>
-<h4>Manual step: bump suite version</h4>
-<p>This requires a local clone of comm-central. Run this after the above pushes to
-comm-central.</p>
-<ol>
-<li>Edit suite/config/version.txt and version_display.txt Increment the minor
-   number in each by 1. The files should be identical when complete.</li>
-<li>Commit: "No bug - Bump suite versions. r=me a=merge CLOSED TREE DONTBUILD"</li>
-<li>Push to comm-central.</li>
-</ol>
+<p><strong>Note regarding suite version bump:</strong> This is now handled by automation so no
+manual step is necessary.</p>
 <!-- ## Bump Release version
 
 **DO NOT RUN THIS**
@@ -161,7 +154,9 @@ versions (such as 78.x and 91.x) this will need to run twice, overriding
 </pre></div>
 
 
---><h2>Update Ship-It</h2>
+-->
+
+<h2>Update Ship-It</h2>
 <p>Mozilla's <a href="https://github.com/mozilla-releng/shipit">Ship-It</a> tool must be
 updated with the new Daily version number.</p>
 <h3>Changes</h3>

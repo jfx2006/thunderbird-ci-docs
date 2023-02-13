@@ -71,15 +71,8 @@ push: true
 
 If the dry-run is successful, run again without `force-dry-run`.
 
-### Manual step: bump suite version
-
-This requires a local clone of comm-central. Run this after the above pushes to
-comm-central.
-
-1. Edit suite/config/version.txt and version_display.txt Increment the minor
-   number in each by 1. The files should be identical when complete.
-1. Commit: "No bug - Bump suite versions. r=me a=merge CLOSED TREE DONTBUILD"
-1. Push to comm-central.
+**Note regarding suite version bump:** This is now handled by automation so no
+manual step is necessary.
 
 <!-- ## Bump Release version
 
