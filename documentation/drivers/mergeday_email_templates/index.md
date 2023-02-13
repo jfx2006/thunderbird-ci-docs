@@ -55,7 +55,7 @@ comm-beta:
 
 comm-central:
 
-  * **TREEHERDER LINKS (3)**
+  * **TREEHERDER LINKS (2)**
 
 shipit:
 
