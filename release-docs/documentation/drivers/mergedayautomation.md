@@ -18,7 +18,8 @@ On Merge day:
 
 # Communication
 
-Send emails to the thunderbird-drivers list with information about the merge
+Send emails to both [thunderbird-drivers](mailto:thunderbird-drivers@mozilla.org) and 
+[tb-sheriffs](mailto:sheriffs@thunderbird.net) list with information about the merge
 and status updates. Templates are [here](../mergeday_email_templates).
 
 # Steps
@@ -73,32 +74,6 @@ If the dry-run is successful, run again without `force-dry-run`.
 
 **Note regarding suite version bump:** This is now handled by automation so no
 manual step is necessary.
-
-<!-- ## Bump Release version
-
-**DO NOT RUN THIS**
-
-1. Select comm-esr78 repository and select the "merge-automation" custom action
-1. Update the payload & trigger
-   
-```yaml
-behavior: comm-bump-esr
-force-dry-run: true
-push: true
-```
-
-_Note_: This is currently set to bump comm-esr78. When there are two release
-versions (such as 78.x and 91.x) this will need to run twice, overriding
-`to-branch` and `to-repo` on one of the runs.
-
-```yaml
-behavior: comm-bump-esr
-force-dry-run: true
-push: true
-to-branch: comm-esr78
-to-repo: https://hg.mozilla.org/releases/comm-esr78
-```
--->
 
 # Update Ship-It
 
