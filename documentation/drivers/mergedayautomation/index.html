@@ -83,7 +83,8 @@ not the related releases that happen on the same day.</p>
 <li>Update ShipIt nightly version</li>
 </ul>
 <h2>Communication</h2>
-<p>Send emails to the thunderbird-drivers list with information about the merge
+<p>Send emails to both <a href="mailto:thunderbird-drivers@mozilla.org">thunderbird-drivers</a> and 
+<a href="mailto:sheriffs@thunderbird.net">tb-sheriffs</a> list with information about the merge
 and status updates. Templates are <a href="../mergeday_email_templates">here</a>.</p>
 <h2>Steps</h2>
 <p>Make sure you are logged into Treeherder. You will need to have
@@ -126,36 +127,6 @@ revision needs to be pinned manually before releasing beta 1.</p>
 <p>If the dry-run is successful, run again without <code>force-dry-run</code>.</p>
 <p><strong>Note regarding suite version bump:</strong> This is now handled by automation so no
 manual step is necessary.</p>
-<!-- ## Bump Release version
-
-**DO NOT RUN THIS**
-
-1. Select comm-esr78 repository and select the "merge-automation" custom action
-1. Update the payload & trigger
-
-
-<div class="code"><pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-bump-esr</span><span class="w"></span>
-<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-</pre></div>
-
-
-
-_Note_: This is currently set to bump comm-esr78. When there are two release
-versions (such as 78.x and 91.x) this will need to run twice, overriding
-`to-branch` and `to-repo` on one of the runs.
-
-
-<div class="code"><pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-bump-esr</span><span class="w"></span>
-<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="nt">to-branch</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-esr78</span><span class="w"></span>
-<span class="nt">to-repo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://hg.mozilla.org/releases/comm-esr78</span><span class="w"></span>
-</pre></div>
-
-
--->
-
 <h2>Update Ship-It</h2>
 <p>Mozilla's <a href="https://github.com/mozilla-releng/shipit">Ship-It</a> tool must be
 updated with the new Daily version number.</p>
