@@ -39,6 +39,12 @@ NeedInfo in Bugzilla to make sure it gets considered for inclusion.**
 * [Affected](buglist/?channel=release102&query=affected)
 * [Missed Uplifts](buglist/?channel=release102&query=missed)
 
+## Thunderbird 115.x
+
+* [Uplifts Requested](buglist/?channel=release115&query=uplifts-requested)
+* [Uplifts Approved](buglist/?channel=release115&query=uplifts-approved)
+* [Affected](buglist/?channel=release115&query=affected)
+* [Missed Uplifts](buglist/?channel=release115&query=missed)
 
 ## Bugherder
 
