@@ -82,9 +82,10 @@ function Landing() {
             <td class="upcoming-date">February 28, 2022</td>
           </tr>
         </table> */
+        const entries = Object.entries(releases).slice(0,4) // limit to 4 releases
         let table = document.getElementById("upcoming-body")
         const fmt_options = {year: 'numeric', month: 'long', day: 'numeric', timeZone: "UTC"}
-        for (let [desc, date] of Object.entries(releases)) {
+        for (let [desc, date] of entries) {
             let row = document.createElement("tr")
             row.classList.add("upcoming-release")
             let version = document.createElement("td")
