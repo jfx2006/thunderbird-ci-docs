@@ -3,7 +3,7 @@
 const searchfoxURL = `https://searchfox.org/comm-central/source/`;
 const hgmoURL = `https://hg.mozilla.org/comm-central/`;
 
-const dataURL = "https://thundernest.github.io/areweesmifiedyet/log.json";
+const dataURL = "https://thunderbird.github.io/areweesmifiedyet/log.json";
 
 function drawChart(dates, jsmCount, esmCount) {
   c3.generate({
