@@ -349,10 +349,8 @@ export default class BZQueryRunner {
     current_version = await this.getCurrentVersion()
     const nightly_major = await this.getNightlyMajor()
     if (current_version !== undefined && nightly_major !== undefined) {
-      if (this.channel_name === "release115") {
-        bugzilla_version = "esr115"
-      } else if (this.channel_name === "release102") {
-        bugzilla_version = `esr102`
+      if (this.channel_name.startsWith("esr")) {
+        bugzilla_version = this.channel_name
       } else if (this.channel_name === "beta") {
         bugzilla_version = current_version.major_version.toString()
       }
