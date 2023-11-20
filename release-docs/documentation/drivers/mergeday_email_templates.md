@@ -14,13 +14,16 @@ _Send this email the morning of the merge._
 
 ---
 
-**Subject:** Thunderbird beta merge for {{% today %}} (c-c -> {{% milestone nightly %}} / c-b -> {{% milestone beta %}})
+**Subject:** Thunderbird merges & version bumps for {{% today %}} (c-c -> {{% milestone nightly %}} 
+/ c-b -> {{% milestone beta %}} / c-r -> {{% milestone release %}})
 
 Hello!
 
 I’ll be doing the beta merge today. The Firefox merges **have <span id="ff_merge_negate">not</span>** completed.
 
-comm-central is going to version {{% milestone nightly %}}, and comm-beta to {{% milestone beta %}}.
+* comm-central is going to version {{% milestone nightly %}}
+* comm-beta to {{% milestone beta %}}
+* comm-release to {{% milestone release %}}
 
 The merge will be performed via automation.
 
@@ -49,6 +52,10 @@ _Send this email after you've completed the work._
 Thunderbird {{% milestone beta %}}beta1 will be built once the Firefox build has
 been tagged in Mercurial.
 
+comm-release:
+
+  * **TREEHERDER LINK**
+
 comm-beta:
 
   * **TREEHERDER LINK**
@@ -67,6 +74,7 @@ documentation:
 
 current tree status:
 
+  * comm-release: <span style="weight:900; color:#f0ad4e">APPROVAL REQUIRED</span>
   * comm-beta: <span style="weight:900; color:#f0ad4e">APPROVAL REQUIRED</span>
   * comm-central: <span style="weight:900; color:#5cb85c">OPEN</span>
 

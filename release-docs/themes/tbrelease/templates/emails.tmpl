@@ -33,6 +33,7 @@
   // will be post merge so that the emails make sense.
   let tb_nightly_ms = Number(tb_nightly_ver.replace(".0a1\n", ""))
   let tb_beta_ms = tb_nightly_ms
+  let tb_release_ms = tb_beta_ms - 1
   tb_nightly_ms = tb_nightly_ms + 1
 
   // Check to see if the Firefox bump-central has happened. That's the last
@@ -46,6 +47,8 @@
 
   doReplaceMilestones("nightly", tb_nightly_ms.toString(10))
   doReplaceMilestones("beta", tb_beta_ms.toString(10))
+  doReplaceMilestones("release", tb_release_ms.toString(10))
+
   doReplaceToday()
 </script>
 {% endblock %}
