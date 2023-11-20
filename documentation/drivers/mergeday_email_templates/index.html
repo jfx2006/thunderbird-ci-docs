@@ -78,10 +78,18 @@ Send.</p>
 <h2>Announcement Email</h2>
 <p><em>Send this email the morning of the merge.</em></p>
 <hr>
-<p><strong>Subject:</strong> Thunderbird beta merge for <span class="date today"></span> (c-c -&gt; <span class="milestone nightly"></span> / c-b -&gt; <span class="milestone beta"></span>)</p>
+<p><strong>Subject:</strong> Thunderbird merges &amp; version bumps for <span class="date today"></span> (c-c -&gt; <span class="milestone nightly"></span> 
+/ c-b -&gt; <span class="milestone beta"></span> / c-r -&gt; <span class="milestone release"></span>)</p>
 <p>Hello!</p>
 <p>I’ll be doing the beta merge today. The Firefox merges <strong>have <span id="ff_merge_negate">not</span></strong> completed.</p>
-<p>comm-central is going to version <span class="milestone nightly"></span>, and comm-beta to <span class="milestone beta"></span>.</p>
+<ul>
+<li>comm-central is going to version <span class="milestone nightly"></span>
+</li>
+<li>comm-beta to <span class="milestone beta"></span>
+</li>
+<li>comm-release to <span class="milestone release"></span>
+</li>
+</ul>
 <p>The merge will be performed via automation.</p>
 <p>I’ll keep people up to date by replying to this email:</p>
 <ul>
@@ -100,6 +108,10 @@ Send.</p>
 <p><strong>Merges are finished.</strong></p>
 <p>Thunderbird <span class="milestone beta"></span>beta1 will be built once the Firefox build has
 been tagged in Mercurial.</p>
+<p>comm-release:</p>
+<ul>
+<li><strong>TREEHERDER LINK</strong></li>
+</ul>
 <p>comm-beta:</p>
 <ul>
 <li><strong>TREEHERDER LINK</strong></li>
@@ -118,6 +130,8 @@ been tagged in Mercurial.</p>
 </ul>
 <p>current tree status:</p>
 <ul>
+<li>comm-release: <span style="weight:900; color:#f0ad4e">APPROVAL REQUIRED</span>
+</li>
 <li>comm-beta: <span style="weight:900; color:#f0ad4e">APPROVAL REQUIRED</span>
 </li>
 <li>comm-central: <span style="weight:900; color:#5cb85c">OPEN</span>
@@ -160,6 +174,7 @@ been tagged in Mercurial.</p>
   // will be post merge so that the emails make sense.
   let tb_nightly_ms = Number(tb_nightly_ver.replace(".0a1\n", ""))
   let tb_beta_ms = tb_nightly_ms
+  let tb_release_ms = tb_beta_ms - 1
   tb_nightly_ms = tb_nightly_ms + 1
 
   // Check to see if the Firefox bump-central has happened. That's the last
@@ -173,6 +188,8 @@ been tagged in Mercurial.</p>
 
   doReplaceMilestones("nightly", tb_nightly_ms.toString(10))
   doReplaceMilestones("beta", tb_beta_ms.toString(10))
+  doReplaceMilestones("release", tb_release_ms.toString(10))
+
   doReplaceToday()
 </script><script>
     baguetteBox.run('div#content', {
