@@ -21,17 +21,9 @@ necessary.
 To check the current blocking and wanted bugs for a release, we have a bug
 tracking page here (NOT YET).
 
-# Merge Repositories
+# Merge Duty
 
-Merge Day happens every four weeks on a Monday and is the first step in a new
-beta version. See
-[Merge Repositories](https://wiki.mozilla.org/Thunderbird/Release_Driving/Rapid_Release_Activities/Merge_Repositories)
-for all of the details.
-
-# Merge Day Automation
-
-This process is planned to replace the above. It is based on the Firefox Merge
-process. See [Merge Day Automation](mergedayautomation).
+Happens over 3 weeks and is what drives the release trains. See [Merge Duty](merge_duty).
 
 # Uplifts
 

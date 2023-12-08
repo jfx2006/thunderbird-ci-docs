@@ -8,18 +8,19 @@ The date and version numbers will be correct assuming this page is loaded
 prior to starting the actual merge work. Proofread and verify prior to hitting
 Send.
 
-# Announcement Email
+# Comm-Beta/Comm-Central Announcement Email
 
 _Send this email the morning of the merge._
 
 ---
 
-**Subject:** Thunderbird merges & version bumps for {{% today %}} (c-c -> {{% milestone nightly %}} 
-/ c-b -> {{% milestone beta %}} / c-r -> {{% milestone release %}})
+**Subject:** Thunderbird beta merge & version bumps for {{% today %}} (c-c -> {{% milestone nightly %}} 
+/ c-b -> {{% milestone beta %}})
 
 Hello!
 
-I’ll be doing the beta merge today. The Firefox merges **have <span id="ff_merge_negate">not</span>** completed.
+I'll be completing the Thunderbird beta merge today. The Firefox merges 
+**have <span id="ff_merge_negate">not</span>** completed.
 
 * comm-central is going to version {{% milestone nightly %}}
 * comm-beta to {{% milestone beta %}}

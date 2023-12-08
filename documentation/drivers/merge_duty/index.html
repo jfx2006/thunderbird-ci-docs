@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merge Duty | Thunderbird Release Documentation</title>
+<link href="../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#2284fe">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../rss.xml">
+<link rel="canonical" href="https://jfx2006.github.io/thunderbird-release/documentation/drivers/merge_duty/">
+<link rel="favicon" href="../../../favicon.ico" sizes="48x48">
+<!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Thunderbird Release Team">
+<meta property="og:site_name" content="Thunderbird Release Documentation">
+<meta property="og:title" content="Merge Duty">
+<meta property="og:url" content="https://jfx2006.github.io/thunderbird-release/documentation/drivers/merge_duty/">
+<meta property="og:description" content="Merge Duty
+All code changes to Thunderbird land in the
+comm-central repository
+
+The Daily releases are built from that repo once a day.
+Beta releases are built from the comm-beta
+  repository
+Release ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2023-12-08T16:04:40Z">
+<link href="../../../assets/css/tbrelease.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="dash">
+  <div class="dash-nav dash-nav-dark">
+    <header><a href="../../../" class="spur-logo">
+          <img src="../../../images/thunderbird-watermark.svg" alt="Thunderbird Release Documentation" id="logo" class="d-inline-block align-top"></a>
+    </header><nav class="dash-nav-list"><ul class="nav nav-pills flex-column">
+<li class="dash-nav-item">
+<a href="../../" class="nav-link">About Thunderbird Releases</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../../dashboard/" class="nav-link">Release Dashboard</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../../tools/" class="nav-link">Release Tools</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../developers/" class="nav-link">Docs for Devs</a>
+      </li>
+<li class="dash-nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs for Drivers</a>
+        <div class="dash-nav-dropdown-menu dropdown-menu">
+              <a href="../" class="dash-nav-dropdown-item dropdown-item">Overview</a>
+              <a href="../releasenotes/" class="dash-nav-dropdown-item dropdown-item">Release Notes</a>
+              <a href="." class="dash-nav-dropdown-item dropdown-item active">Merge Duty <span class="sr-only">(active)</span></a>
+              <a href="../mergeday_email_templates/" class="dash-nav-dropdown-item dropdown-item">Merge Emails</a>
+        </div>
+          </li>
+<li class="dash-nav-item">
+<a href="../../../areweesmifiedyet/" class="nav-link">Are We ESMified Yet?</a>
+
+        
+      </li>
+</ul></nav>
+</div>
+
+  <div class="dash-app" id="content" role="main">
+    <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
+      
+    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Merge Duty</a></h1>
+
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <h2>Merge Duty</h2>
+<p>All code changes to Thunderbird land in the
+<a href="https://hg.mozilla.org/comm-central">comm-central</a> repository</p>
+<ul>
+<li>The <code>Daily</code> releases are built from that repo once a day.</li>
+<li>
+<code>Beta</code> releases are built from the <a href="https://hg.mozilla.org/releases/comm-beta/">comm-beta</a>
+  repository</li>
+<li>
+<code>Release</code> is built from <a href="https://hg.mozilla.org/releases/comm-release/">comm-release</a>
+  repository</li>
+<li>
+<code>Extended Support Releases</code> from the relevant ESR repo, such as
+  <a href="https://hg.mozilla.org/releases/comm-esr115/">comm-esr115</a>
+</li>
+</ul>
+<p><em><em>The </em>merge</em> in <em>Merge Duty</em> refers to the <code>comm-beta-to-release</code> merge. All dates
+referenced below are relative to <em>Merge Day</em>, which is 1 week before the
+traditional Thunderbird merge-day, now known as <em>version bump day</em>.</p>
+<h3>Email templates</h3>
+<p>See <a href="mergeday_email_templates">Merge Email Templates</a> for the email templates.</p>
+<h3>Overview of Procedure</h3>
+<ul>
+<li>Prep work a week before the merge<ul>
+<li><a href="#do-migration-no-op-trial-runs">Do migration no-op trial runs</a></li>
+</ul>
+</li>
+<li>On Merge day:<ul>
+<li><a href="#merge-beta-to-release">Merge beta to release</a></li>
+</ul>
+</li>
+<li>On Version Bump day, one week later:<ul>
+<li><a href="#merge-central-to-beta">Merge central to beta</a></li>
+<li><a href="#tag-central-and-bump-versions">Tag central and bump versions</a></li>
+<li><a href="#bump-esr-version">Bump mozilla-esr</a></li>
+<li><a href="#bump-nightly-shipit">Bump Daily version in ShipIt</a></li>
+</ul>
+</li>
+</ul>
+<h3>Trial runs, one week prior to merge</h3>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Doing a no-op trial run of each migration ensures that the migrations themselves
+work prior to Merge day.</p>
+</div>
+<h5>General steps</h5>
+<ol>
+<li>Go to
+   <a href="https://treeherder.mozilla.org/">Treeherder</a>.</li>
+<li>Select the repo depending on the merge you want to perform (comm-central,
+   comm-beta or comm-esrZZ).</li>
+<li>On the latest push, click on the down arrow in the top right corner.</li>
+<li>Select “Custom push action…”</li>
+<li>Choose <code>merge-automation</code>
+</li>
+<li>In Treeherder, you'll see a new push show up in Treeherder in the repo you
+   will be merging to. It can take a few minutes for the push and task to appear.</li>
+<li>Click on the merge or bump tasks (not the Gecko decision task). A job details
+   panel will pop up and from there you'll find a link to the diff file in the
+   artifacts tab. Note: There will be a cron job that kicks off another bump task
+   with the same name, only one of them will contain the diff.</li>
+</ol>
+<h5>comm-beta-&gt;comm-release migration no-op trial run</h5>
+<ol>
+<li>Follow the <a href="#general-steps">general steps</a> hopping on
+   <a href="https://treeherder.mozilla.org/#/jobs?repo=comm-beta">comm-beta</a>
+</li>
+<li>Insert the following payload and click submit.</li>
+</ol>
+<div class="code"><pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-beta-to-release</span>
+<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+<h5>comm-central-&gt;comm-beta migration no-op trial run</h5>
+<ol>
+<li>Follow the <a href="#general-steps">general steps</a> hopping on
+   <a href="https://treeherder.mozilla.org/#/jobs?repo=comm-central">comm-central</a>
+</li>
+<li>Insert the following payload and click submit.</li>
+</ol>
+<div class="code"><pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-central-to-beta</span>
+<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+<h5>comm-esr bump no-op trial run</h5>
+<p>comm-esr branches evolve over time: comm-esr115 is the current esr, and that is
+used in the discussion below; in the future, you may need to substitute a
+different esr version number.</p>
+<ol>
+<li>Follow the <a href="#general-steps">general steps</a> hopping on
+   <a href="https://treeherder.mozilla.org/#/jobs?repo=comm-esr115">comm-esr115</a>
+</li>
+<li>Insert the following payload and click submit.</li>
+</ol>
+<div class="code"><pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-bump-esr115</span>
+<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+<h3>Release Merge Day - part I</h3>
+<p><strong>When</strong>: The release merge must happen after Firefox has merged mozilla-beta
+to mozilla-release. 
+For date, see <a href="https://calendar.google.com/calendar/embed?src=bW96aWxsYS5jb21fZGJxODRhbnI5aTh0Y25taGFiYXRzdHY1Y29AZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ">Firefox Release Scheduling
+calendar</a>.</p>
+<h4>Merge comm-beta to comm-release</h4>
+<ol>
+<li>Email <a href="mailto:thunderbird-drivers@mozilla.org">thunderbird-drivers</a>  that the merge is beginning using the
+   template.</li>
+<li>
+<a href="https://treestatus.mozilla-releng.net/static/ui/treestatus/show/comm-beta">Close
+   comm-beta</a>.
+   Check <em>“Remember this change to undo later”</em>. Please enter a good
+   message as the reason for the closure, such as “Mergeduty - closing
+   beta for \$VERSION RC week”.</li>
+<li>Run the <code>comm-beta -&gt; comm-release</code> <a href="#do-migration-no-op-trial-runs">no-op trial
+   run</a> one more time and verify the diff looks
+   correct.</li>
+<li>Submit a new task with <code>force-dry-run</code> set to false:</li>
+</ol>
+<div class="code"><pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-beta-to-release</span>
+<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If an issue comes up during this phase, you may not be able to run
+this command (or the no-op one) correctly. You may need to publicly
+backout some tags/changesets to get back in a known state.</p>
+</div>
+<ol start="5">
+<li>Upon successful run, <code>comm-release</code> should get a version bump,
+   branding changes, and two new tags. The first tag should be
+   in the form <code>RELEASE_xxx_END</code> - where the xxx is the previous major version.
+   The other tag should be in the form <code>RELEASE_yyy_BASE</code> - where the yyy is the
+   new major version.</li>
+<li>At the same time <code>comm-beta</code> should get a tag in the form <code>RELEASE_xxx_BASE</code>
+   - where the xxx is the previous major beta version.</li>
+</ol>
+<h4>Email thunderbird-drivers</h4>
+<p>Reply to the first email that the merge is complete using the template.</p>
+<h3>Release Merge Day - part II - a week after Merge day</h3>
+<p><strong>When</strong>: The release merge must happen after Firefox has merged mozilla-central
+to mozilla-beta. </p>
+<h4>Merge central to beta</h4>
+<ol>
+<li>Email <a href="mailto:thunderbird-drivers@mozilla.org">thunderbird-drivers</a> and <a href="mailto:sheriffs@thunderbird.net">tb-sheriffs</a>
+   that the merge is beginning using the template.</li>
+<li>Close <code>comm-central</code> in <a href="https://treestatus.mozilla-releng.net/static/ui/treestatus/show/comm-central">TreeStatus</a>.</li>
+<li>Run the <code>comm-central -&gt; comm-beta</code> <a href="#do-migration-no-op-trial-runs">no-op trial
+   run</a> one more time, and verify the diff looks
+   correct.</li>
+<li>Submit a new task with <code>force-dry-run</code> set to false:</li>
+</ol>
+<div class="code"><pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-central-to-beta</span>
+<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+<ol start="5">
+<li>Upon a successful run, <code>comm-beta</code> should get a version bump, branding changes,
+   and two new tags: <code>BETA_xxx_END</code> and <code>BETA_yyy_BASE</code>.</li>
+</ol>
+<p>Click the first HG revision link (left side under date and timestamp) for the merge push to verify this.</p>
+<ol start="2">
+<li>
+<p>Verify that <code>mail/locales/l10n-changesets.json</code> has revisions, not
+   <code>default</code>.</p>
+</li>
+<li>
+<p>At the same time <code>comm-central</code> should get a new tag <code>BETA_xxx_BASE</code>.</p>
+</li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The merge day automation may not be idempotent.
+The merge automation task may fail and auto-retry (because of a worker
+shutdown, for instance).
+If the task retries after updating the state of the repo, it will update
+the state of the repo again, pushing repeated commits.</p>
+</div>
+<h4>Re-opening beta</h4>
+<p><a href="https://treestatus.mozilla-releng.net/static/ui/treestatus/show/comm-beta">Restore comm-beta tree</a>
+to its previous state (<code>approval-required</code>) so that <strong>l10n bumper can run</strong>.</p>
+<h4>Tag comm-central and bump versions</h4>
+<p><strong>What happens</strong>: A new tag is needed to specify the end of the nightly
+cycle and bump versions in <code>comm-central</code>.</p>
+<ol>
+<li>Follow the <a href="#general-steps">general steps</a>
+</li>
+<li>Insert the following payload and click submit.</li>
+</ol>
+<div class="code"><pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-bump-central</span>
+<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+<ol start="3">
+<li>Upon successful run, <code>comm-central</code> should get a version bump commit and a
+   new tag <code>NIGHTLY_xxx_END</code>.</li>
+</ol>
+<h4>Bump ESR version</h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You could have one ESR to bump, or two. If you are not sure, ask.</p>
+</div>
+<p>Run the comm-bump-esr115 <a href="#do-migration-no-op-trial-runs">no-op trial run</a>
+one more time, and verify the output.</p>
+<p>Push your changes generated by the no-op trial run:</p>
+<ol>
+<li>Follow the <a href="#general-steps">general steps</a>
+</li>
+<li>Insert the following payload and click submit.</li>
+</ol>
+<div class="code"><pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-bump-esr115</span>
+<span class="nt">force-dry-run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<span class="nt">push</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The esr version is currently hardcoded to the action; If necessary, an action for other esr
+versions can be added to <code>taskcluster/ci/config.yml</code>.</p>
+</div>
+<ol start="3">
+<li>Upon successful run, <code>mozilla-esr${VERSION}</code> should get a version bump commit.</li>
+</ol>
+<h4>Reply to thunderbird-drivers that version bump completed</h4>
+<p>Reply to the migration request with the template.</p>
+<h4>Bump Nightly version and release dates in ShipIt</h4>
+<p>In ShipIt, the Thunderbird nightly version is hard-coded, and must be updated
+after the version bump on comm-central.</p>
+<p>Follow these steps to bump the nightly version and release dates in ShipIt:</p>
+<ul>
+<li>Modify <code>api/src/shipit_api/common/config.py</code> and update the
+  <code>LATEST_THUNDERBIRD_NIGHTLY_VERSION</code> variable to be the new version of
+  comm-central.</li>
+<li>Create a pull request with the changes. <a href="https://github.com/mozilla-releng/shipit/pull/1004">Example</a>
+</li>
+<li>In the pull request, @mention one of the Ship-It code owners to make sure
+    the request is seen. You can also say something in #releaseduty on Matrix.</li>
+</ul>
+<p>If you are not familiar with Github's Fork &amp; Pull workflow model,
+see <a href="https://reflectoring.io/github-fork-and-pull/">here</a> for an introduction.</p>
+    </div>
+    
+</article>
+</div>
+    </main><!--End of body content--><footer id="footer"></footer>
+</div>
+</div>
+
+            <script src="../../../assets/js/jquery.min.js"></script><script src="../../../assets/js/popper.min.js"></script><script src="../../../assets/js/bootstrap.min.js"></script><script src="../../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function (element) {
+            return element.getElementsByTagName('img')[0].alt;
+        }
+    });
+</script>
+</body>
+</html>
