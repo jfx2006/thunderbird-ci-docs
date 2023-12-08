@@ -147,7 +147,7 @@ NAVIGATION_LINKS = {
             (
                 ("/documentation/drivers/", "Overview"),
                 ("/documentation/drivers/releasenotes/", "Release Notes"),
-                ("/documentation/drivers/mergedayautomation/", "Merge Day Automation"),
+                ("/documentation/drivers/merge_duty/", "Merge Duty"),
                 ("/documentation/drivers/mergeday_email_templates/", "Merge Emails"),
             ),
             "Docs for Drivers",
@@ -1104,10 +1104,12 @@ PRETTY_URLS = True
 # Defaults are markdown.extensions.(fenced_code|codehilite|extra)
 # markdown.extensions.meta is required for Markdown metadata.
 MARKDOWN_EXTENSIONS = [
+    "markdown.extensions.admonition",
     "markdown.extensions.fenced_code",
     "markdown.extensions.codehilite",
     "markdown.extensions.extra",
     "markdown.extensions.meta",
+    "markdown.extensions.sane_lists",
 ]
 
 # Options to be passed to markdown extensions (See https://python-markdown.github.io/reference/)

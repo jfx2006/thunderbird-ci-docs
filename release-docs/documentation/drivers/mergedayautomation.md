@@ -3,6 +3,11 @@ slug: mergedayautomation
 date: 2020-12-11 20:05:37 UTC
 type: text
 
+# Deprecated
+
+With monthly releases coming, see [Merge Duty](merge_duty) for current tasks.
+This file is kept for historical purposes.
+
 # Overview
 
 Merge day happens at 4-week intervals (most of the time), and follows the
