@@ -5,7 +5,7 @@ type: text
 
 # Deprecated
 
-With monthly releases coming, see [Merge Duty](merge_duty) for current tasks.
+With monthly releases coming, see [Merge Duty](../merge_duty) for current tasks.
 This file is kept for historical purposes.
 
 # Overview
