@@ -21,13 +21,15 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
 <meta property="og:title" content="Merge Duty">
 <meta property="og:url" content="https://jfx2006.github.io/thunderbird-release/documentation/drivers/merge_duty/">
 <meta property="og:description" content="Merge Duty
+
+Attention
+This file replaces Merge Day Automation which is kept for
+historical purposes.
+
 All code changes to Thunderbird land in the
 comm-central repository
 
-The Daily releases are built from that repo once a day.
-Beta releases are built from the comm-beta
-  repository
-Release ">
+The Daily releases are built ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2023-12-08T16:04:40Z">
 <link href="../../../assets/css/tbrelease.css" rel="stylesheet" type="text/css">
@@ -76,6 +78,11 @@ Release ">
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
     <h2>Merge Duty</h2>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>This file replaces <a href="../mergedayautomation">Merge Day Automation</a> which is kept for
+historical purposes.</p>
+</div>
 <p>All code changes to Thunderbird land in the
 <a href="https://hg.mozilla.org/comm-central">comm-central</a> repository</p>
 <ul>
@@ -213,6 +220,8 @@ backout some tags/changesets to get back in a known state.</p>
    in the form <code>RELEASE_xxx_END</code> - where the xxx is the previous major version.
    The other tag should be in the form <code>RELEASE_yyy_BASE</code> - where the yyy is the
    new major version.</li>
+<li>.gecko_rev.yml should have been modified to pin to the correct tag and rev on
+   mozilla-release.</li>
 <li>At the same time <code>comm-beta</code> should get a tag in the form <code>RELEASE_xxx_BASE</code>
    - where the xxx is the previous major beta version.</li>
 </ol>
@@ -238,18 +247,21 @@ to mozilla-beta. </p>
 
 <ol start="5">
 <li>Upon a successful run, <code>comm-beta</code> should get a version bump, branding changes,
-   and two new tags: <code>BETA_xxx_END</code> and <code>BETA_yyy_BASE</code>.</li>
+   and two new tags: <code>BETA_xxx_END</code> and <code>BETA_yyy_BASE</code>. .gecko_rev.yml is <strong>not</strong>
+   pinned to the correct tag/revision. This should be done prior to building the
+   new beta version.</li>
 </ol>
 <p>Click the first HG revision link (left side under date and timestamp) for the merge push to verify this.</p>
 <ol start="2">
-<li>
-<p>Verify that <code>mail/locales/l10n-changesets.json</code> has revisions, not
-   <code>default</code>.</p>
-</li>
-<li>
-<p>At the same time <code>comm-central</code> should get a new tag <code>BETA_xxx_BASE</code>.</p>
-</li>
+<li>Verify that <code>mail/locales/l10n-changesets.json</code> has revisions, not
+   <code>default</code>.</li>
+<li>At the same time <code>comm-central</code> should get a new tag <code>BETA_xxx_BASE</code>.</li>
 </ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be sure to pin .gecko_rev.yml to mozilla-beta's BUILD1 tag prior to promoting
+the beta 1 build.</p>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The merge day automation may not be idempotent.

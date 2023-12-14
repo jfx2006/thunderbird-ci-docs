@@ -5,6 +5,12 @@ type: text
 
 # Merge Duty
 
+!!! attention
+
+    This file replaces [Merge Day Automation](../mergedayautomation) which is kept for
+    historical purposes.
+
+
 All code changes to Thunderbird land in the
 [comm-central](https://hg.mozilla.org/comm-central) repository
 
@@ -137,6 +143,8 @@ push: true
    in the form `RELEASE_xxx_END` - where the xxx is the previous major version.
    The other tag should be in the form `RELEASE_yyy_BASE` - where the yyy is the
    new major version.
+6. .gecko_rev.yml should have been modified to pin to the correct tag and rev on
+   mozilla-release.
 2. At the same time `comm-beta` should get a tag in the form `RELEASE_xxx_BASE`
    \- where the xxx is the previous major beta version.
 
@@ -168,15 +176,20 @@ push: true
 ```
 
 5. Upon a successful run, `comm-beta` should get a version bump, branding changes,
-   and two new tags: `BETA_xxx_END` and `BETA_yyy_BASE`.
+   and two new tags: `BETA_xxx_END` and `BETA_yyy_BASE`. .gecko_rev.yml is **not**
+   pinned to the correct tag/revision. This should be done prior to building the
+   new beta version.
 
    Click the first HG revision link (left side under date and timestamp) for the merge push to verify this.
 
 2. Verify that `mail/locales/l10n-changesets.json` has revisions, not
    `default`.
-
 3. At the same time `comm-central` should get a new tag `BETA_xxx_BASE`.
 
+!!! warning
+
+    Be sure to pin .gecko_rev.yml to mozilla-beta's BUILD1 tag prior to promoting
+    the beta 1 build.
 
 !!! warning
 
