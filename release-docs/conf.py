@@ -152,7 +152,8 @@ NAVIGATION_LINKS = {
             ),
             "Docs for Drivers",
         ),
-        ("/areweesmifiedyet/", "Are We ESMified Yet?")
+        ("/documentation/releng/", "Release Engineering"),
+        ("/areweesmifiedyet/", "Are We ESMified Yet?"),
         #        ("/categories/", "Tags"),
         #        ("/rss.xml", "RSS feed"),
     ),
