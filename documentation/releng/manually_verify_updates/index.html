@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html prefix="
+og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manually Verify Updates | Thunderbird Release Documentation</title>
+<link href="../../../assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/baguetteBox.min.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/rst.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/code.css" rel="stylesheet" type="text/css">
+<link href="../../../assets/css/theme.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#2284fe">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../../rss.xml">
+<link rel="canonical" href="https://jfx2006.github.io/thunderbird-release/documentation/releng/manually_verify_updates/">
+<link rel="favicon" href="../../../favicon.ico" sizes="48x48">
+<!--[if lt IE 9]><script src="../../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Rob Lemley">
+<meta property="og:site_name" content="Thunderbird Release Documentation">
+<meta property="og:title" content="Manually Verify Updates">
+<meta property="og:url" content="https://jfx2006.github.io/thunderbird-release/documentation/releng/manually_verify_updates/">
+<meta property="og:description" content="Occasionally the Update Verify jobs fail, and it might be useful to test the process yourself.
+Requirements
+
+A machine to run the update on. In CI this happens on Linux
+Python (2.7 is still in use)
+A ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2024-03-20T19:36:59Z">
+<link href="../../../assets/css/tbrelease.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="dash">
+  <div class="dash-nav dash-nav-dark">
+    <header><a href="../../../" class="spur-logo">
+          <img src="../../../images/thunderbird-watermark.svg" alt="Thunderbird Release Documentation" id="logo" class="d-inline-block align-top"></a>
+    </header><nav class="dash-nav-list"><ul class="nav nav-pills flex-column">
+<li class="dash-nav-item">
+<a href="../../" class="nav-link">About Thunderbird Releases</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../../dashboard/" class="nav-link">Release Dashboard</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../../tools/" class="nav-link">Release Tools</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../developers/" class="nav-link">Docs for Devs</a>
+      </li>
+<li class="dash-nav-item dropdown">
+<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Docs for Drivers</a>
+        <div class="dash-nav-dropdown-menu dropdown-menu">
+              <a href="../../drivers/" class="dash-nav-dropdown-item dropdown-item">Overview</a>
+              <a href="../../drivers/releasenotes/" class="dash-nav-dropdown-item dropdown-item">Release Notes</a>
+              <a href="../../drivers/merge_duty/" class="dash-nav-dropdown-item dropdown-item">Merge Duty</a>
+              <a href="../../drivers/mergeday_email_templates/" class="dash-nav-dropdown-item dropdown-item">Merge Emails</a>
+        </div>
+          </li>
+<li class="dash-nav-item">
+<a href="../" class="nav-link">Release Engineering</a>
+          </li>
+<li class="dash-nav-item">
+<a href="../../../areweesmifiedyet/" class="nav-link">Are We ESMified Yet?</a>
+
+        
+      </li>
+</ul></nav>
+</div>
+
+  <div class="dash-app" id="content" role="main">
+    <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
+      
+    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
+<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Manually Verify Updates</a></h1>
+
+        
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <p>Occasionally the Update Verify jobs fail, and it might be useful to test the process yourself.</p>
+<h3>Requirements</h3>
+<ul>
+<li>A machine to run the update on. In CI this happens on Linux</li>
+<li>Python (2.7 is still in use)</li>
+<li>A copy of "compare-directories.py" from a M-C checkout.<ul>
+<li><em>M-C:tools/update-verify/release/compare-directories.py</em></li>
+</ul>
+</li>
+<li>Starting version package on the test machine (Linux)<ul>
+<li>thunderbird-68.0b4.tar.bz2</li>
+</ul>
+</li>
+<li>Starting version package for the target platform:<ul>
+<li>Thunderbird 68.0b4.dmg for macOS</li>
+<li>Thunderbird Setup 68.0b4.exe for windows</li>
+<li>thunderbird-68.0b4.tar.bz2 for linux</li>
+</ul>
+</li>
+<li>Destination version package for the target platform:<ul>
+<li>Thunderbird 69.0b1.dmg for macOS</li>
+<li>Thunderbird Setup 68.0b1.exe for windows</li>
+<li>thunderbird-69.0b1.tar.bz2 for linux</li>
+</ul>
+</li>
+<li>A mar file to test for the Destination version on the target platform<ul>
+<li>thunderbird-69.0b1.complete.mar</li>
+</ul>
+</li>
+</ul>
+<p>Make sure that all of these packages are for the same locale.</p>
+<h3>Unpack</h3>
+<ul>
+<li>Unpack the test machine package. If you're on Linux it will unpack into a directory named "thunderbird"<ul>
+<li><code>tar xvf thunderbird-68.0b4.tar.bz2</code></li>
+</ul>
+</li>
+<li>Create start and destination directories<ul>
+<li><code>mkdir start destination</code></li>
+</ul>
+</li>
+<li>Unpack the Start version inro start, Destination version in destination<ul>
+<li><code>( cd start; 7z x "../Thunderbird 68.0b4.dmg" )</code></li>
+<li><code>( cd destination; 7z x "../Thunderbird 69.0b1.dmg" )</code></li>
+</ul>
+</li>
+<li>
+<p><strong>macOSX only</strong> Mangling</p>
+<ul>
+<li>
+<p><code>( cd start
+    mv "Thunderbird/Thunderbird.app" .
+    rm -rf Thunderbird
+    cp Thunderbird.app/Contents/Resources/{update-settings.ini,precomplete} Thunderbird.app/ )</code></p>
+</li>
+<li>
+<p><code>( cd destination
+    mv "Thunderbird/Thunderbird.app" .
+    rm -rf Thunderbird )</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3>Run updater</h3>
+<ul>
+<li>Make sure you are in the top of your directory structure, you should see three directories: <em>thunderbird</em>, <em>start</em>, <em>destination</em>, and your downloaded files.</li>
+<li>Set some variables<ul>
+<li><code>updater=$(realpath thunderbird/updater)</code></li>
+<li><code>update=$(realpath thunderbird/update)</code></li>
+</ul>
+</li>
+<li>Copy mar file into update directory<ul>
+<li><code>cp thunderbird-69.0b1.complete.mar "$update/update.mar"</code></li>
+</ul>
+</li>
+<li>Run update program<ul>
+<li><code>pushd start/Thunderbird.app</code></li>
+<li>Yes,. run it just like this. It's sort of a silly program to run from the commandline.</li>
+<li>`"$updater" "$update" $(pwd) $(pwd) 0``</li>
+<li><code>popd</code></li>
+</ul>
+</li>
+<li>View log file. Look for errors.<ul>
+<li><code>less "${update}/update.log"</code></li>
+</ul>
+</li>
+<li>
+<strong>macOSX only</strong> Undo Mangling<ul>
+<li><code>rm -f start/Thunderbird.app/{update-settings.ini,precomplete}</code></li>
+</ul>
+</li>
+</ul>
+<h3>Compare Start to Destination</h3>
+<ul>
+<li>Run compare-directories.py<ul>
+<li><code>python compare-directories.py --verbose start/Thunderbird.app destination/Thunderbird.app beta-localtest</code></li>
+</ul>
+</li>
+<li>You will get output indicating anything that is different. </li>
+</ul>
+<div class="code"><pre class="code literal-block">Comparing start/Thunderbird.app with destination/Thunderbird.app...
+Files only in start/Thunderbird.app:
+  Contents/Library/Spotlight/thunderbird.mdimporter/Contents/_CodeSignature/._CodeResources
+</pre></div>
+
+<h3>Analysis</h3>
+<p>In the macOS UV example here, we find that there is an extraneous file left behind during the update process due to a code signing bug in a previous version. In this case the updater needs to be told to look for and remove that extra file if it exists which should fix this issue.</p>
+    </div>
+    
+</article>
+</div>
+    </main><!--End of body content--><footer id="footer"></footer>
+</div>
+</div>
+
+            <script src="../../../assets/js/jquery.min.js"></script><script src="../../../assets/js/popper.min.js"></script><script src="../../../assets/js/bootstrap.min.js"></script><script src="../../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function (element) {
+            return element.getElementsByTagName('img')[0].alt;
+        }
+    });
+</script>
+</body>
+</html>

@@ -18,6 +18,7 @@ The active team that is primarily responsible for Thunderbird releases is:
 
 * Wayne Mery (:wsmwk, Release Manager)
 * Rob Lemley (:rjl, Release Engineer)
+* Daniel Darnell (:dandarnell, Release Engineer)
 
 The [Thunderbird drivers list](mailto:thunderbird-drivers@mozilla.org) consists
 of the active team, those involved in producing Thunderbird releases, and

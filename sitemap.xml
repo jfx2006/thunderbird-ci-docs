@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>https://jfx2006.github.io/thunderbird-release/documentation/</loc>
-  <lastmod>2022-09-19T16:31:00Z</lastmod>
+  <lastmod>2024-03-20T19:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://jfx2006.github.io/thunderbird-release/documentation/developers/</loc>
@@ -44,6 +44,14 @@
  <url>
   <loc>https://jfx2006.github.io/thunderbird-release/documentation/drivers/releasenotes/</loc>
   <lastmod>2022-09-19T16:31:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jfx2006.github.io/thunderbird-release/documentation/releng/</loc>
+  <lastmod>2024-03-20T19:37:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://jfx2006.github.io/thunderbird-release/documentation/releng/manually_verify_updates/</loc>
+  <lastmod>2024-03-20T19:37:00Z</lastmod>
  </url>
  <url>
   <loc>https://jfx2006.github.io/thunderbird-release/documentation/tools/</loc>
