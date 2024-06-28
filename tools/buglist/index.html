@@ -60,8 +60,9 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
   <div class="dash-app" id="content" role="main">
     <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
       
-    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
-  <h3 id="bugquery-title" class="card-title"></h3>
+    </header><!--Body content--><div id="container">
+
+        <main id="content"><h3 id="bugquery-title" class="card-title"></h3>
   <div class="table-responsive">
     <table id="bugquery"></table>
 </div>
@@ -93,13 +94,9 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
   </div>
   <script type="text/javascript">
 
-  </script>
+  </script></main>
 </div>
-    </main><!--End of body content--><footer id="footer"></footer>
-</div>
-</div>
-
-            <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script src="../../assets/js/bootstrap-table.min.js"></script><script type="module">
+                <script src="../../assets/js/jquery.min.js"></script><script src="../../assets/js/popper.min.js"></script><script src="../../assets/js/bootstrap.min.js"></script><script src="../../assets/js/baguetteBox.min.js"></script><script src="../../assets/js/bootstrap-table.min.js"></script><script type="module">
       import BZQueryRunner from "../../assets/js/bugzilla.js"
       import { BZAPIKey } from "../../assets/js/utils.js"
 
@@ -146,12 +143,11 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
           update_apiKeyBtn()
       })
   </script><script>
-    baguetteBox.run('div#content', {
+    baguetteBox.run('main#content', {
         ignoreClass: 'islink',
-        captions: function (element) {
-            return element.getElementsByTagName('img')[0].alt;
-        }
-    });
-</script>
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</div>
+</div>
 </body>
 </html>

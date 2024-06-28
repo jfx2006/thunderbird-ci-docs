@@ -60,20 +60,18 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
   <div class="dash-app" id="content" role="main">
     <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
       
-    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
-  <header class="dashboard-header"><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Thunderbird Release Dashboard</a></h1>
+    </header><!--Body content--><div id="container">
+
+        <main id="content"><header class="dashboard-header"><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Thunderbird Release Dashboard</a></h1>
 
     
   </header><div class="dashboard-wrapper">
     <iframe class="release-dashboard" src="../release-dashboard" title="Thunderbird Release Dashboard">
 </iframe>
   </div>
-      </div>
-    </main><!--End of body content--><footer id="footer"></footer>
+        </main>
 </div>
-</div>
-
-            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/popper.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/baguetteBox.min.js"></script><script>
+                <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/popper.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/baguetteBox.min.js"></script><script>
     $(function () {
         let $main = $("main.dash-content");
         $main.addClass("no-padding");
@@ -85,12 +83,11 @@ og: http://ogp.me/ns# article: http://ogp.me/ns/article#
     });
 
 </script><script>
-    baguetteBox.run('div#content', {
+    baguetteBox.run('main#content', {
         ignoreClass: 'islink',
-        captions: function (element) {
-            return element.getElementsByTagName('img')[0].alt;
-        }
-    });
-</script>
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</div>
+</div>
 </body>
 </html>

@@ -69,8 +69,9 @@ only as betas (for example 79-89 are betas only). Future ESR">
   <div class="dash-app" id="content" role="main">
     <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
       
-    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
-<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">About Thunderbird Releases</a></h1>
+    </header><!--Body content--><div id="container">
+
+        <main id="content"><article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">About Thunderbird Releases</a></h1>
 
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
@@ -96,19 +97,14 @@ Linux distributions, so that they are advised as to build and release progress,
 timing and issues.</p>
     </div>
     
-</article>
+</article></main>
 </div>
-    </main><!--End of body content--><footer id="footer"></footer>
-</div>
-</div>
-
-            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/popper.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/baguetteBox.min.js"></script><script>
-    baguetteBox.run('div#content', {
+                <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/popper.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('main#content', {
         ignoreClass: 'islink',
-        captions: function (element) {
-            return element.getElementsByTagName('img')[0].alt;
-        }
-    });
-</script>
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</div>
+</div>
 </body>
 </html>

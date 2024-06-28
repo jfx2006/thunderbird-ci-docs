@@ -69,8 +69,9 @@ Comm-Beta/Comm-Central Announcement Email">
   <div class="dash-app" id="content" role="main">
     <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
       
-    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
-<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Merge Day Emails</a></h1>
+    </header><!--Body content--><div id="container">
+
+        <main id="content"><article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Merge Day Emails</a></h1>
 
     
   </header><div class="e-content entry-content" itemprop="articleBody text">
@@ -142,13 +143,9 @@ been tagged in Mercurial.</p>
 </ul>
 <hr>
 </div>
-</article>
+</article></main>
 </div>
-    </main><!--End of body content--><footer id="footer"></footer>
-</div>
-</div>
-
-            <script src="../../../assets/js/jquery.min.js"></script><script src="../../../assets/js/popper.min.js"></script><script src="../../../assets/js/bootstrap.min.js"></script><script src="../../../assets/js/baguetteBox.min.js"></script><script type="module">
+                <script src="../../../assets/js/jquery.min.js"></script><script src="../../../assets/js/popper.min.js"></script><script src="../../../assets/js/bootstrap.min.js"></script><script src="../../../assets/js/baguetteBox.min.js"></script><script type="module">
   import {getTextURL} from "../../../assets/js/utils.js"
 
   const TB_NIGHTLY_VERSION_URL = "https://hg.mozilla.org/comm-central/raw-file/tip/mail/config/version_display.txt"
@@ -195,12 +192,11 @@ been tagged in Mercurial.</p>
 
   doReplaceToday()
 </script><script>
-    baguetteBox.run('div#content', {
+    baguetteBox.run('main#content', {
         ignoreClass: 'islink',
-        captions: function (element) {
-            return element.getElementsByTagName('img')[0].alt;
-        }
-    });
-</script>
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</div>
+</div>
 </body>
 </html>

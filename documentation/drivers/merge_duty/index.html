@@ -75,8 +75,9 @@ The Daily releases are built ">
   <div class="dash-app" id="content" role="main">
     <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
       
-    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
-<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Merge Duty</a></h1>
+    </header><!--Body content--><div id="container">
+
+        <main id="content"><article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Merge Duty</a></h1>
 
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
@@ -195,9 +196,7 @@ calendar</a>.</p>
 <ol>
 <li>Email <a href="mailto:thunderbird-drivers@mozilla.org">thunderbird-drivers</a>  that the merge is beginning using the
    template.</li>
-<li>
-<a href="https://treestatus.mozilla-releng.net/static/ui/treestatus/show/comm-beta">Close
-   comm-beta</a>.
+<li>Close comm-beta in <a href="https://lando.services.mozilla.com/treestatus/">Treestatus</a>.
    Check <em>“Remember this change to undo later”</em>. Please enter a good
    message as the reason for the closure, such as “Mergeduty - closing
    beta for \$VERSION RC week”.</li>
@@ -237,7 +236,7 @@ to mozilla-beta. </p>
 <ol>
 <li>Email <a href="mailto:thunderbird-drivers@mozilla.org">thunderbird-drivers</a> and <a href="mailto:sheriffs@thunderbird.net">tb-sheriffs</a>
    that the merge is beginning using the template.</li>
-<li>Close <code>comm-central</code> in <a href="https://treestatus.mozilla-releng.net/static/ui/treestatus/show/comm-central">TreeStatus</a>.</li>
+<li>Close <code>comm-central</code> in <a href="https://lando.services.mozilla.com/treestatus/">TreeStatus</a>.</li>
 <li>Run the <code>comm-central -&gt; comm-beta</code> <a href="#do-migration-no-op-trial-runs">no-op trial
    run</a> one more time, and verify the diff looks
    correct.</li>
@@ -274,7 +273,7 @@ If the task retries after updating the state of the repo, it will update
 the state of the repo again, pushing repeated commits.</p>
 </div>
 <h4>Re-opening beta</h4>
-<p><a href="https://treestatus.mozilla-releng.net/static/ui/treestatus/show/comm-beta">Restore comm-beta tree</a>
+<p>Restore comm-beta tree in <a href="https://lando.services.mozilla.com/treestatus/">TreeStatus</a>
 to its previous state (<code>approval-required</code>) so that <strong>l10n bumper can run</strong>.</p>
 <h4>Tag comm-central and bump versions</h4>
 <p><strong>What happens</strong>: A new tag is needed to specify the end of the nightly
@@ -338,19 +337,14 @@ after the version bump on comm-central.</p>
 see <a href="https://reflectoring.io/github-fork-and-pull/">here</a> for an introduction.</p>
     </div>
     
-</article>
+</article></main>
 </div>
-    </main><!--End of body content--><footer id="footer"></footer>
-</div>
-</div>
-
-            <script src="../../../assets/js/jquery.min.js"></script><script src="../../../assets/js/popper.min.js"></script><script src="../../../assets/js/bootstrap.min.js"></script><script src="../../../assets/js/baguetteBox.min.js"></script><script>
-    baguetteBox.run('div#content', {
+                <script src="../../../assets/js/jquery.min.js"></script><script src="../../../assets/js/popper.min.js"></script><script src="../../../assets/js/bootstrap.min.js"></script><script src="../../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('main#content', {
         ignoreClass: 'islink',
-        captions: function (element) {
-            return element.getElementsByTagName('img')[0].alt;
-        }
-    });
-</script>
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</div>
+</div>
 </body>
 </html>

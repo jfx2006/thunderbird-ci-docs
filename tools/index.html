@@ -71,8 +71,9 @@ or Approved lists, c">
   <div class="dash-app" id="content" role="main">
     <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
       
-    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
-<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Release Tools</a></h1>
+    </header><!--Body content--><div id="container">
+
+        <main id="content"><article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Release Tools</a></h1>
 
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
@@ -82,6 +83,19 @@ or <em>Approved</em> lists.</p>
 <p><strong>If you have requested an uplift and you do not see it in the Requested
 or Approved lists, contact one of the release drivers via Matrix or 
 NeedInfo in Bugzilla to make sure it gets considered for inclusion.</strong></p>
+<h3>Thunderbird Monthly Release</h3>
+<ul>
+<li>
+<a href="buglist/?channel=release&amp;query=uplifts-requested">Uplifts Requested</a><ul>
+<li>Bugs under consideration for release uplift.</li>
+</ul>
+</li>
+<li>
+<a href="buglist/?channel=release&amp;query=uplifts-approved">Uplifts Approved</a><ul>
+<li>Bugs approved for release uplift.</li>
+</ul>
+</li>
+</ul>
 <h3>Thunderbird Beta</h3>
 <ul>
 <li>
@@ -119,6 +133,13 @@ NeedInfo in Bugzilla to make sure it gets considered for inclusion.</strong></p>
 </ul>
 </li>
 </ul>
+<h3>Thunderbird 128esr</h3>
+<ul>
+<li><a href="buglist/?channel=esr128&amp;query=uplifts-requested">Uplifts Requested</a></li>
+<li><a href="buglist/?channel=esr128&amp;query=uplifts-approved">Uplifts Approved</a></li>
+<li><a href="buglist/?channel=esr128&amp;query=affected">Affected</a></li>
+<li><a href="buglist/?channel=esr128&amp;query=missed">Missed Uplifts</a></li>
+</ul>
 <h3>Thunderbird 115.x</h3>
 <ul>
 <li><a href="buglist/?channel=esr115&amp;query=uplifts-requested">Uplifts Requested</a></li>
@@ -132,19 +153,14 @@ NeedInfo in Bugzilla to make sure it gets considered for inclusion.</strong></p>
 </ul>
 </div>
     
-</article>
+</article></main>
 </div>
-    </main><!--End of body content--><footer id="footer"></footer>
-</div>
-</div>
-
-            <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/popper.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/baguetteBox.min.js"></script><script>
-    baguetteBox.run('div#content', {
+                <script src="../assets/js/jquery.min.js"></script><script src="../assets/js/popper.min.js"></script><script src="../assets/js/bootstrap.min.js"></script><script src="../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('main#content', {
         ignoreClass: 'islink',
-        captions: function (element) {
-            return element.getElementsByTagName('img')[0].alt;
-        }
-    });
-</script>
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</div>
+</div>
 </body>
 </html>

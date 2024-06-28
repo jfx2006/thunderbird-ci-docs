@@ -70,8 +70,9 @@ Merge day happens at 4-week intervals (most of the time), and follows the">
   <div class="dash-app" id="content" role="main">
     <header class="dash-toolbar"><span>The reports of Thunderbird's death have been greatly exaggerated.</span>
       
-    </header><!--Body content--><main class="dash-content"><div class="container-fluid">
-<article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Merge Day Automation</a></h1>
+    </header><!--Body content--><div id="container">
+
+        <main id="content"><article class="post-text storypage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Merge Day Automation</a></h1>
 
         
     </header><div class="e-content entry-content" itemprop="articleBody text">
@@ -98,7 +99,7 @@ and status updates. Templates are <a href="../mergeday_email_templates">here</a>
 "thunderbird-releng" permissions, which are set in
 <a href="https://hg.mozilla.org/ci/ci-configuration/file/1d37a3cf95a4e272eeaa7a910193e58ff2028646/grants.yml#l2415">Taskcluster</a>.</p>
 <p>Close the <code>comm-central</code> and <code>comm-beta</code> trees in
-<a href="https://treestatus.mozilla-releng.net/">TreeStatus</a>.</p>
+<a href="https://lando.services.mozilla.com/treestatus/">TreeStatus</a>.</p>
 <h3>comm-central -&gt; comm-beta</h3>
 <ol>
 <li>In Treeherder, select the comm-central repository</li>
@@ -190,19 +191,14 @@ actually works, though it really shouldn't break now that it's working.</p>
 </ul>
 </div>
     
-</article>
+</article></main>
 </div>
-    </main><!--End of body content--><footer id="footer"></footer>
-</div>
-</div>
-
-            <script src="../../../assets/js/jquery.min.js"></script><script src="../../../assets/js/popper.min.js"></script><script src="../../../assets/js/bootstrap.min.js"></script><script src="../../../assets/js/baguetteBox.min.js"></script><script>
-    baguetteBox.run('div#content', {
+                <script src="../../../assets/js/jquery.min.js"></script><script src="../../../assets/js/popper.min.js"></script><script src="../../../assets/js/bootstrap.min.js"></script><script src="../../../assets/js/baguetteBox.min.js"></script><script>
+    baguetteBox.run('main#content', {
         ignoreClass: 'islink',
-        captions: function (element) {
-            return element.getElementsByTagName('img')[0].alt;
-        }
-    });
-</script>
+        captions: function(element){var i=element.getElementsByTagName('img')[0];return i===undefined?'':i.alt;}});
+    </script>
+</div>
+</div>
 </body>
 </html>
