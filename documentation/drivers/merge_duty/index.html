@@ -259,9 +259,11 @@ to mozilla-beta. </p>
 </ol>
 <p>Click the first HG revision link (left side under date and timestamp) for the merge push to verify this.</p>
 <ol start="2">
-<li>Verify that <code>mail/locales/l10n-changesets.json</code> has revisions, not
-   <code>default</code>.</li>
-<li>At the same time <code>comm-central</code> should get a new tag <code>BETA_xxx_BASE</code>
+<li>
+<p>Verify that <code>mail/locales/l10n-changesets.json</code> has revisions.</p>
+</li>
+<li>
+<p>At the same time <code>comm-central</code> should get a new tag <code>BETA_xxx_BASE</code></p>
 </li>
 </ol>
 <div class="admonition warning">
@@ -286,6 +288,9 @@ cycle and bump versions in <code>comm-central</code>.</p>
 <ol>
 <li>Follow the <a href="#general-steps">general steps</a>
 </li>
+<li>Run the <code>comm-bump-central</code> <a href="#do-migration-no-op-trial-runs">no-op trial
+   run</a> again and verify the diff looks
+   correct.</li>
 <li>Insert the following payload and click submit.</li>
 </ol>
 <div class="code"><pre class="code literal-block"><span class="nt">behavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">comm-bump-central</span>
